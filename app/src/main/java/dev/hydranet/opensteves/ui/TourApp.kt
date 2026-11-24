@@ -30,9 +30,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.hydranet.opensteves.data.PlaylistRepository
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
 import dev.hydranet.opensteves.playback.PlaybackConnection
+import dev.hydranet.opensteves.playback.TtsPlayer
 import dev.hydranet.opensteves.session.SessionManager
 import dev.hydranet.opensteves.ui.theme.AppThemeMode
 import kotlinx.coroutines.CancellationException
@@ -58,8 +60,14 @@ fun TourApp(
     val player by playback.state.collectAsState()
     val session = remember { SessionManager.get(context) }
     val group by session.state.collectAsState()
+    val playlistRepository = remember { PlaylistRepository.get(context) }
+    val playlists by playlistRepository.playlists.collectAsState()
+    val tts = remember { TtsPlayer(context) }
+    DisposableEffect(tts) { onDispose { tts.release() } }
     var screen by rememberSaveable { mutableIntStateOf(0) }
     var selectedId by rememberSaveable { mutableStateOf<Int?>(null) }
+    var playlistId by rememberSaveable { mutableStateOf<String?>(null) }
+    var guideId by rememberSaveable { mutableStateOf<String?>(null) }
     var playerTourId by rememberSaveable { mutableStateOf<Int?>(null) }
     var deletion by remember { mutableStateOf<Tour?>(null) }
     var sharingDialog by remember { mutableStateOf(false) }
@@ -102,7 +110,16 @@ fun TourApp(
     }
     fun navigate(destination: Int) {
         selectedId = null
+        playlistId = null
+        guideId = null
         screen = destination
+    }
+    fun back() {
+        when {
+            guideId != null -> guideId = null
+            playlistId != null -> playlistId = null
+            else -> selectedId = null
+        }
     }
     fun play(tour: Tour, positionMs: Long? = null) {
         if (session.state.value.role != "none" && playback.state.value.tourId != tour.id) {
@@ -206,7 +223,7 @@ fun TourApp(
     LaunchedEffect(message) { message?.let(report) }
     LaunchedEffect(player.error) { player.error?.let(report) }
     LaunchedEffect(group.error) { group.error?.let(report) }
-    BackHandler(selectedId != null) { selectedId = null }
+    BackHandler(selectedId != null || playlistId != null || guideId != null) { back() }
     val selected = selectedId?.let { id -> tours.find { it.id == id } ?: installed[id]?.tour }
     val current = player.tourId?.let { id -> installed[id]?.tour ?: tours.find { it.id == id } }
     val playingTour = current ?: playerTourId?.let { installed[it]?.tour }
@@ -234,18 +251,22 @@ fun TourApp(
                     ),
                     title = {
                         Text(
-                            if (selected != null) { if (selected.isCustom) "Audio details" else "Tour details" } else when (screen) {
+                            if (selected != null) { if (selected.isCustom) "Audio details" else "Tour details" }
+                            else if (guideId != null) "Guide"
+                            else if (playlistId != null) playlists.find { it.id == playlistId }?.title ?: "Playlist"
+                            else when (screen) {
                                 1 -> "Playing"
                                 2 -> "Together"
+                                3 -> "Playlists"
                                 else -> "Explore"
                             },
                             fontSize = 21.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
                         )
                     },
                     navigationIcon = {
-                        if (selectedId != null) IconButton(onClick = {
-                            if (selectedId != null) selectedId = null else navigate(0)
-                        }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") }
+                        if (selectedId != null || playlistId != null || guideId != null) IconButton(onClick = ::back) {
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
+                        }
                     },
                     actions = {
                         if (selected == null && screen == 0) {
@@ -304,7 +325,7 @@ fun TourApp(
             }
         },
         bottomBar = {
-            if (!playerFullScreen) AppNavigation(selected = when (screen) { 1, 2 -> screen; else -> 0 }, sessionActive = group.role != "none", onSelect = ::navigate)
+            if (!playerFullScreen) AppNavigation(selected = when (screen) { 1, 2, 3 -> screen; else -> 0 }, sessionActive = group.role != "none", onSelect = ::navigate)
         },
     ) { padding ->
         Box(Modifier.fillMaxSize().padding(padding)) {
@@ -312,6 +333,13 @@ fun TourApp(
                 TourInfoScreen(selected, repository, installed[selected.id], downloads[selected.id], player.tourId, group.role != "none",
                     onDownload = { download(selected) }, onCancel = { repository.cancelDownload(selected.id) },
                     onPlay = { play(selected) }, onOpenPlayer = { navigate(1) })
+            } else if (guideId != null) {
+                CustomGuideScreen(playlistRepository, guideId!!, tts)
+            } else if (playlistId != null) {
+                val playlist = playlists.find { it.id == playlistId }
+                if (playlist != null) PlaylistScreen(playlist, tours, installed, playlistRepository,
+                    onOpenTour = { selectedId = it.id }, onOpenGuide = { guideId = it })
+                else EmptyState(Icons.Outlined.PlaylistPlay, "Playlist not found", "This playlist is no longer available.")
             } else when (screen) {
                 1 -> if (playingTour != null) savedScreens.SaveableStateProvider("playing") {
                     PlayingScreen(playingTour, repository, playback, installed[playingTour.id]?.directoryName, group.role != "none",
@@ -319,6 +347,9 @@ fun TourApp(
                         onPlay = { position -> play(playingTour, position) })
                 } else Column(Modifier.fillMaxSize().padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                     EmptyState(Icons.Outlined.Headphones, "Nothing playing", "Choose audio from Explore to listen here.")
+                }
+                3 -> savedScreens.SaveableStateProvider("playlists") {
+                    PlaylistsScreen(playlists, onSelect = { playlistId = it.id })
                 }
                 2 -> if (showingSessionDebug) {
                     SessionDebugScreen(session, onBack = { showingSessionDebug = false }, report = report)
@@ -496,7 +527,7 @@ private fun AppNavigation(selected: Int, sessionActive: Boolean, onSelect: (Int)
                 Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).height(64.dp).selectableGroup(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                listOf("Explore" to Icons.Outlined.Explore, "Playing" to Icons.Outlined.Headphones, "Together" to Icons.Outlined.People).forEachIndexed { index, (label, icon) ->
+                listOf("Explore" to Icons.Outlined.Explore, "Playing" to Icons.Outlined.Headphones, "Together" to Icons.Outlined.People, "Playlists" to Icons.Outlined.PlaylistPlay).forEachIndexed { index, (label, icon) ->
                     val color = if (index == selected) colors.primary else colors.onSurfaceVariant
                     Column(
                         Modifier.weight(1f).fillMaxHeight().selectable(selected = index == selected, role = Role.Tab, onClick = { onSelect(index) }),
