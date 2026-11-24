@@ -26,8 +26,8 @@ android {
         applicationId = "dev.hydranet.opensteves"
         minSdk = 26
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.2"
+        versionCode = 4
+        versionName = "1.3"
     }
 
     signingConfigs {
@@ -76,4 +76,6 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    testImplementation(libs.junit)
+    testImplementation(libs.org.json)
 }

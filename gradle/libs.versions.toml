@@ -5,6 +5,8 @@ activityCompose = "1.13.0"
 composeBom = "2026.02.01"
 media3 = "1.11.1"
 work = "2.12.0"
+junit = "4.13.2"
+json = "20231013"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -18,6 +20,8 @@ androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", versi
 androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "media3" }
 androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.17.0" }
+junit = { module = "junit:junit", version.ref = "junit" }
+org-json = { module = "org.json:json", version.ref = "json" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
