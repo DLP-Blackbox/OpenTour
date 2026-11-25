@@ -30,9 +30,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.hydranet.opensteves.data.CustomGuide
 import dev.hydranet.opensteves.data.PlaylistRepository
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
+import dev.hydranet.opensteves.playback.GuideTtsPlayback
 import dev.hydranet.opensteves.playback.PlaybackConnection
 import dev.hydranet.opensteves.playback.TtsPlayer
 import dev.hydranet.opensteves.session.SessionManager
@@ -64,6 +66,11 @@ fun TourApp(
     val playlists by playlistRepository.playlists.collectAsState()
     val tts = remember { TtsPlayer(context) }
     DisposableEffect(tts) { onDispose { tts.release() } }
+    val guideSession = remember { GuideTtsPlayback(context, tts, playlistRepository) }
+    DisposableEffect(guideSession) {
+        session.attachGuidePlayback(guideSession)
+        onDispose { session.attachGuidePlayback(null) }
+    }
     var screen by rememberSaveable { mutableIntStateOf(0) }
     var selectedId by rememberSaveable { mutableStateOf<Int?>(null) }
     var playlistId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -76,6 +83,7 @@ fun TourApp(
     var sharingDialog by remember { mutableStateOf(false) }
     var startingSession by remember { mutableStateOf(false) }
     var pendingSessionTourId by rememberSaveable { mutableStateOf<Int?>(null) }
+    var pendingSessionGuideId by rememberSaveable { mutableStateOf<String?>(null) }
     var refreshing by remember { mutableStateOf(false) }
     var importing by remember { mutableStateOf(false) }
     var importJob by remember { mutableStateOf<Job?>(null) }
@@ -224,6 +232,27 @@ fun TourApp(
             bluetooth.launch(Manifest.permission.BLUETOOTH_CONNECT)
         } else startSession(tour)
     }
+    fun startGuideSession(guide: CustomGuide) {
+        if (session.state.value.role != "none") return
+        guideSession.setCurrentGuide(guide)
+        session.hostGuide()
+        if (session.state.value.role == "host") navigate(2)
+    }
+    val guideBluetooth = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        val guideId = pendingSessionGuideId
+        pendingSessionGuideId = null
+        if (!granted) report("Allow Nearby devices permission to start a session.")
+        else if (guideId != null) {
+            scope.launch { playlistRepository.loadGuide(guideId)?.let { startGuideSession(it) } }
+        }
+    }
+    fun requestGuideSession(guide: CustomGuide) {
+        if (pendingSessionGuideId != null || session.state.value.role != "none") return
+        if (Build.VERSION.SDK_INT >= 31 && context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            pendingSessionGuideId = guide.id
+            guideBluetooth.launch(Manifest.permission.BLUETOOTH_CONNECT)
+        } else startGuideSession(guide)
+    }
 
     LaunchedEffect(Unit) { refresh() }
     LaunchedEffect(openPlaying) { if (openPlaying > 0) navigate(1) }
@@ -350,7 +379,11 @@ fun TourApp(
             } else if (wikipediaGuideId != null) {
                 WikipediaScreen(playlistRepository, wikipediaGuideId!!)
             } else if (guideId != null) {
-                CustomGuideScreen(playlistRepository, guideId!!, tts, onOpenWikipedia = { wikipediaGuideId = it }, initialChapter = guideChapter)
+                CustomGuideScreen(playlistRepository, guideId!!, tts, guideSession, session,
+                    onOpenWikipedia = { wikipediaGuideId = it },
+                    onStartGuideSession = { requestGuideSession(it) },
+                    onOpenTogether = { navigate(2) },
+                    initialChapter = guideChapter)
             } else if (playlistId != null) {
                 val playlist = playlists.find { it.id == playlistId }
                 if (playlist != null) PlaylistScreen(playlist, tours, installed, playlistRepository,
@@ -375,8 +408,9 @@ fun TourApp(
                 }
                 2 -> if (showingSessionDebug) {
                     SessionDebugScreen(session, onBack = { showingSessionDebug = false }, report = report)
-                } else TogetherScreen(session, repository, playback, current, startingSession,
-                    onStartSession = { current?.let(::requestSession) }, onOpenPlayer = { navigate(1) }, report = report)
+                } else TogetherScreen(session, repository, playback, guideSession, current, startingSession,
+                    onStartSession = { current?.let(::requestSession) }, onOpenPlayer = { navigate(1) },
+                    onOpenGuide = { guideId = it; guideChapter = null }, report = report)
                 else -> savedScreens.SaveableStateProvider("explore") {
                     ExploreScreen(tours, installed, downloads, refreshing, repository, player.tourId,
                         importing = importing, onImport = { audioPicker.launch(arrayOf("audio/*")) },
@@ -482,6 +516,23 @@ fun TourApp(
                         enabled = !preparingSessionDownload, onClick = session::dismissRequiredTour,
                     ) { Text("Cancel") }
                 }
+            },
+        )
+    }
+    group.requiredGuideId?.let {
+        AlertDialog(
+            onDismissRequest = { session.dismissRequiredGuide() },
+            title = { Text("Guide not on this phone") },
+            text = {
+                Text(
+                    (group.requiredGuideTitle?.takeIf { it.isNotBlank() }
+                        ?.let { title -> "“$title” isn't bundled on this phone, so you can't join this session. " }
+                        ?: "The host's guide isn't bundled on this phone, so you can't join this session. ") +
+                        "Guides come with the app itself — update both phones to the same app version, then join again.",
+                )
+            },
+            confirmButton = {
+                TextButton(shape = MaterialTheme.shapes.small, onClick = { session.dismissRequiredGuide() }) { Text("OK") }
             },
         )
     }

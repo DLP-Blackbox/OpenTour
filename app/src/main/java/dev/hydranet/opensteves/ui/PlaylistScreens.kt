@@ -27,6 +27,7 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Headphones
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Map
@@ -79,8 +80,11 @@ import dev.hydranet.opensteves.data.Playlist
 import dev.hydranet.opensteves.data.PlaylistRepository
 import dev.hydranet.opensteves.data.PlaylistStop
 import dev.hydranet.opensteves.data.Tour
+import dev.hydranet.opensteves.playback.GuideTtsPlayback
 import dev.hydranet.opensteves.playback.TtsPlayer
 import dev.hydranet.opensteves.playback.TtsState
+import dev.hydranet.opensteves.session.SessionManager
+import dev.hydranet.opensteves.session.SessionState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -242,7 +246,11 @@ fun CustomGuideScreen(
     repository: PlaylistRepository,
     guideId: String,
     tts: TtsPlayer,
+    guideSession: GuideTtsPlayback,
+    session: SessionManager,
     onOpenWikipedia: (String) -> Unit,
+    onStartGuideSession: (CustomGuide) -> Unit,
+    onOpenTogether: () -> Unit,
     initialChapter: Int? = null,
 ) {
     var guide by remember(guideId) { mutableStateOf<CustomGuide?>(null) }
@@ -250,11 +258,15 @@ fun CustomGuideScreen(
     val context = LocalContext.current
     val completion = remember { CompletionStore.get(context) }
     val completed by completion.completed.collectAsState()
+    val sessionState by session.state.collectAsState()
     LaunchedEffect(guideId) {
         guide = repository.loadGuide(guideId)
         loaded = true
     }
-    DisposableEffect(guideId) { onDispose { tts.stop() } }
+    // Leaving the screen stops local playback, but not a session's: the
+    // speech engine is app-level and keeps reading for the whole group,
+    // like the tour playback service does.
+    DisposableEffect(guideId) { onDispose { if (session.state.value.sessionGuideId != guideId) tts.stop() } }
     DisposableEffect(guideId) {
         tts.onItemFinished = { chapterIndex, subchapterIndex ->
             if (subchapterIndex >= 0) {
@@ -274,6 +286,7 @@ fun CustomGuideScreen(
         else -> {
             val listState = rememberLazyListState()
             val scope = rememberCoroutineScope()
+            LaunchedEffect(current.id) { guideSession.setCurrentGuide(current) }
             val expandedChapters = remember(current.id) { mutableStateListOf(0) }
             var contentsExpanded by remember { mutableStateOf(false) }
             LaunchedEffect(ttsState) {
@@ -285,11 +298,12 @@ fun CustomGuideScreen(
                 if (activeChapter != null && activeChapter !in expandedChapters) expandedChapters.add(activeChapter)
             }
             // LazyColumn indices of the chapter items, counted from the items emitted below:
-            // header, practical?, map?, wikipedia, controls, contents, chapters-heading, then chapters.
+            // header, practical?, map?, wikipedia, controls, session, contents, chapters-heading, then chapters.
             val chapterItemIndices = remember(current) {
                 var next = 1
                 if (current.practical.isNotEmpty()) next++
                 if (current.location != null || current.mapNote.isNotBlank()) next++
+                next++
                 next++
                 next++
                 next++
@@ -313,7 +327,8 @@ fun CustomGuideScreen(
                 if (current.practical.isNotEmpty()) item(key = "practical") { GuidePracticalBlock(current) }
                 if (current.location != null || current.mapNote.isNotBlank()) item(key = "map") { GuideMapBlock(current) }
                 item(key = "wikipedia") { WikipediaEntryButton(current.id) { onOpenWikipedia(current.id) } }
-                item(key = "controls") { GuidePlaybackControls(current, ttsState, tts) }
+                item(key = "controls") { GuidePlaybackControls(current, ttsState, guideSession) }
+                item(key = "session") { GuideSessionBlock(current, sessionState, onStartGuideSession, onOpenTogether) }
                 item(key = "contents") {
                     Box {
                         OutlinedButton(
@@ -354,7 +369,7 @@ fun CustomGuideScreen(
                 }
                 itemsIndexed(current.chapters, key = { index, _ -> "chapter-$index" }) { index, chapter ->
                     GuideChapterBlock(
-                        current, chapter, index, ttsState, tts,
+                        current, chapter, index, ttsState, guideSession,
                         expanded = index in expandedChapters,
                         onToggleExpanded = {
                             if (index in expandedChapters) expandedChapters.removeAll { it == index } else expandedChapters.add(index)
@@ -431,33 +446,33 @@ private fun GuideMapBlock(guide: CustomGuide) {
 }
 
 @Composable
-private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, tts: TtsPlayer) {
+private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, controls: GuideTtsPlayback) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             when (state) {
                 is TtsState.Speaking -> {
-                    Button(shape = MaterialTheme.shapes.small, onClick = { tts.pause() }, modifier = Modifier.height(48.dp)) {
+                    Button(shape = MaterialTheme.shapes.small, onClick = { controls.requestPause() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.Pause, null, Modifier.size(18.dp))
                         Text("Pause", Modifier.padding(start = 6.dp))
                     }
-                    OutlinedButton(shape = MaterialTheme.shapes.small, onClick = { tts.stop() }, modifier = Modifier.height(48.dp)) {
+                    OutlinedButton(shape = MaterialTheme.shapes.small, onClick = { controls.requestStop() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.Stop, null, Modifier.size(18.dp))
                         Text("Stop", Modifier.padding(start = 6.dp))
                     }
                 }
                 is TtsState.Paused -> {
-                    Button(shape = MaterialTheme.shapes.small, onClick = { tts.resume() }, modifier = Modifier.height(48.dp)) {
+                    Button(shape = MaterialTheme.shapes.small, onClick = { controls.requestResume() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.PlayArrow, null, Modifier.size(18.dp))
                         Text("Resume", Modifier.padding(start = 6.dp))
                     }
-                    OutlinedButton(shape = MaterialTheme.shapes.small, onClick = { tts.stop() }, modifier = Modifier.height(48.dp)) {
+                    OutlinedButton(shape = MaterialTheme.shapes.small, onClick = { controls.requestStop() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.Stop, null, Modifier.size(18.dp))
                         Text("Stop", Modifier.padding(start = 6.dp))
                     }
                 }
                 else -> Button(
                     shape = MaterialTheme.shapes.small,
-                    onClick = { tts.speakAll(guide) },
+                    onClick = { controls.speakAll(guide) },
                     enabled = guide.chapters.isNotEmpty(),
                     modifier = Modifier.fillMaxWidth().height(48.dp),
                 ) {
@@ -475,12 +490,59 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, tts: TtsP
 }
 
 @Composable
+private fun GuideSessionBlock(
+    guide: CustomGuide,
+    sessionState: SessionState,
+    onStartGuideSession: (CustomGuide) -> Unit,
+    onOpenTogether: () -> Unit,
+) {
+    val colors = MaterialTheme.colorScheme
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        HorizontalDivider(color = colors.outlineVariant)
+        Text("Listen together", style = MaterialTheme.typography.titleMedium)
+        when {
+            sessionState.role != "none" && sessionState.sessionGuideId == guide.id -> {
+                Text(
+                    if (sessionState.role == "host") "You're hosting a session on this guide. ${sessionState.status}"
+                    else "You're in a session on this guide. ${sessionState.status}",
+                    style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant,
+                )
+                OutlinedButton(
+                    onClick = onOpenTogether,
+                    shape = MaterialTheme.shapes.small, modifier = Modifier.fillMaxWidth().height(48.dp),
+                ) {
+                    Icon(Icons.Default.Group, null, Modifier.size(18.dp))
+                    Text("Open session", Modifier.padding(start = 6.dp))
+                }
+            }
+            sessionState.role != "none" -> Text(
+                "Leave the current session to listen together on this guide.",
+                style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant,
+            )
+            else -> {
+                Text(
+                    "Friends on paired phones hear the same guide, read aloud on each phone.",
+                    style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant,
+                )
+                OutlinedButton(
+                    onClick = { onStartGuideSession(guide) },
+                    shape = MaterialTheme.shapes.small, modifier = Modifier.fillMaxWidth().height(48.dp),
+                ) {
+                    Icon(Icons.Default.Group, null, Modifier.size(18.dp))
+                    Text("Start a session", Modifier.padding(start = 6.dp))
+                }
+            }
+        }
+    }
+}
+
+@Composable
 private fun GuideChapterBlock(
     guide: CustomGuide,
     chapter: GuideChapter,
     index: Int,
     state: TtsState,
-    tts: TtsPlayer,
+    controls: GuideTtsPlayback,
     expanded: Boolean,
     onToggleExpanded: () -> Unit,
     completed: Set<String>,
@@ -518,7 +580,7 @@ private fun GuideChapterBlock(
                 style = MaterialTheme.typography.titleMedium, maxLines = 2, overflow = TextOverflow.Ellipsis,
             )
             IconButton(
-                onClick = { if (speaking) tts.pause() else if (paused) tts.resume() else tts.speakChapter(guide, index) },
+                onClick = { if (speaking) controls.requestPause() else if (paused) controls.requestResume() else controls.speakChapter(guide, index) },
                 colors = TourButtonDefaults.iconColors(),
             ) {
                 Icon(if (speaking) Icons.Default.Pause else Icons.Default.PlayArrow, if (speaking) "Pause chapter" else "Play chapter")
@@ -537,7 +599,7 @@ private fun GuideChapterBlock(
             )
             if (chapter.caption.isNotBlank()) Text(chapter.caption, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             chapter.subchapters.forEachIndexed { subIndex, subchapter ->
-                GuideSubchapterBlock(guide, subchapter, index, subIndex, state, tts, completed, completion)
+                GuideSubchapterBlock(guide, subchapter, index, subIndex, state, controls, completed, completion)
             }
         }
     }
@@ -550,7 +612,7 @@ private fun GuideSubchapterBlock(
     chapterIndex: Int,
     subchapterIndex: Int,
     state: TtsState,
-    tts: TtsPlayer,
+    controls: GuideTtsPlayback,
     completed: Set<String>,
     completion: CompletionStore,
 ) {
@@ -574,7 +636,7 @@ private fun GuideSubchapterBlock(
                 style = MaterialTheme.typography.titleSmall, maxLines = 2, overflow = TextOverflow.Ellipsis,
             ) else Box(Modifier.weight(1f))
             IconButton(
-                onClick = { if (speaking) tts.pause() else if (paused) tts.resume() else tts.speakSubchapter(guide, chapterIndex, subchapterIndex) },
+                onClick = { if (speaking) controls.requestPause() else if (paused) controls.requestResume() else controls.speakSubchapter(guide, chapterIndex, subchapterIndex) },
                 colors = TourButtonDefaults.iconColors(),
             ) {
                 Icon(if (speaking) Icons.Default.Pause else Icons.Default.PlayArrow, if (speaking) "Pause" else "Play")

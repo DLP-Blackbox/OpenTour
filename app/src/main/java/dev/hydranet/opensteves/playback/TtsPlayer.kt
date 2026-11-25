@@ -122,6 +122,36 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
         whenReady { startAt(first, stopAfter = items.lastIndex) }
     }
 
+    /** Whether the speech engine finished starting and can speak. */
+    val isEngineReady: Boolean get() = ready && !failed
+
+    /** Plays from one item — a subchapter, or the chapter intro when
+     * [subchapterIndex] is -1 — continuously to the end of the guide. */
+    fun speakFrom(guide: CustomGuide, chapterIndex: Int, subchapterIndex: Int) {
+        val position = flatten(guide).indexOfFirst {
+            it.chapterIndex == chapterIndex && it.subchapterIndex == subchapterIndex
+        }
+        if (position < 0) return
+        setGuide(guide)
+        whenReady { startAt(position, stopAfter = items.lastIndex) }
+    }
+
+    /** Positions on one item without speaking it, as if paused just before it.
+     * Used to line a session guest up with the host's current item. */
+    fun cueSubchapter(guide: CustomGuide, chapterIndex: Int, subchapterIndex: Int) {
+        val position = flatten(guide).indexOfFirst {
+            it.chapterIndex == chapterIndex && it.subchapterIndex == subchapterIndex
+        }
+        if (position < 0) return
+        setGuide(guide)
+        pending = null
+        suppressFinish = true
+        tts.stop()
+        itemIndex = position
+        stopAfterItemIndex = position
+        if (!failed) _state.value = TtsState.Paused(chapterIndex, subchapterIndex)
+    }
+
     fun pause() {
         val current = _state.value
         if (current is TtsState.Speaking) {

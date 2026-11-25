@@ -53,6 +53,17 @@ class SessionManager private constructor(private val context: Context) {
     internal val schedulingLeadMs: Long
         get() = if (state.value.role == "guest") hostSchedulingLeadMs ?: 600L else debugSettings.value.schedulingLeadMs
     private var playback: SessionPlayback? = null
+    private var guidePlayback: GuideSessionPlayback? = null
+    private var guideMode = false
+    private var guideGreeting: GuidePlaybackSnapshot? = null
+    private var requiredGuideOffer: RequiredGuideOffer? = null
+    private val hostGuideSchedule = linkedMapOf<Long, ScheduledGuidePlayback>()
+    private val guestGuideSchedule = linkedMapOf<Long, ScheduledGuidePlayback>()
+    private val pendingGuideRequests = linkedMapOf<Long, PendingGuideRequest>()
+    private val mutablePendingGuidePlayback = MutableStateFlow<ScheduledGuidePlayback?>(null)
+    internal val pendingGuidePlayback: StateFlow<ScheduledGuidePlayback?> = mutablePendingGuidePlayback.asStateFlow()
+    private var guideApplyTail: Job? = null
+    private var lastGuideBroadcast: GuidePlaybackSnapshot? = null
     private var scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private var server: BluetoothServerSocket? = null
     private var transferServer: BluetoothServerSocket? = null
@@ -88,7 +99,9 @@ class SessionManager private constructor(private val context: Context) {
     private val playbackDebouncer = SessionPlaybackDebouncer()
 
     private data class PendingRequest(val playback: ScheduledPlayback, val timeout: Job)
+    private data class PendingGuideRequest(val playback: ScheduledGuidePlayback, val timeout: Job)
     private data class RequiredTourOffer(val audio: PlaybackSnapshot, val address: String, val available: Boolean, val title: String?)
+    private data class RequiredGuideOffer(val snapshot: GuidePlaybackSnapshot, val address: String)
 
     private class Peer(val socket: BluetoothSocket, val address: String, val name: String, val debugId: Int) {
         val outgoing = Channel<ByteArray>(16)
@@ -210,6 +223,37 @@ class SessionManager private constructor(private val context: Context) {
         this.playback = playback
     }
 
+    fun attachGuidePlayback(playback: GuideSessionPlayback?) {
+        if (playback == null && state.value.role != "none" && guideMode) leave()
+        this.guidePlayback = playback
+    }
+
+    internal fun guidePlaybackForUi(): GuidePlaybackSnapshot? {
+        if (state.value.role == "none" || !guideMode) return null
+        return pendingGuidePlayback.value?.snapshot ?: guidePlayback?.snapshot()
+    }
+
+    private fun refreshPendingGuidePlayback() {
+        mutablePendingGuidePlayback.value = pendingGuideRequests.values.lastOrNull()?.playback
+            ?: if (state.value.role == "host") hostGuideSchedule.values.lastOrNull() else guestGuideSchedule.values.lastOrNull()
+    }
+
+    private fun completeGuideRequest(requestId: Long) {
+        pendingGuideRequests.remove(requestId)?.timeout?.cancel()
+        refreshPendingGuidePlayback()
+    }
+
+    // The host's text-to-speech advanced on its own (an item finished and the
+    // next one started, or playback ran out): bring the guests along. Unlike a
+    // deliberate command there is no local apply to schedule — the host is
+    // already speaking — so guests apply as soon as the frame reaches them.
+    internal fun onGuideStateChanged() {
+        if (state.value.role != "host" || !guideMode) return
+        val snapshot = guidePlayback?.snapshot() ?: return
+        if (snapshot == lastGuideBroadcast) return
+        broadcastGuideState(snapshot, now())
+    }
+
     fun pairedDevices(includeAll: Boolean = false): List<Pair<String, String>> = try {
         if (!hasPermission()) emptyList() else adapter()?.bondedDevices.orEmpty()
             .filter { device ->
@@ -234,6 +278,20 @@ class SessionManager private constructor(private val context: Context) {
             return
         }
         start(SessionService.ACTION_HOST)
+    }
+
+    fun hostGuide() {
+        if (!canStart()) return
+        val snapshot = guidePlayback?.snapshot()
+        if (snapshot == null) {
+            fail("Open a guide from Playlists before hosting a session.")
+            return
+        }
+        if (guidePlayback?.isReady() != true) {
+            fail("The guide is still starting. Please try again in a moment.")
+            return
+        }
+        start(SessionService.ACTION_HOST_GUIDE, guideSnapshot = snapshot)
     }
 
     fun join(address: String) {
@@ -270,19 +328,24 @@ class SessionManager private constructor(private val context: Context) {
         }
     }
 
-    private fun start(action: String, address: String? = null, downloadFromHost: Boolean = false) {
+    private fun start(action: String, address: String? = null, downloadFromHost: Boolean = false,
+        guideSnapshot: GuidePlaybackSnapshot? = null) {
         if (!downloadFromHost) requiredTourOffer = null
+        if (guideSnapshot != null) requiredGuideOffer = null
         debugStartedAt = now()
         debugPeerId = 0
         sentFrames = 0
         receivedFrames = 0
         mutableDebugEvents.value = emptyList()
         mutableState.value = SessionState(
-            if (action == SessionService.ACTION_HOST) "host" else "guest", "Starting Bluetooth session…",
+            if (action == SessionService.ACTION_HOST || action == SessionService.ACTION_HOST_GUIDE) "host" else "guest",
+            "Starting Bluetooth session…",
             requiredTourId = requiredTourOffer?.audio?.tourId,
             requiredAudioTitle = requiredTourOffer?.title,
             hostDownloadAvailable = requiredTourOffer?.available == true,
             downloadingFromHost = downloadFromHost,
+            sessionGuideId = guideSnapshot?.guideId,
+            sessionGuideTitle = guideSnapshot?.guideTitle,
         )
         debug("SESSION", "Starting ${state.value.role}; protocol $PROTOCOL_VERSION; RFCOMM $SERVICE_UUID")
         debug("SETTINGS", debugSettings.value.toString())
@@ -330,6 +393,68 @@ class SessionManager private constructor(private val context: Context) {
                                             .put("lead", schedulingLeadMs).put("commandReceipts", true)
                                             .put("title", TourRepository.get(context).installed.value[greeting.tourId]?.tour?.title?.take(512))
                                             .put("hostDownload", transferServer != null))
+                                        refreshPeers()
+                                    } else if (generation == currentGeneration) {
+                                        debug("CONNECTION", "Rejected connection: unpaired or duplicate")
+                                    }
+                                }
+                            } finally {
+                                if (!accepted) runCatching { socket.close() }
+                            }
+                        }
+                    } catch (error: Exception) {
+                        if (error is CancellationException) throw error
+                        withContext(Dispatchers.Main.immediate) {
+                            if (generation == currentGeneration) {
+                                debug("ERROR", "Bluetooth accept failed: ${error.javaClass.simpleName}")
+                                fail("Bluetooth stopped. Start a new session to reconnect.")
+                            }
+                        }
+                    }
+                }
+                startSynchronization()
+            } catch (error: Exception) {
+                if (error is CancellationException) throw error
+                debug("ERROR", "Opening Bluetooth listener failed: ${error.javaClass.simpleName}")
+                fail("Could not host a session. Check Bluetooth and Nearby devices permission.")
+            }
+        }
+    }
+
+    internal fun beginHostGuide() {
+        resetConnections()
+        guideMode = true
+        val snapshot = guidePlayback?.snapshot()
+        if (snapshot == null || guidePlayback?.isReady() != true) {
+            fail("Open a guide from Playlists, then try hosting again.")
+            return
+        }
+        mutableState.value = SessionState("host", "Waiting for friends to join",
+            sessionGuideId = snapshot.guideId, sessionGuideTitle = snapshot.guideTitle)
+        val currentGeneration = generation
+        scope.launch {
+            try {
+                val listener = adapter()?.listenUsingRfcommWithServiceRecord("OpenSteves", SERVICE_UUID)
+                    ?: throw IOException("Bluetooth unavailable")
+                server = listener
+                debug("SESSION", "Listening for paired guests; guide ${snapshot.guideId}")
+                scope.launch(Dispatchers.IO) {
+                    try {
+                        while (isActive) {
+                            val socket = listener.accept()
+                            var accepted = false
+                            try {
+                                withContext(Dispatchers.Main.immediate) {
+                                    if (generation == currentGeneration &&
+                                        socket.remoteDevice.bondState == BluetoothDevice.BOND_BONDED &&
+                                        !peers.containsKey(socket.remoteDevice.address)
+                                    ) {
+                                        val peer = register(socket)
+                                        accepted = true
+                                        val greeting = guidePlayback?.snapshot() ?: snapshot
+                                        send(peer, frame("hello").put("guide", encodeGuide(greeting))
+                                            .put("lead", schedulingLeadMs).put("commandReceipts", true)
+                                            .put("title", greeting.guideTitle.take(512)))
                                         refreshPeers()
                                     } else if (generation == currentGeneration) {
                                         debug("CONNECTION", "Rejected connection: unpaired or duplicate")
@@ -564,8 +689,10 @@ class SessionManager private constructor(private val context: Context) {
     fun leave() {
         if (state.value.role != "none") debug("SESSION", "Leaving ${state.value.role} session; pausing playback")
         if (state.value.role != "none") playback?.pause()
+        if (state.value.role != "none" && guideMode) guidePlayback?.pause()
         resetConnections()
         requiredTourOffer = null
+        requiredGuideOffer = null
         mutableState.value = SessionState(status = "Session ended")
         context.stopService(Intent(context, SessionService::class.java))
     }
@@ -618,10 +745,25 @@ class SessionManager private constructor(private val context: Context) {
             hostDownloadProgress = null, hostDownloadError = null)
     }
 
+    private fun requireGuide(peer: Peer, guide: GuidePlaybackSnapshot) {
+        debug("ERROR", "Guide ${guide.guideId} is not bundled on this phone")
+        val offer = RequiredGuideOffer(guide, peer.address)
+        leave()
+        requiredGuideOffer = offer
+        mutableState.value = SessionState(requiredGuideId = guide.guideId,
+            requiredGuideTitle = guide.guideTitle.ifBlank { peer.audioTitle.orEmpty() })
+    }
+
+    fun dismissRequiredGuide() {
+        requiredGuideOffer = null
+        mutableState.value = state.value.copy(requiredGuideId = null, requiredGuideTitle = null)
+    }
+
     internal fun serviceDestroyed() {
         if (state.value.role != "none") {
             debug("SESSION", "Session service stopped; pausing playback")
             playback?.pause()
+            if (guideMode) guidePlayback?.pause()
             resetConnections()
             mutableState.value = SessionState(status = "Session ended")
         }
@@ -663,6 +805,82 @@ class SessionManager private constructor(private val context: Context) {
             } else debug("COMMAND", "Ignored command while host connection is not ready")
         }
         return true
+    }
+
+    fun requestGuide(command: GuidePlaybackCommand): Boolean {
+        if (state.value.role == "none" || !guideMode) return false
+        if (!GuideSessionTiming.valid(command)) {
+            debug("COMMAND", "Rejected invalid local guide command: ${command.action}")
+            return true
+        }
+        debug("COMMAND", "Local guide ${command.action}: chapter=${command.chapterIndex}, subchapter=${command.subchapterIndex}")
+        if (state.value.role == "host") {
+            scheduleGuideCommand(command)
+        } else {
+            val peer = peers.values.firstOrNull()
+            if (peer?.ready == true) {
+                if (pendingGuideRequests.size >= 64) {
+                    debug("COMMAND", "Ignored guide command: waiting for host responses")
+                    return true
+                }
+                val now = now()
+                val previous = pendingGuidePlayback.value ?: guidePlayback?.snapshot()?.let { ScheduledGuidePlayback(it, now) }
+                    ?: return true
+                val at = maxOf(now + schedulingLeadMs, previous.atMs)
+                val target = GuideSessionTiming.scheduled(previous.snapshot, command)
+                val requestId = ++nextRequestId
+                val timeout = scope.launch {
+                    delay(debugSettings.value.peerTimeoutMs)
+                    if (pendingGuideRequests.remove(requestId) != null) {
+                        debug("COMMAND", "Host response timed out for guide request=$requestId")
+                        refreshPendingGuidePlayback()
+                    }
+                }
+                pendingGuideRequests[requestId] = PendingGuideRequest(ScheduledGuidePlayback(target, at), timeout)
+                refreshPendingGuidePlayback()
+                send(peer, frame("guideCommand").put("action", command.action).put("chapter", command.chapterIndex)
+                    .put("subchapter", command.subchapterIndex).put("request", requestId))
+            } else debug("COMMAND", "Ignored guide command while host connection is not ready")
+        }
+        return true
+    }
+
+    private fun scheduleGuideCommand(command: GuidePlaybackCommand, source: String? = null) {
+        if (hostGuideSchedule.size >= 64) {
+            debug("COMMAND", "Ignored guide command: schedule is full")
+            return
+        }
+        val now = now()
+        val queued = hostGuideSchedule.values.lastOrNull()
+        val previous = queued
+            ?: guidePlayback?.snapshot()?.let { ScheduledGuidePlayback(it, now) }
+            ?: return
+        val at = maxOf(now + schedulingLeadMs, queued?.atMs?.plus(1) ?: now)
+        val target = GuideSessionTiming.scheduled(previous.snapshot, command)
+        val seq = broadcastGuideState(target, at)
+        hostGuideSchedule[seq] = ScheduledGuidePlayback(target, at)
+        refreshPendingGuidePlayback()
+        debug("SCHEDULE", "guide ${command.action}: sequence=$seq, lead=${at - now()} ms")
+        scope.launch {
+            delay((at - now()).coerceAtLeast(0))
+            guidePlayback?.apply(target)
+            debug("APPLY", "Host guide sequence=$seq, lateness=${(now() - at).coerceAtLeast(0)} ms")
+            hostGuideSchedule.remove(seq)
+            refreshPendingGuidePlayback()
+        }
+    }
+
+    private fun broadcastGuideState(snapshot: GuidePlaybackSnapshot, at: Long): Long {
+        val seq = ++sequence
+        lastGuideBroadcast = snapshot
+        peers.values.filter { it.ready }.forEach { sendGuideState(it, snapshot, at, seq) }
+        return seq
+    }
+
+    private fun sendGuideState(peer: Peer, snapshot: GuidePlaybackSnapshot, at: Long, seq: Long, requestId: Long? = null) {
+        send(peer, frame("guideState").put("guide", encodeGuide(snapshot)).put("at", at).put("sequence", seq)
+            .put("lead", schedulingLeadMs)
+            .apply { requestId?.let { put("request", it) } })
     }
 
     private fun scheduleCommand(command: PlaybackCommand, source: String? = null) {
@@ -781,12 +999,31 @@ class SessionManager private constructor(private val context: Context) {
                     peer.ready = true
                     peer.acceptsPing = message.optBoolean("acceptsPing")
                     debug("CONNECTION", "Peer ${peer.debugId} ready")
-                    val queued = hostSchedule.values.lastOrNull()
-                    val at = maxOf(now() + schedulingLeadMs, queued?.atMs ?: 0)
-                    val target = queued?.project(at)
-                        ?: playback?.snapshot()?.let { it.copy(positionMs = SessionTiming.position(it, now(), at)) }
-                    if (target != null) sendState(peer, target, at, ++sequence, force = true)
+                    if (guideMode) {
+                        val queued = hostGuideSchedule.values.lastOrNull()
+                        val at = maxOf(now() + schedulingLeadMs, queued?.atMs ?: 0)
+                        val target = queued?.snapshot ?: guidePlayback?.snapshot()
+                        if (target != null) sendGuideState(peer, target, at, ++sequence)
+                    } else {
+                        val queued = hostSchedule.values.lastOrNull()
+                        val at = maxOf(now() + schedulingLeadMs, queued?.atMs ?: 0)
+                        val target = queued?.project(at)
+                            ?: playback?.snapshot()?.let { it.copy(positionMs = SessionTiming.position(it, now(), at)) }
+                        if (target != null) sendState(peer, target, at, ++sequence, force = true)
+                    }
                     refreshPeers()
+                }
+                "guideCommand" -> if (peer.ready && guideMode) {
+                    val command = GuidePlaybackCommand(message.getString("action"), message.getInt("chapter"),
+                        message.optInt("subchapter", -1))
+                    require(GuideSessionTiming.valid(command))
+                    scheduleGuideCommand(command, source = peer.address)
+                    val requestId = message.optLong("request")
+                    if (requestId > 0) {
+                        val reply = hostGuideSchedule.values.lastOrNull()
+                            ?: guidePlayback?.snapshot()?.let { ScheduledGuidePlayback(it, now()) }
+                        if (reply != null) sendGuideState(peer, reply.snapshot, reply.atMs, ++sequence, requestId = requestId)
+                    }
                 }
                 "command" -> if (peer.ready) {
                     val command = PlaybackCommand(message.getString("action"), message.optLong("position"),
@@ -806,7 +1043,9 @@ class SessionManager private constructor(private val context: Context) {
         } else {
             when (type) {
                 "removed" -> fail("The host removed you from the session. Your playback is paused.")
-                "hello" -> {
+                "hello" -> if (message.has("guide")) {
+                    handleGuideHello(peer, message)
+                } else {
                     require(hostGreeting == null)
                     peer.commandReceipts = message.optBoolean("commandReceipts")
                     peer.hostDownloadAvailable = message.optBoolean("hostDownload")
@@ -835,6 +1074,7 @@ class SessionManager private constructor(private val context: Context) {
                         downloadingFromHost = false, hostDownloadProgress = null, hostDownloadError = null)
                     prepareGuest(peer, audio)
                 }
+                "guideState" -> if (peer.ready && guideMode) receiveGuideState(message)
                 "state" -> if (peer.ready) receiveState(message)
                 else -> throw IOException("Unexpected session frame")
             }
@@ -867,6 +1107,87 @@ class SessionManager private constructor(private val context: Context) {
                 delay(100)
             }
             fail("Could not sync this audio. Start it again, then rejoin the session.")
+        }
+    }
+
+    private fun handleGuideHello(peer: Peer, message: JSONObject) {
+        require(guideGreeting == null)
+        peer.commandReceipts = message.optBoolean("commandReceipts")
+        peer.audioTitle = message.optString("title").take(512).trim().takeIf(String::isNotEmpty)
+        readHostSchedulingLead(message)
+        val guide = decodeGuide(message.getJSONObject("guide"))
+        guideMode = true
+        guideGreeting = guide
+        val playback = guidePlayback
+        if (playback == null || !playback.hasGuide(guide.guideId)) {
+            requireGuide(peer, guide)
+            return
+        }
+        requiredGuideOffer = null
+        mutableState.value = state.value.copy(
+            sessionGuideId = guide.guideId,
+            sessionGuideTitle = guide.guideTitle.ifBlank { peer.audioTitle.orEmpty() },
+            requiredGuideId = null, requiredGuideTitle = null,
+        )
+        prepareGuideGuest(peer, guide)
+    }
+
+    private fun prepareGuideGuest(peer: Peer, guide: GuidePlaybackSnapshot) {
+        guidePlayback?.apply(guide.copy(playing = false))
+        mutableState.value = state.value.copy(status = "Synchronizing with host…")
+        scope.launch {
+            repeat(4) {
+                ping(peer)
+                delay(150)
+            }
+            val deadline = now() + 10_000
+            while (now() < deadline) {
+                if (selectedClockRttMs != Long.MAX_VALUE && guidePlayback?.isReady() == true) {
+                    peer.ready = true
+                    debug("CONNECTION", "Host connection ready; guide verified and clock synchronized")
+                    send(peer, frame("ready").put("acceptsPing", true))
+                    refreshPeers()
+                    return@launch
+                }
+                delay(100)
+            }
+            fail("Could not sync this guide. Start it again, then rejoin the session.")
+        }
+    }
+
+    private fun receiveGuideState(message: JSONObject) {
+        val seq = message.getLong("sequence")
+        if (seq <= receivedSequence) {
+            debug("SYNC", "Ignored stale guide sequence=$seq; last=$receivedSequence")
+            return
+        }
+        readHostSchedulingLead(message)
+        val target = decodeGuide(message.getJSONObject("guide"))
+        val greeting = guideGreeting
+        if (greeting == null || target.guideId != greeting.guideId) {
+            peers.values.firstOrNull()?.let { requireGuide(it, target) }
+            return
+        }
+        val hostAt = message.getLong("at")
+        require(hostAt in 0..Long.MAX_VALUE / 4)
+        val at = hostAt - clockOffset
+        require(abs(at - now()) < 60_000)
+        receivedSequence = seq
+        val requestId = message.optLong("request")
+        if (requestId > 0) completeGuideRequest(requestId)
+        require(guestGuideSchedule.size < 64)
+        guestGuideSchedule[seq] = ScheduledGuidePlayback(target, at)
+        refreshPendingGuidePlayback()
+        val previous = guideApplyTail
+        guideApplyTail = scope.launch {
+            // Guide states carry no drift correction: apply in order, at the
+            // host's scheduled time, and let the local speech engine speak.
+            previous?.join()
+            delay((at - now()).coerceAtLeast(0))
+            guidePlayback?.apply(target)
+            debug("APPLY", "Guest guide sequence=$seq, lateness=${(now() - at).coerceAtLeast(0)} ms")
+            guestGuideSchedule.remove(seq)
+            refreshPendingGuidePlayback()
         }
     }
 
@@ -976,7 +1297,9 @@ class SessionManager private constructor(private val context: Context) {
                 }
             }
         }
-        if (state.value.role != "host") return
+        // Guide sessions have no continuous position to rebroadcast: state
+        // moves only on commands and on the host's own item changes.
+        if (state.value.role != "host" || guideMode) return
         scope.launch {
             debugSettings.map { it.playbackSyncIntervalMs }.distinctUntilChanged().collectLatest { interval ->
                 while (isActive) {
@@ -1047,6 +1370,14 @@ class SessionManager private constructor(private val context: Context) {
         hostSchedule.clear()
         guestSchedule.clear()
         pendingRequests.clear()
+        guideApplyTail = null
+        hostGuideSchedule.clear()
+        guestGuideSchedule.clear()
+        pendingGuideRequests.clear()
+        mutablePendingGuidePlayback.value = null
+        guideGreeting = null
+        guideMode = false
+        lastGuideBroadcast = null
         nextRequestId = 0
         mutablePendingPlayback.value = null
         receivedSequence = -1
@@ -1078,6 +1409,18 @@ class SessionManager private constructor(private val context: Context) {
         val snapshot = PlaybackSnapshot(json.getInt("id"), json.getString("hash"), json.getLong("position"), json.getBoolean("playing"), json.getDouble("speed").toFloat())
         require(snapshot.tourId != 0 && snapshot.hash.matches(Regex("[a-fA-F0-9]{64}")))
         require(snapshot.positionMs in 0..SessionTiming.MAX_POSITION_MS && snapshot.speed.isFinite() && snapshot.speed in 0.5f..2f)
+        return snapshot
+    }
+
+    private fun encodeGuide(snapshot: GuidePlaybackSnapshot): JSONObject = JSONObject()
+        .put("id", snapshot.guideId).put("title", snapshot.guideTitle)
+        .put("chapter", snapshot.chapterIndex).put("subchapter", snapshot.subchapterIndex)
+        .put("playing", snapshot.playing)
+
+    private fun decodeGuide(json: JSONObject): GuidePlaybackSnapshot {
+        val snapshot = GuidePlaybackSnapshot(json.getString("id"), json.optString("title").take(512),
+            json.getInt("chapter"), json.getInt("subchapter"), json.getBoolean("playing"))
+        require(GuideSessionTiming.valid(snapshot))
         return snapshot
     }
 

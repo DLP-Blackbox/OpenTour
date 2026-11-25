@@ -11,6 +11,10 @@ data class SessionState(
     val downloadingFromHost: Boolean = false,
     val hostDownloadProgress: Int? = null,
     val hostDownloadError: String? = null,
+    val sessionGuideId: String? = null,
+    val sessionGuideTitle: String? = null,
+    val requiredGuideId: String? = null,
+    val requiredGuideTitle: String? = null,
 )
 
 data class SessionPeer(val address: String, val name: String)
