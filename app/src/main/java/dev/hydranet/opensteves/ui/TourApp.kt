@@ -332,7 +332,7 @@ fun TourApp(
             if (selected != null) {
                 TourInfoScreen(selected, repository, installed[selected.id], downloads[selected.id], player.tourId, group.role != "none",
                     onDownload = { download(selected) }, onCancel = { repository.cancelDownload(selected.id) },
-                    onPlay = { play(selected) }, onOpenPlayer = { navigate(1) })
+                    onPlay = { play(selected) }, onPlayChapter = { position -> play(selected, position) }, onOpenPlayer = { navigate(1) })
             } else if (guideId != null) {
                 CustomGuideScreen(playlistRepository, guideId!!, tts)
             } else if (playlistId != null) {

@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -27,8 +29,10 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Headphones
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.AccountBalance
@@ -37,6 +41,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.TravelExplore
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
@@ -45,30 +50,38 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import dev.hydranet.opensteves.data.Chapter
+import dev.hydranet.opensteves.data.CompletionStore
 import dev.hydranet.opensteves.data.DownloadStatus
 import dev.hydranet.opensteves.data.InstalledTour
+import dev.hydranet.opensteves.data.TimedText
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
@@ -318,6 +331,7 @@ internal fun TourInfoScreen(
     onDownload: () -> Unit,
     onCancel: () -> Unit,
     onPlay: () -> Unit,
+    onPlayChapter: (Long) -> Unit,
     onOpenPlayer: () -> Unit,
 ) {
     val downloading = download != null && download.error == null
@@ -333,7 +347,21 @@ internal fun TourInfoScreen(
             }
         }
     }
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+    val context = LocalContext.current
+    val completion = remember { CompletionStore.get(context) }
+    val completed by completion.completed.collectAsState()
+    val chapters by produceState(emptyList<Chapter>(), tour.id, installed?.directoryName) {
+        value = if (installed == null || tour.isCustom) emptyList() else withContext(Dispatchers.IO) {
+            runCatching { repository.chapterFile(tour.id)?.readText()?.let(TimedText::parseChapters).orEmpty() }.getOrDefault(emptyList())
+        }
+    }
+    val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+    var chaptersExpanded by rememberSaveable { mutableStateOf(true) }
+    var contentsOpen by remember { mutableStateOf(false) }
+    val chapterStartIndex = 3 + (if (description.isNotEmpty()) 1 else 0) +
+        (if (installed != null && !tour.isCustom) 1 else 0) + 1
+    LazyColumn(Modifier.fillMaxSize(), state = listState, contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
         item(key = "artwork") { LibraryArtwork(tour, installed, repository, Modifier.size(if (installed != null) 132.dp else 72.dp)) }
         item(key = "title") {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -387,6 +415,78 @@ internal fun TourInfoScreen(
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         Icon(icon, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+            }
+        }
+        if (chapters.isNotEmpty()) {
+            item(key = "chapters-heading") {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("Chapters", style = MaterialTheme.typography.titleMedium)
+                            val done = chapters.count { CompletionStore.tourChapterKey(tour.id, it.startMs) in completed }
+                            Text(
+                                "$done of ${chapters.size} completed",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        Box {
+                            OutlinedButton(
+                                onClick = { contentsOpen = true },
+                                shape = MaterialTheme.shapes.small,
+                                modifier = Modifier.height(48.dp),
+                            ) {
+                                Icon(Icons.Default.List, null, Modifier.size(18.dp))
+                                Text("Contents", Modifier.padding(start = 6.dp))
+                            }
+                            DropdownMenu(expanded = contentsOpen, onDismissRequest = { contentsOpen = false }) {
+                                chapters.forEachIndexed { index, chapter ->
+                                    DropdownMenuItem(
+                                        text = { Text("${index + 1}. ${chapter.title}") },
+                                        onClick = {
+                                            contentsOpen = false
+                                            chaptersExpanded = true
+                                            val target = chapterStartIndex + index
+                                            scope.launch { runCatching { listState.animateScrollToItem(target) } }
+                                        },
+                                    )
+                                }
+                            }
+                        }
+                        IconButton(onClick = { chaptersExpanded = !chaptersExpanded }, colors = TourButtonDefaults.iconColors()) {
+                            Icon(
+                                if (chaptersExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                                if (chaptersExpanded) "Collapse chapters" else "Expand chapters",
+                            )
+                        }
+                    }
+                }
+            }
+            if (chaptersExpanded) {
+                itemsIndexed(chapters, key = { _, chapter -> "chapter-${chapter.startMs}" }) { index, chapter ->
+                    val key = CompletionStore.tourChapterKey(tour.id, chapter.startMs)
+                    Row(
+                        Modifier.fillMaxWidth().clickable { onPlayChapter(chapter.startMs) }
+                            .padding(horizontal = 4.dp, vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Checkbox(
+                            checked = key in completed,
+                            onCheckedChange = { completion.setCompleted(key, it) },
+                        )
+                        Text(
+                            "${index + 1}. ${chapter.title}",
+                            Modifier.weight(1f).padding(horizontal = 8.dp),
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Text(
+                            time(chapter.startMs),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
                     }
                 }
             }
