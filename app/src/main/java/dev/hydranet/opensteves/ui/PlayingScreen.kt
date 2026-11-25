@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.hydranet.opensteves.data.*
@@ -49,6 +50,9 @@ internal fun PlayingScreen(
         return
     }
     val player by playback.state.collectAsState()
+    val context = LocalContext.current
+    val completion = remember { CompletionStore.get(context) }
+    val completed by completion.completed.collectAsState()
     var tab by rememberSaveable(tour.id) { mutableIntStateOf(0) }
     val chapterResult by produceState<Result<List<Chapter>>?>(null, tour.id, assetVersion) {
         value = null
@@ -85,6 +89,21 @@ internal fun PlayingScreen(
     val state = if (active) player else PlaybackUiState()
     val chapter = chapters.lastOrNull { state.positionMs >= it.startMs && state.positionMs < it.endMs }
     val caption = captions.lastOrNull { active && state.positionMs >= it.startMs && state.positionMs < it.endMs }
+    var previousChapter by remember(tour.id) { mutableStateOf<Chapter?>(null) }
+    LaunchedEffect(chapter, active) {
+        if (active) {
+            val previous = previousChapter
+            if (previous != null && previous != chapter) {
+                completion.setCompleted(CompletionStore.tourChapterKey(tour.id, previous.startMs), true)
+            }
+            if (chapter != null) previousChapter = chapter
+        }
+    }
+    LaunchedEffect(state.positionMs, state.durationMs, active) {
+        if (active && state.durationMs > 0 && state.positionMs >= state.durationMs - 500 && chapters.isNotEmpty()) {
+            completion.setCompleted(CompletionStore.tourChapterKey(tour.id, chapters.last().startMs), true)
+        }
+    }
     BackHandler(fullScreen || tab != 0) {
         if (fullScreen) onFullScreenChange(false) else tab = 0
     }
@@ -114,6 +133,15 @@ internal fun PlayingScreen(
                     if (chapterResult?.isSuccess == true && chapters.isEmpty()) item {
                         Text("No chapters included with this audio.", Modifier.padding(20.dp), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
+                    if (chapters.isNotEmpty()) item(key = "chapters-progress") {
+                        val done = chapters.count { CompletionStore.tourChapterKey(tour.id, it.startMs) in completed }
+                        Text(
+                            "$done of ${chapters.size} completed",
+                            Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                     itemsIndexed(chapters, key = { _, item -> "${item.startMs}-${item.title}" }) { index, item ->
                         val selected = item == chapter && active
                         Surface(
@@ -122,6 +150,11 @@ internal fun PlayingScreen(
                             color = if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                         ) {
                             Row(Modifier.fillMaxWidth().heightIn(min = 58.dp).padding(horizontal = 20.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                                val chapterKey = CompletionStore.tourChapterKey(tour.id, item.startMs)
+                                Checkbox(
+                                    checked = chapterKey in completed,
+                                    onCheckedChange = { completion.setCompleted(chapterKey, it) },
+                                )
                                 if (selected) Icon(Icons.Default.Equalizer, null, Modifier.size(20.dp), tint = MaterialTheme.colorScheme.primary)
                                 else Text((index + 1).toString().padStart(2, '0'), Modifier.width(20.dp), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 Text(item.title, Modifier.weight(1f).padding(horizontal = 14.dp), style = MaterialTheme.typography.bodyMedium,
