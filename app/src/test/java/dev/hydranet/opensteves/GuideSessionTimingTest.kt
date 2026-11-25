@@ -36,7 +36,8 @@ class GuideSessionTimingTest {
         assertTrue(GuideSessionTiming.valid(GuidePlaybackCommand("stop")))
         assertTrue(GuideSessionTiming.valid(GuidePlaybackCommand("jump", 2, 0)))
         assertTrue(GuideSessionTiming.valid(GuidePlaybackCommand("jump", 2, -1)))
-        assertFalse(GuideSessionTiming.valid(GuidePlaybackCommand("seek", 2, 0)))
+        assertTrue(GuideSessionTiming.valid(GuidePlaybackCommand("seek", 2, 0, positionMs = 5_000)))
+        assertFalse(GuideSessionTiming.valid(GuidePlaybackCommand("speed", 2, 0)))
         assertFalse(GuideSessionTiming.valid(GuidePlaybackCommand("jump", -1, 0)))
         assertFalse(GuideSessionTiming.valid(GuidePlaybackCommand("jump", 0, -2)))
     }

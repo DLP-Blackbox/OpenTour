@@ -97,6 +97,8 @@ class SessionManager private constructor(private val context: Context) {
     private var automaticSeeks = 0L
     private val driftCorrection = SessionDriftCorrection()
     private val playbackDebouncer = SessionPlaybackDebouncer()
+    private val guideDebouncer = GuidePlaybackDebouncer()
+    private var guideCorrection: Job? = null
 
     private data class PendingRequest(val playback: ScheduledPlayback, val timeout: Job)
     private data class PendingGuideRequest(val playback: ScheduledGuidePlayback, val timeout: Job)
@@ -230,7 +232,7 @@ class SessionManager private constructor(private val context: Context) {
 
     internal fun guidePlaybackForUi(): GuidePlaybackSnapshot? {
         if (state.value.role == "none" || !guideMode) return null
-        return pendingGuidePlayback.value?.snapshot ?: guidePlayback?.snapshot()
+        return pendingGuidePlayback.value?.project(now()) ?: guidePlayback?.snapshot()
     }
 
     private fun refreshPendingGuidePlayback() {
@@ -243,15 +245,21 @@ class SessionManager private constructor(private val context: Context) {
         refreshPendingGuidePlayback()
     }
 
-    // The host's text-to-speech advanced on its own (an item finished and the
-    // next one started, or playback ran out): bring the guests along. Unlike a
+    // The host's playback advanced on its own (an item finished and the next
+    // one started, or playback ran out): bring the guests along. Unlike a
     // deliberate command there is no local apply to schedule — the host is
-    // already speaking — so guests apply as soon as the frame reaches them.
+    // already playing — so guests apply as soon as the frame reaches them. A
+    // new item always starts at position 0, whatever the player reported for
+    // the item that just ended.
     internal fun onGuideStateChanged() {
         if (state.value.role != "host" || !guideMode) return
         val snapshot = guidePlayback?.snapshot() ?: return
-        if (snapshot == lastGuideBroadcast) return
-        broadcastGuideState(snapshot, now())
+        val last = lastGuideBroadcast
+        val newItem = last == null || last.chapterIndex != snapshot.chapterIndex ||
+            last.subchapterIndex != snapshot.subchapterIndex
+        val outgoing = if (newItem) snapshot.copy(positionMs = 0) else snapshot
+        if (outgoing == last) return
+        broadcastGuideState(outgoing, now())
     }
 
     fun pairedDevices(includeAll: Boolean = false): List<Pair<String, String>> = try {
@@ -813,7 +821,7 @@ class SessionManager private constructor(private val context: Context) {
             debug("COMMAND", "Rejected invalid local guide command: ${command.action}")
             return true
         }
-        debug("COMMAND", "Local guide ${command.action}: chapter=${command.chapterIndex}, subchapter=${command.subchapterIndex}")
+        debug("COMMAND", "Local guide ${command.action}: chapter=${command.chapterIndex}, subchapter=${command.subchapterIndex}, position=${command.positionMs} ms")
         if (state.value.role == "host") {
             scheduleGuideCommand(command)
         } else {
@@ -827,7 +835,7 @@ class SessionManager private constructor(private val context: Context) {
                 val previous = pendingGuidePlayback.value ?: guidePlayback?.snapshot()?.let { ScheduledGuidePlayback(it, now) }
                     ?: return true
                 val at = maxOf(now + schedulingLeadMs, previous.atMs)
-                val target = GuideSessionTiming.scheduled(previous.snapshot, command)
+                val target = GuideSessionTiming.scheduled(previous.snapshot, previous.atMs, command, at)
                 val requestId = ++nextRequestId
                 val timeout = scope.launch {
                     delay(debugSettings.value.peerTimeoutMs)
@@ -839,7 +847,7 @@ class SessionManager private constructor(private val context: Context) {
                 pendingGuideRequests[requestId] = PendingGuideRequest(ScheduledGuidePlayback(target, at), timeout)
                 refreshPendingGuidePlayback()
                 send(peer, frame("guideCommand").put("action", command.action).put("chapter", command.chapterIndex)
-                    .put("subchapter", command.subchapterIndex).put("request", requestId))
+                    .put("subchapter", command.subchapterIndex).put("position", command.positionMs).put("request", requestId))
             } else debug("COMMAND", "Ignored guide command while host connection is not ready")
         }
         return true
@@ -855,31 +863,36 @@ class SessionManager private constructor(private val context: Context) {
         val previous = queued
             ?: guidePlayback?.snapshot()?.let { ScheduledGuidePlayback(it, now) }
             ?: return
+        if (!guideDebouncer.shouldAccept(command, previous.snapshot.playing, source, now, debugSettings.value.playPauseDebounceMs)) {
+            debug("COMMAND", "Ignored duplicate or debounced guide ${command.action}")
+            return
+        }
         val at = maxOf(now + schedulingLeadMs, queued?.atMs?.plus(1) ?: now)
-        val target = GuideSessionTiming.scheduled(previous.snapshot, command)
+        val target = GuideSessionTiming.scheduled(previous.snapshot, previous.atMs, command, at)
         val seq = broadcastGuideState(target, at)
         hostGuideSchedule[seq] = ScheduledGuidePlayback(target, at)
         refreshPendingGuidePlayback()
+        guideDebouncer.scheduled(command, source, now)
         debug("SCHEDULE", "guide ${command.action}: sequence=$seq, lead=${at - now()} ms")
         scope.launch {
             delay((at - now()).coerceAtLeast(0))
-            guidePlayback?.apply(target)
+            guidePlayback?.apply(target.copy(positionMs = GuideSessionTiming.position(target, at, now())))
             debug("APPLY", "Host guide sequence=$seq, lateness=${(now() - at).coerceAtLeast(0)} ms")
             hostGuideSchedule.remove(seq)
             refreshPendingGuidePlayback()
         }
     }
 
-    private fun broadcastGuideState(snapshot: GuidePlaybackSnapshot, at: Long): Long {
+    private fun broadcastGuideState(snapshot: GuidePlaybackSnapshot, at: Long, force: Boolean = true): Long {
         val seq = ++sequence
         lastGuideBroadcast = snapshot
-        peers.values.filter { it.ready }.forEach { sendGuideState(it, snapshot, at, seq) }
+        peers.values.filter { it.ready }.forEach { sendGuideState(it, snapshot, at, seq, force = force) }
         return seq
     }
 
-    private fun sendGuideState(peer: Peer, snapshot: GuidePlaybackSnapshot, at: Long, seq: Long, requestId: Long? = null) {
+    private fun sendGuideState(peer: Peer, snapshot: GuidePlaybackSnapshot, at: Long, seq: Long, requestId: Long? = null, force: Boolean = true) {
         send(peer, frame("guideState").put("guide", encodeGuide(snapshot)).put("at", at).put("sequence", seq)
-            .put("lead", schedulingLeadMs)
+            .put("lead", schedulingLeadMs).put("force", force)
             .apply { requestId?.let { put("request", it) } })
     }
 
@@ -1015,7 +1028,7 @@ class SessionManager private constructor(private val context: Context) {
                 }
                 "guideCommand" -> if (peer.ready && guideMode) {
                     val command = GuidePlaybackCommand(message.getString("action"), message.getInt("chapter"),
-                        message.optInt("subchapter", -1))
+                        message.optInt("subchapter", -1), message.optLong("position", 0))
                     require(GuideSessionTiming.valid(command))
                     scheduleGuideCommand(command, source = peer.address)
                     val requestId = message.optLong("request")
@@ -1173,22 +1186,64 @@ class SessionManager private constructor(private val context: Context) {
         val at = hostAt - clockOffset
         require(abs(at - now()) < 60_000)
         receivedSequence = seq
+        // Frames from a v1.11 host carry no force flag; they were all command
+        // states, so absence means forced.
+        val force = message.optBoolean("force", true)
         val requestId = message.optLong("request")
         if (requestId > 0) completeGuideRequest(requestId)
-        require(guestGuideSchedule.size < 64)
-        guestGuideSchedule[seq] = ScheduledGuidePlayback(target, at)
-        refreshPendingGuidePlayback()
+        if (force) guideCorrection?.cancel()
+        if (!force && (guestGuideSchedule.values.any { it.force } || guideCorrection?.isActive == true)) {
+            debug("SYNC", "Skipped periodic guide state while an earlier update is pending")
+            return
+        }
+        if (force) {
+            require(guestGuideSchedule.size < 64)
+            guestGuideSchedule[seq] = ScheduledGuidePlayback(target, at)
+            refreshPendingGuidePlayback()
+        }
         val previous = guideApplyTail
-        guideApplyTail = scope.launch {
-            // Guide states carry no drift correction: apply in order, at the
-            // host's scheduled time, and let the local speech engine speak.
-            previous?.join()
+        val apply = scope.launch {
+            // Clock estimates can move deadlines, but must not reorder playback commands.
+            if (force) previous?.join()
             delay((at - now()).coerceAtLeast(0))
-            guidePlayback?.apply(target)
-            debug("APPLY", "Guest guide sequence=$seq, lateness=${(now() - at).coerceAtLeast(0)} ms")
+            val position = GuideSessionTiming.position(target, at, now())
+            val projected = target.copy(positionMs = position)
+            val current = guidePlayback?.snapshot()
+            // Drift correction only exists when both ends are audio-backed.
+            // A TTS-backed host state (durationMs == 0) carries no position to
+            // correct against, and a TTS-backed local player cannot seek:
+            // either way the frame degrades to the v1.11 per-item apply.
+            val sameItem = current != null && current.guideId == target.guideId &&
+                current.chapterIndex == target.chapterIndex &&
+                current.subchapterIndex == target.subchapterIndex
+            val audioSync = sameItem && current != null &&
+                GuideSessionTiming.hasPosition(target) && GuideSessionTiming.hasPosition(current)
+            val driftMs = if (audioSync && current != null) current.positionMs - position else null
+            if (driftMs != null) lastDriftMs = driftMs
+            val seek = when {
+                current == null || !sameItem || current.playing != target.playing -> true
+                force -> true
+                driftMs == null -> false
+                else -> driftCorrection.shouldCorrect(driftMs, target.playing, now(), debugSettings.value)
+            }
+            if (force || seek) {
+                // A position-less (TTS-backed) host state for the item already
+                // loaded must not rewind an audio-backed guest to 0: keep the
+                // local position and let only the item/playing fields move.
+                val applied = if (!GuideSessionTiming.hasPosition(target) && sameItem && current != null) {
+                    projected.copy(positionMs = current.positionMs, durationMs = current.durationMs)
+                } else projected
+                guidePlayback?.apply(applied)
+                if (seek && audioSync) {
+                    driftCorrection.positionApplied(now())
+                    if (!force) automaticSeeks++
+                }
+                debug("APPLY", "Guest guide sequence=$seq, forced=$force, seek=$seek, drift=$lastDriftMs ms, lateness=${(now() - at).coerceAtLeast(0)} ms")
+            }
             guestGuideSchedule.remove(seq)
             refreshPendingGuidePlayback()
         }
+        if (force) guideApplyTail = apply else guideCorrection = apply
     }
 
     private fun receivePong(peer: Peer, message: JSONObject) {
@@ -1297,9 +1352,32 @@ class SessionManager private constructor(private val context: Context) {
                 }
             }
         }
-        // Guide sessions have no continuous position to rebroadcast: state
-        // moves only on commands and on the host's own item changes.
-        if (state.value.role != "host" || guideMode) return
+        if (state.value.role != "host") return
+        if (guideMode) {
+            // Periodic guide sync, mirroring the tour loop below: rebroadcast
+            // the projected item position so audio-backed guests can drift-
+            // correct. A state that has not moved since the last broadcast
+            // (a paused guide, or a TTS-backed one between items) is skipped —
+            // item changes already travel via onGuideStateChanged.
+            scope.launch {
+                debugSettings.map { it.playbackSyncIntervalMs }.distinctUntilChanged().collectLatest { interval ->
+                    while (isActive) {
+                        delay(interval)
+                        if (hostGuideSchedule.isEmpty()) {
+                            guidePlayback?.snapshot()?.let { snapshot ->
+                                val now = now()
+                                val at = now + schedulingLeadMs
+                                val projected = snapshot.copy(positionMs = GuideSessionTiming.position(snapshot, now, at))
+                                if (projected != lastGuideBroadcast) {
+                                    broadcastGuideState(projected, at, force = false)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return
+        }
         scope.launch {
             debugSettings.map { it.playbackSyncIntervalMs }.distinctUntilChanged().collectLatest { interval ->
                 while (isActive) {
@@ -1371,6 +1449,7 @@ class SessionManager private constructor(private val context: Context) {
         guestSchedule.clear()
         pendingRequests.clear()
         guideApplyTail = null
+        guideCorrection = null
         hostGuideSchedule.clear()
         guestGuideSchedule.clear()
         pendingGuideRequests.clear()
@@ -1391,6 +1470,7 @@ class SessionManager private constructor(private val context: Context) {
         hostSchedulingLeadMs = null
         driftCorrection.reset()
         playbackDebouncer.reset()
+        guideDebouncer.reset()
     }
 
     private fun adapter(): BluetoothAdapter? = context.getSystemService(BluetoothManager::class.java)?.adapter
@@ -1416,10 +1496,14 @@ class SessionManager private constructor(private val context: Context) {
         .put("id", snapshot.guideId).put("title", snapshot.guideTitle)
         .put("chapter", snapshot.chapterIndex).put("subchapter", snapshot.subchapterIndex)
         .put("playing", snapshot.playing)
+        .put("position", snapshot.positionMs).put("duration", snapshot.durationMs)
 
     private fun decodeGuide(json: JSONObject): GuidePlaybackSnapshot {
+        // Position fields are optLong so a v1.11 peer's frames still decode:
+        // they land as 0/0, which the guest treats as TTS-backed state.
         val snapshot = GuidePlaybackSnapshot(json.getString("id"), json.optString("title").take(512),
-            json.getInt("chapter"), json.getInt("subchapter"), json.getBoolean("playing"))
+            json.getInt("chapter"), json.getInt("subchapter"), json.getBoolean("playing"),
+            json.optLong("position", 0), json.optLong("duration", 0))
         require(GuideSessionTiming.valid(snapshot))
         return snapshot
     }
