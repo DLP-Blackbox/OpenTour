@@ -34,7 +34,7 @@ import dev.hydranet.opensteves.data.CustomGuide
 import dev.hydranet.opensteves.data.PlaylistRepository
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
-import dev.hydranet.opensteves.playback.GuideTtsPlayback
+import dev.hydranet.opensteves.playback.GuideAudioPlayback
 import dev.hydranet.opensteves.playback.PlaybackConnection
 import dev.hydranet.opensteves.playback.TtsPlayer
 import dev.hydranet.opensteves.session.SessionManager
@@ -66,7 +66,7 @@ fun TourApp(
     val playlists by playlistRepository.playlists.collectAsState()
     val tts = remember { TtsPlayer(context) }
     DisposableEffect(tts) { onDispose { tts.release() } }
-    val guideSession = remember { GuideTtsPlayback(context, tts, playlistRepository) }
+    val guideSession = remember { GuideAudioPlayback(context, tts, playlistRepository) }
     DisposableEffect(guideSession) {
         session.attachGuidePlayback(guideSession)
         onDispose { session.attachGuidePlayback(null) }
@@ -379,7 +379,7 @@ fun TourApp(
             } else if (wikipediaGuideId != null) {
                 WikipediaScreen(playlistRepository, wikipediaGuideId!!)
             } else if (guideId != null) {
-                CustomGuideScreen(playlistRepository, guideId!!, tts, guideSession, session,
+                CustomGuideScreen(playlistRepository, guideId!!, guideSession, session,
                     onOpenWikipedia = { wikipediaGuideId = it },
                     onStartGuideSession = { requestGuideSession(it) },
                     onOpenTogether = { navigate(2) },

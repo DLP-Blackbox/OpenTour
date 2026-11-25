@@ -73,7 +73,7 @@ import dev.hydranet.opensteves.data.Chapter
 import dev.hydranet.opensteves.data.TimedText
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
-import dev.hydranet.opensteves.playback.GuideTtsPlayback
+import dev.hydranet.opensteves.playback.GuideAudioPlayback
 import dev.hydranet.opensteves.playback.PlaybackConnection
 import dev.hydranet.opensteves.playback.PlaybackUiState
 import dev.hydranet.opensteves.session.SessionManager
@@ -87,7 +87,7 @@ internal fun TogetherScreen(
     session: SessionManager,
     repository: TourRepository,
     playback: PlaybackConnection,
-    guideSession: GuideTtsPlayback,
+    guideSession: GuideAudioPlayback,
     current: Tour?,
     startingSession: Boolean,
     onStartSession: () -> Unit,
@@ -337,7 +337,7 @@ internal fun TogetherScreen(
 }
 
 @Composable
-private fun SessionGuide(guideSession: GuideTtsPlayback, guideId: String, guideTitle: String?, onOpenGuide: (String) -> Unit) {
+private fun SessionGuide(guideSession: GuideAudioPlayback, guideId: String, guideTitle: String?, onOpenGuide: (String) -> Unit) {
     val colors = MaterialTheme.colorScheme
     val snapshot by guideSession.uiSnapshot.collectAsState()
     val current = snapshot?.takeIf { it.guideId == guideId }

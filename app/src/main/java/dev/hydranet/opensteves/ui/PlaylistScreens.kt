@@ -46,6 +46,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -80,9 +81,8 @@ import dev.hydranet.opensteves.data.Playlist
 import dev.hydranet.opensteves.data.PlaylistRepository
 import dev.hydranet.opensteves.data.PlaylistStop
 import dev.hydranet.opensteves.data.Tour
-import dev.hydranet.opensteves.playback.GuideTtsPlayback
-import dev.hydranet.opensteves.playback.TtsPlayer
-import dev.hydranet.opensteves.playback.TtsState
+import dev.hydranet.opensteves.playback.GuideAudioPlayback
+import dev.hydranet.opensteves.playback.GuidePlaybackState
 import dev.hydranet.opensteves.session.SessionManager
 import dev.hydranet.opensteves.session.SessionState
 import kotlinx.coroutines.Dispatchers
@@ -245,8 +245,7 @@ internal fun CustomBadge() {
 fun CustomGuideScreen(
     repository: PlaylistRepository,
     guideId: String,
-    tts: TtsPlayer,
-    guideSession: GuideTtsPlayback,
+    guideSession: GuideAudioPlayback,
     session: SessionManager,
     onOpenWikipedia: (String) -> Unit,
     onStartGuideSession: (CustomGuide) -> Unit,
@@ -264,18 +263,18 @@ fun CustomGuideScreen(
         loaded = true
     }
     // Leaving the screen stops local playback, but not a session's: the
-    // speech engine is app-level and keeps reading for the whole group,
+    // guide player is app-level and keeps playing for the whole group,
     // like the tour playback service does.
-    DisposableEffect(guideId) { onDispose { if (session.state.value.sessionGuideId != guideId) tts.stop() } }
+    DisposableEffect(guideId) { onDispose { if (session.state.value.sessionGuideId != guideId) guideSession.stopLocal() } }
     DisposableEffect(guideId) {
-        tts.onItemFinished = { chapterIndex, subchapterIndex ->
+        guideSession.onItemFinished = { chapterIndex, subchapterIndex ->
             if (subchapterIndex >= 0) {
                 completion.setCompleted(CompletionStore.guideSubchapterKey(guideId, chapterIndex, subchapterIndex), true)
             }
         }
-        onDispose { tts.onItemFinished = null }
+        onDispose { guideSession.onItemFinished = null }
     }
-    val ttsState by tts.state.collectAsState()
+    val playbackState by guideSession.state.collectAsState()
     val current = guide
     when {
         !loaded -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
@@ -289,10 +288,10 @@ fun CustomGuideScreen(
             LaunchedEffect(current.id) { guideSession.setCurrentGuide(current) }
             val expandedChapters = remember(current.id) { mutableStateListOf(0) }
             var contentsExpanded by remember { mutableStateOf(false) }
-            LaunchedEffect(ttsState) {
-                val activeChapter = when (val state = ttsState) {
-                    is TtsState.Speaking -> state.chapterIndex
-                    is TtsState.Paused -> state.chapterIndex
+            LaunchedEffect(playbackState) {
+                val activeChapter = when (val state = playbackState) {
+                    is GuidePlaybackState.Playing -> state.chapterIndex
+                    is GuidePlaybackState.Paused -> state.chapterIndex
                     else -> null
                 }
                 if (activeChapter != null && activeChapter !in expandedChapters) expandedChapters.add(activeChapter)
@@ -327,7 +326,7 @@ fun CustomGuideScreen(
                 if (current.practical.isNotEmpty()) item(key = "practical") { GuidePracticalBlock(current) }
                 if (current.location != null || current.mapNote.isNotBlank()) item(key = "map") { GuideMapBlock(current) }
                 item(key = "wikipedia") { WikipediaEntryButton(current.id) { onOpenWikipedia(current.id) } }
-                item(key = "controls") { GuidePlaybackControls(current, ttsState, guideSession) }
+                item(key = "controls") { GuidePlaybackControls(current, playbackState, guideSession) }
                 item(key = "session") { GuideSessionBlock(current, sessionState, onStartGuideSession, onOpenTogether) }
                 item(key = "contents") {
                     Box {
@@ -369,7 +368,7 @@ fun CustomGuideScreen(
                 }
                 itemsIndexed(current.chapters, key = { index, _ -> "chapter-$index" }) { index, chapter ->
                     GuideChapterBlock(
-                        current, chapter, index, ttsState, guideSession,
+                        current, chapter, index, playbackState, guideSession,
                         expanded = index in expandedChapters,
                         onToggleExpanded = {
                             if (index in expandedChapters) expandedChapters.removeAll { it == index } else expandedChapters.add(index)
@@ -446,11 +445,21 @@ private fun GuideMapBlock(guide: CustomGuide) {
 }
 
 @Composable
-private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, controls: GuideTtsPlayback) {
+private fun GuidePlaybackControls(guide: CustomGuide, state: GuidePlaybackState, controls: GuideAudioPlayback) {
+    val positionMs = when (state) {
+        is GuidePlaybackState.Playing -> state.positionMs
+        is GuidePlaybackState.Paused -> state.positionMs
+        else -> 0
+    }
+    val durationMs = when (state) {
+        is GuidePlaybackState.Playing -> state.durationMs
+        is GuidePlaybackState.Paused -> state.durationMs
+        else -> 0
+    }
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             when (state) {
-                is TtsState.Speaking -> {
+                is GuidePlaybackState.Playing -> {
                     Button(shape = MaterialTheme.shapes.small, onClick = { controls.requestPause() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.Pause, null, Modifier.size(18.dp))
                         Text("Pause", Modifier.padding(start = 6.dp))
@@ -460,7 +469,7 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, controls:
                         Text("Stop", Modifier.padding(start = 6.dp))
                     }
                 }
-                is TtsState.Paused -> {
+                is GuidePlaybackState.Paused -> {
                     Button(shape = MaterialTheme.shapes.small, onClick = { controls.requestResume() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.PlayArrow, null, Modifier.size(18.dp))
                         Text("Resume", Modifier.padding(start = 6.dp))
@@ -481,11 +490,31 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, controls:
                 }
             }
         }
+        if (durationMs > 0 && state !is GuidePlaybackState.Idle && state !is GuidePlaybackState.Error) {
+            var dragged by remember { mutableStateOf<Float?>(null) }
+            Column {
+                Slider(
+                    value = dragged ?: positionMs.toFloat(),
+                    onValueChange = { dragged = it },
+                    onValueChangeFinished = {
+                        dragged?.let { controls.requestSeek(it.toLong()) }
+                        dragged = null
+                    },
+                    valueRange = 0f..durationMs.toFloat(),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Row(Modifier.fillMaxWidth()) {
+                    Text(time((dragged?.toLong() ?: positionMs)), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Box(Modifier.weight(1f))
+                    Text(time(durationMs), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
         Text(
-            "Read aloud by text-to-speech. Pausing restarts the current item.",
+            "Recorded narration, bundled with the app for offline listening.",
             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        if (state is TtsState.Error) Text(state.message, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+        if (state is GuidePlaybackState.Error) Text(state.message, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
     }
 }
 
@@ -521,7 +550,7 @@ private fun GuideSessionBlock(
             )
             else -> {
                 Text(
-                    "Friends on paired phones hear the same guide, read aloud on each phone.",
+                    "Friends on paired phones hear the same narration, playing in sync on each phone.",
                     style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant,
                 )
                 OutlinedButton(
@@ -541,18 +570,18 @@ private fun GuideChapterBlock(
     guide: CustomGuide,
     chapter: GuideChapter,
     index: Int,
-    state: TtsState,
-    controls: GuideTtsPlayback,
+    state: GuidePlaybackState,
+    controls: GuideAudioPlayback,
     expanded: Boolean,
     onToggleExpanded: () -> Unit,
     completed: Set<String>,
     completion: CompletionStore,
 ) {
-    val speaking = state is TtsState.Speaking && state.chapterIndex == index
-    val paused = state is TtsState.Paused && state.chapterIndex == index
+    val speaking = state is GuidePlaybackState.Playing && state.chapterIndex == index
+    val paused = state is GuidePlaybackState.Paused && state.chapterIndex == index
     val introActive = (speaking || paused) && when (state) {
-        is TtsState.Speaking -> state.subchapterIndex == -1
-        is TtsState.Paused -> state.subchapterIndex == -1
+        is GuidePlaybackState.Playing -> state.subchapterIndex == -1
+        is GuidePlaybackState.Paused -> state.subchapterIndex == -1
         else -> false
     }
     Column(
@@ -611,13 +640,13 @@ private fun GuideSubchapterBlock(
     subchapter: GuideSubchapter,
     chapterIndex: Int,
     subchapterIndex: Int,
-    state: TtsState,
-    controls: GuideTtsPlayback,
+    state: GuidePlaybackState,
+    controls: GuideAudioPlayback,
     completed: Set<String>,
     completion: CompletionStore,
 ) {
-    val speaking = state is TtsState.Speaking && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
-    val paused = state is TtsState.Paused && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
+    val speaking = state is GuidePlaybackState.Playing && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
+    val paused = state is GuidePlaybackState.Paused && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
     Column(
         Modifier.fillMaxWidth()
             .background(if (speaking || paused) MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surface, RoundedCornerShape(6.dp))
