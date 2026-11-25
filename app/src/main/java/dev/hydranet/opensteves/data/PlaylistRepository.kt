@@ -16,6 +16,7 @@ class PlaylistRepository private constructor(private val context: Context) {
     private val _playlists = MutableStateFlow<List<Playlist>>(emptyList())
     val playlists: StateFlow<List<Playlist>> = _playlists.asStateFlow()
     private val guides = ConcurrentHashMap<String, CustomGuide>()
+    private val wikipedia = ConcurrentHashMap<String, List<WikipediaArticle>>()
 
     init {
         scope.launch { _playlists.value = loadPlaylists() }
@@ -46,6 +47,27 @@ class PlaylistRepository private constructor(private val context: Context) {
         return guide
     }
 
+    // Wikipedia copies are bundled per guide as "<guideId>--<slug>.json"
+    // files; a guide without any bundled article returns an empty list.
+    suspend fun loadWikipediaArticles(guideId: String): List<WikipediaArticle> {
+        wikipedia[guideId]?.let { return it }
+        val articles = withContext(Dispatchers.IO) {
+            runCatching {
+                val assets = context.assets
+                assets.list(WIKI_PATH).orEmpty()
+                    .filter { it.startsWith("$guideId--") && it.endsWith(".json") }
+                    .sorted()
+                    .mapNotNull { name ->
+                        runCatching {
+                            assets.open("$WIKI_PATH/$name").bufferedReader().use { WikipediaArticle.parse(it.readText()) }
+                        }.getOrNull()
+                    }
+            }.getOrDefault(emptyList())
+        }
+        wikipedia[guideId] = articles
+        return articles
+    }
+
     // Official stops name a tour by a lowercase substring of its title; the
     // match is resolved against whatever tours the catalog currently holds.
     fun findOfficialTour(stop: PlaylistStop, tours: List<Tour>): Tour? {
@@ -56,6 +78,7 @@ class PlaylistRepository private constructor(private val context: Context) {
     companion object {
         const val PLAYLISTS_PATH = "playlists"
         const val GUIDES_PATH = "guides"
+        const val WIKI_PATH = "guides/wiki"
 
         @Volatile private var instance: PlaylistRepository? = null
         fun get(context: Context): PlaylistRepository = instance ?: synchronized(this) {
