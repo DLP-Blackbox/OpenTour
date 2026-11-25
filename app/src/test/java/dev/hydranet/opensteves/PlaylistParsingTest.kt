@@ -51,15 +51,79 @@ class PlaylistParsingTest {
         assertEquals(listOf("Arrive at opening time.", "Book tickets ahead."), guide.practical)
         assertEquals(2, guide.chapters.size)
         assertEquals("Welcome", guide.chapters[0].title)
-        assertEquals("Welcome to the Tower.", guide.chapters[0].text)
-        assertEquals("Head for the Middle Tower.", guide.chapters[0].directions)
         assertEquals("images/tower-of-london/01.jpg", guide.chapters[0].image)
+        // GUIDE_JSON uses the legacy text-only chapter shape (see the legacy test below).
+        assertEquals("", guide.chapters[0].intro)
+        assertEquals(1, guide.chapters[0].subchapters.size)
+        assertEquals("Welcome to the Tower.", guide.chapters[0].subchapters[0].text)
+        assertEquals("Head for the Middle Tower.", guide.chapters[0].subchapters[0].directions)
 
         val location = guide.location
         assertEquals("Tower of London", location?.name)
         assertEquals(51.5081, location?.latitude ?: 0.0, 0.0001)
         assertEquals(-0.0759, location?.longitude ?: 0.0, 0.0001)
         assertEquals(listOf("https://www.hrp.org.uk/tower-of-london/"), guide.sources)
+    }
+
+    @Test
+    fun guideParsesIntroAndSubchapters() {
+        val guide = CustomGuide.parse(SUBCHAPTER_GUIDE_JSON)
+
+        assertEquals(1, guide.chapters.size)
+        val chapter = guide.chapters[0]
+        assertEquals("The White Tower", chapter.title)
+        assertEquals("images/tower-of-london/01.jpg", chapter.image)
+        assertEquals("The White Tower from Tower Green", chapter.caption)
+        assertEquals("Start at the keep.", chapter.intro)
+        assertEquals(2, chapter.subchapters.size)
+
+        val first = chapter.subchapters[0]
+        assertEquals("The Chapel of St John", first.title)
+        assertEquals("The chapel is on the first floor.", first.text)
+        assertEquals("Climb the spiral stair.", first.directions)
+        assertEquals("images/tower-of-london/02.jpg", first.image)
+        assertEquals("The chapel interior", first.caption)
+
+        val second = chapter.subchapters[1]
+        assertEquals("The Crown Jewels", second.title)
+        assertEquals("The jewels are next door.", second.text)
+    }
+
+    @Test
+    fun subchapterOptionalFieldsDefaultToEmpty() {
+        val guide = CustomGuide.parse(SUBCHAPTER_GUIDE_JSON)
+
+        val second = guide.chapters[0].subchapters[1]
+        assertEquals("", second.directions)
+        assertEquals("", second.image)
+        assertEquals("", second.caption)
+    }
+
+    @Test
+    fun legacyTextOnlyChapterMapsToSingleSubchapter() {
+        val guide = CustomGuide.parse(GUIDE_JSON)
+
+        val chapter = guide.chapters[0]
+        assertEquals("", chapter.intro)
+        assertEquals(1, chapter.subchapters.size)
+        val subchapter = chapter.subchapters[0]
+        assertEquals("", subchapter.title)
+        assertEquals("Welcome to the Tower.", subchapter.text)
+        assertEquals("Head for the Middle Tower.", subchapter.directions)
+        assertEquals("", subchapter.image)
+        assertEquals("", subchapter.caption)
+    }
+
+    @Test
+    fun chapterWithNoSubchaptersAndNoTextDegradesToEmptyList() {
+        val guide = CustomGuide.parse(
+            """{"id":"bare","title":"Bare Guide","chapters":[{"title":"Empty"}]}""",
+        )
+
+        assertEquals(1, guide.chapters.size)
+        assertEquals("Empty", guide.chapters[0].title)
+        assertEquals("", guide.chapters[0].intro)
+        assertTrue(guide.chapters[0].subchapters.isEmpty())
     }
 
     @Test
@@ -110,6 +174,24 @@ class PlaylistParsingTest {
              "text": "The Crown Jewels.", "directions": ""}
           ],
           "sources": ["https://www.hrp.org.uk/tower-of-london/"]
+        }
+        """
+
+        const val SUBCHAPTER_GUIDE_JSON = """
+        {
+          "id": "tower-of-london",
+          "title": "Tower of London",
+          "chapters": [
+            {"title": "The White Tower", "image": "images/tower-of-london/01.jpg",
+             "caption": "The White Tower from Tower Green",
+             "intro": "Start at the keep.",
+             "subchapters": [
+               {"title": "The Chapel of St John", "text": "The chapel is on the first floor.",
+                "directions": "Climb the spiral stair.",
+                "image": "images/tower-of-london/02.jpg", "caption": "The chapel interior"},
+               {"title": "The Crown Jewels", "text": "The jewels are next door."}
+             ]}
+          ]
         }
         """
     }

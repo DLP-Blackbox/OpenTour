@@ -58,13 +58,71 @@ data class GuideLocation(
     val longitude: Double,
 )
 
+data class GuideSubchapter(
+    val title: String,
+    val text: String,
+    val image: String,
+    val caption: String,
+    val directions: String,
+) {
+    companion object {
+        fun fromJson(json: JSONObject): GuideSubchapter = GuideSubchapter(
+            title = json.optString("title"),
+            text = json.optString("text"),
+            image = json.optString("image"),
+            caption = json.optString("caption"),
+            directions = json.optString("directions"),
+        )
+    }
+}
+
 data class GuideChapter(
     val title: String,
     val image: String,
     val caption: String,
-    val text: String,
-    val directions: String,
-)
+    val intro: String,
+    val subchapters: List<GuideSubchapter>,
+) {
+    companion object {
+        fun fromJson(json: JSONObject): GuideChapter {
+            val subchapters = json.optJSONArray("subchapters")
+            return when {
+                subchapters != null -> GuideChapter(
+                    title = json.optString("title"),
+                    image = json.optString("image"),
+                    caption = json.optString("caption"),
+                    intro = json.optString("intro"),
+                    subchapters = List(subchapters.length()) { GuideSubchapter.fromJson(subchapters.getJSONObject(it)) },
+                )
+                // Legacy chapters carried their narration in a single chapter-level
+                // "text" field; map that onto one untitled subchapter so old guide
+                // files keep parsing and playing exactly as before.
+                json.has("text") -> GuideChapter(
+                    title = json.optString("title"),
+                    image = json.optString("image"),
+                    caption = json.optString("caption"),
+                    intro = "",
+                    subchapters = listOf(
+                        GuideSubchapter(
+                            title = "",
+                            text = json.optString("text"),
+                            image = "",
+                            caption = "",
+                            directions = json.optString("directions"),
+                        ),
+                    ),
+                )
+                else -> GuideChapter(
+                    title = json.optString("title"),
+                    image = json.optString("image"),
+                    caption = json.optString("caption"),
+                    intro = json.optString("intro"),
+                    subchapters = emptyList(),
+                )
+            }
+        }
+    }
+}
 
 data class CustomGuide(
     val id: String,
@@ -102,14 +160,7 @@ data class CustomGuide(
                 practical = if (practical == null) emptyList() else List(practical.length()) { practical.optString(it) },
                 mapNote = json.optString("mapNote"),
                 chapters = if (chapters == null) emptyList() else List(chapters.length()) { index ->
-                    val chapter = chapters.getJSONObject(index)
-                    GuideChapter(
-                        title = chapter.optString("title"),
-                        image = chapter.optString("image"),
-                        caption = chapter.optString("caption"),
-                        text = chapter.optString("text"),
-                        directions = chapter.optString("directions"),
-                    )
+                    GuideChapter.fromJson(chapters.getJSONObject(index))
                 },
                 sources = if (sources == null) emptyList() else List(sources.length()) { sources.optString(it) },
             )

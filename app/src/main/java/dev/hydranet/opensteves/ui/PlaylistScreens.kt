@@ -62,6 +62,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.hydranet.opensteves.data.CustomGuide
 import dev.hydranet.opensteves.data.GuideChapter
+import dev.hydranet.opensteves.data.GuideSubchapter
 import dev.hydranet.opensteves.data.InstalledTour
 import dev.hydranet.opensteves.data.Playlist
 import dev.hydranet.opensteves.data.PlaylistRepository
@@ -303,7 +304,7 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, tts: TtsP
                 is TtsState.Paused -> {
                     Button(shape = MaterialTheme.shapes.small, onClick = { tts.resume() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.PlayArrow, null, Modifier.size(18.dp))
-                        Text("Resume chapter", Modifier.padding(start = 6.dp))
+                        Text("Resume", Modifier.padding(start = 6.dp))
                     }
                     OutlinedButton(shape = MaterialTheme.shapes.small, onClick = { tts.stop() }, modifier = Modifier.height(48.dp)) {
                         Icon(Icons.Default.Stop, null, Modifier.size(18.dp))
@@ -322,7 +323,7 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, tts: TtsP
             }
         }
         Text(
-            "Read aloud by text-to-speech. Pausing restarts the current chapter.",
+            "Read aloud by text-to-speech. Pausing restarts the current item.",
             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
         if (state is TtsState.Error) Text(state.message, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
@@ -333,9 +334,14 @@ private fun GuidePlaybackControls(guide: CustomGuide, state: TtsState, tts: TtsP
 private fun GuideChapterBlock(guide: CustomGuide, chapter: GuideChapter, index: Int, state: TtsState, tts: TtsPlayer) {
     val speaking = state is TtsState.Speaking && state.chapterIndex == index
     val paused = state is TtsState.Paused && state.chapterIndex == index
+    val introActive = (speaking || paused) && when (state) {
+        is TtsState.Speaking -> state.subchapterIndex == -1
+        is TtsState.Paused -> state.subchapterIndex == -1
+        else -> false
+    }
     Column(
         Modifier.fillMaxWidth()
-            .background(if (speaking || paused) MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surface, RoundedCornerShape(6.dp))
+            .background(if (introActive) MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surface, RoundedCornerShape(6.dp))
             .padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
@@ -351,14 +357,55 @@ private fun GuideChapterBlock(guide: CustomGuide, chapter: GuideChapter, index: 
                 Icon(if (speaking) Icons.Default.Pause else Icons.Default.PlayArrow, if (speaking) "Pause chapter" else "Play chapter")
             }
         }
+        if (chapter.intro.isNotBlank()) Text(chapter.intro, style = MaterialTheme.typography.bodyLarge)
         if (chapter.image.isNotBlank()) AssetImage(
             "guides/${chapter.image}", chapter.caption,
             Modifier.fillMaxWidth().height(180.dp).clip(RoundedCornerShape(5.dp)),
         )
         if (chapter.caption.isNotBlank()) Text(chapter.caption, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        if (chapter.text.isNotBlank()) Text(chapter.text, style = MaterialTheme.typography.bodyLarge)
-        if (chapter.directions.isNotBlank()) Text(
-            chapter.directions, style = MaterialTheme.typography.bodyMedium,
+        chapter.subchapters.forEachIndexed { subIndex, subchapter ->
+            GuideSubchapterBlock(guide, subchapter, index, subIndex, state, tts)
+        }
+    }
+}
+
+@Composable
+private fun GuideSubchapterBlock(
+    guide: CustomGuide,
+    subchapter: GuideSubchapter,
+    chapterIndex: Int,
+    subchapterIndex: Int,
+    state: TtsState,
+    tts: TtsPlayer,
+) {
+    val speaking = state is TtsState.Speaking && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
+    val paused = state is TtsState.Paused && state.chapterIndex == chapterIndex && state.subchapterIndex == subchapterIndex
+    Column(
+        Modifier.fillMaxWidth()
+            .background(if (speaking || paused) MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surface, RoundedCornerShape(6.dp))
+            .padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            if (subchapter.title.isNotBlank()) Text(
+                subchapter.title, Modifier.weight(1f),
+                style = MaterialTheme.typography.titleSmall, maxLines = 2, overflow = TextOverflow.Ellipsis,
+            ) else Box(Modifier.weight(1f))
+            IconButton(
+                onClick = { if (speaking) tts.pause() else if (paused) tts.resume() else tts.speakSubchapter(guide, chapterIndex, subchapterIndex) },
+                colors = TourButtonDefaults.iconColors(),
+            ) {
+                Icon(if (speaking) Icons.Default.Pause else Icons.Default.PlayArrow, if (speaking) "Pause" else "Play")
+            }
+        }
+        if (subchapter.image.isNotBlank()) AssetImage(
+            "guides/${subchapter.image}", subchapter.caption,
+            Modifier.fillMaxWidth().height(180.dp).clip(RoundedCornerShape(5.dp)),
+        )
+        if (subchapter.caption.isNotBlank()) Text(subchapter.caption, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (subchapter.text.isNotBlank()) Text(subchapter.text, style = MaterialTheme.typography.bodyLarge)
+        if (subchapter.directions.isNotBlank()) Text(
+            subchapter.directions, style = MaterialTheme.typography.bodyMedium,
             fontStyle = FontStyle.Italic, color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
