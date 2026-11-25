@@ -3,10 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-val releaseKeystoreFile = providers.environmentVariable("OPENSTEVES_KEYSTORE_FILE")
-val releaseKeystorePassword = providers.environmentVariable("OPENSTEVES_KEYSTORE_PASSWORD")
-val releaseKeyAlias = providers.environmentVariable("OPENSTEVES_KEY_ALIAS")
-val releaseKeyPassword = providers.environmentVariable("OPENSTEVES_KEY_PASSWORD")
+val releaseKeystoreFile = providers.environmentVariable("OPENTOUR_KEYSTORE_FILE")
+val releaseKeystorePassword = providers.environmentVariable("OPENTOUR_KEYSTORE_PASSWORD")
+val releaseKeyAlias = providers.environmentVariable("OPENTOUR_KEY_ALIAS")
+val releaseKeyPassword = providers.environmentVariable("OPENTOUR_KEY_PASSWORD")
 val hasReleaseSigning = listOf(
     releaseKeystoreFile,
     releaseKeystorePassword,
@@ -26,8 +26,8 @@ android {
         applicationId = "com.dlpnetworks.opentour"
         minSdk = 26
         targetSdk = 36
-        versionCode = 9
-        versionName = "1.8"
+        versionCode = 10
+        versionName = "1.9"
     }
 
     signingConfigs {
