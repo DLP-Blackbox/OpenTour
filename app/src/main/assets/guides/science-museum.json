@@ -2,67 +2,361 @@
  "area": "London",
  "chapters": [
   {
-   "caption": "Inside the Science Museum — five floors of the objects that built the modern world.",
-   "directions": "From the entrance, head straight into the Energy Hall on the ground floor.",
+   "title": "Welcome: A Museum Born of the Great Exhibition",
+   "intro": "This museum exists because of a party — the greatest trade fair ever held. Its stars are not paintings or jewels but machines: the actual engines, capsules and computers that dragged the world into modernity. Get the plan clear first — ground-floor spine, then up floor by floor — and the size becomes a pleasure instead of a threat.",
+   "subchapters": [
+    {
+     "title": "Albertopolis and the Great Exhibition",
+     "text": "When the Great Exhibition of 1851 closed its glass doors in Hyde Park, six million visitors had passed through and it had made a handsome profit. Prince Albert insisted the money buy land here in South Kensington and fill it with museums and colleges devoted to science and art — 'Albertopolis', Londoners joked. The science collections grew out of that Victorian ambition, absorbed the Patent Office Museum's models in 1883, became a museum in their own right, and moved into this grand East Block, opened in stages between 1919 and 1928. Today the Science Museum holds over 300,000 objects. Almost everything you will see today stands within a ten-minute walk of where the Crystal Palace's profits were spent.",
+     "directions": "From the Exhibition Road entrance, head straight into the Energy Hall on the ground floor."
+    },
+    {
+     "title": "Originals, Not Replicas",
+     "text": "The museum's genius is that its stars are the real things. The oldest surviving Watt engine really steamed; the Apollo 10 capsule really went to the Moon, and its heat shield is really scorched; Babbage's Difference Engine really computes. In an age of screens, this building is a warehouse of evidence — invention you can stand next to, at full scale, with the maker's plate still riveted on. Read the labels for the words 'original', 'first' and 'oldest surviving'; you will find them on an improbable number of cases. Where a reconstruction is shown — Crick and Watson's DNA model, for instance — the label says so, and the story of why the original needed rebuilding is part of the exhibit."
+    },
+    {
+     "title": "How the Museum Is Laid Out",
+     "text": "A word on strategy: this place is huge, five floors deep, and it rewards a plan. The ground floor is the historical spine — steam in the Energy Hall, the greatest-hits timeline of Making the Modern World, then spaceflight in Exploring Space, with the Wellcome Wing beyond. Level 1 is Medicine entire. Level 2 holds Mathematics, the Clockmakers' Museum and Information Age. Level 3 is Flight and the hands-on Wonderlab. Everything is free except Wonderlab, the IMAX and special exhibitions, so you can dip in and out as energy allows. Lifts and stairs sit at both ends; work upward floor by floor and you will never backtrack far. Start, as every visitor starts, surrounded by steam."
+    },
+    {
+     "title": "The Children's Gallery Tradition",
+     "text": "This museum also invented a way of visiting. Its Children's Gallery of 1931 was among the first in the world designed for children to touch, press and play — dioramas with buttons, models that moved — at a time when museums elsewhere still whispered 'don't touch'. That philosophy runs through everything here now: the Garden for under-fives in the basement, Pattern Pod, Wonderlab's chemistry bar, and interactives threaded through the historic galleries. If you are visiting with children, let them lead one gallery in three; the museum was designed, earlier than almost any other, to survive exactly that. The historic engines, meanwhile, get their revenge: no child has ever walked past a five-ton beam engine unimpressed."
+    }
+   ],
    "image": "images/science-museum/01.jpg",
-   "text": "This museum exists because of a party — the greatest trade fair ever held. When the Great Exhibition of 1851 closed its glass doors in Hyde Park, it had made a handsome profit, and Prince Albert insisted the money buy land here in South Kensington and fill it with museums and colleges: 'Albertopolis,' Londoners called it. The science collections grew out of that Victorian shopping spree, became a museum in their own right, and moved into this grand East Block, opened in stages between 1919 and 1928. Today the Science Museum holds over 300,000 objects, and its genius is that the stars are not paintings or jewels but machines — the actual engines, capsules, computers and contraptions that dragged the world into modernity. A word on strategy before we dive in: this place is huge, five floors deep, and it rewards a plan. The ground floor is the historical spine — steam, industry, space — and it's where we'll spend our first hour. The upper floors hold the great themed galleries: medicine, flight, clocks, communications. Everything is free except the hands-on Wonderlab and the IMAX, so you can dip in and out of galleries as your energy allows. Start, as every visitor starts, surrounded by steam.",
-   "title": "Welcome: A Museum Born of the Great Exhibition"
+   "caption": "Inside the Science Museum — five floors of the objects that built the modern world."
   },
   {
-   "caption": "A Boulton & Watt beam engine — the partnership that put steam power into factories, mines and mills.",
-   "directions": "Continue through the Energy Hall to the far end, where the gallery flows into Making the Modern World.",
+   "title": "The Energy Hall: Steam Changes the World",
+   "intro": "You enter straight into the museum's oldest and most atmospheric room — a cathedral of cast iron where the Industrial Revolution stands in rows, beam above beam. Start with the oldest engines and walk forward: within one lifetime, steam goes from pumping a single mine to driving an empire's industry.",
+   "subchapters": [
+    {
+     "title": "Newcomen and the First Practical Engine",
+     "text": "To understand what you're looking at, start with Thomas Newcomen. In 1712 his atmospheric engine became the first practical steam engine, pumping water from mines — but it devoured coal, reheating and cooling its cylinder every stroke. The museum's early engines show the type: huge, slow, house-sized machines that made sense only where coal was nearly free, at the pithead itself. Stand beside one and feel the problem Watt inherited: power existed, but it was chained to the coal mine by its own appetite. The Energy Hall arranges its engines as an argument, oldest and thirstiest first, so walk the row slowly and watch them get cleverer, smaller for their power, and more beautiful as the century turns.",
+     "directions": "Enter the Energy Hall from Exhibition Road — the oldest engines stand near the entrance end."
+    },
+    {
+     "title": "Boulton and Watt — Old Bess",
+     "text": "James Watt's genius was the separate condenser, patented in 1769: keep the cylinder hot, condense the steam elsewhere, and the same coal does several times the work. With his partner Matthew Boulton — who boasted he sold 'what all the world desires to have: power' — Watt turned the engine into a product factories queued to buy, charging royalties as a share of the coal saved. Look for 'Old Bess' of 1777, among the earliest Boulton and Watt engines, and the Lap engine of 1788, the oldest surviving Watt beam engine in the world, its parallel motion — the linkage Watt called one of his most ingenious inventions — still elegant. These engines didn't just pump; with rotative motion they could drive mills, and the factory age begins here."
+    },
+    {
+     "title": "Watt's Attic Workshop",
+     "text": "Then find the strangest exhibit of all: Watt's attic workshop, recreated whole. When Watt died in 1819, his garret workshop at Heathfield Hall, Birmingham, was locked up with everything in it — tools, models, his sculpture-copying machines, chemical experiments, even his tea things — and kept as a shrine by his family. When the house was demolished in the 1920s, the museum moved the entire room, all 8,300 objects, and rebuilt it here, dust and all. Peer through the door: it is a time capsule of the mind that redesigned the world, and the most intimate room in the museum. Nothing is labelled into significance; the significance is that everything is exactly where a great engineer left it, mid-thought."
+    },
+    {
+     "title": "Mill Engines and the Age of Steam at Full Stretch",
+     "text": "As you leave, glance at the sheer scale of the later engines: the great mill engines that drove whole Lancashire factories from one flywheel, rope races carrying power to every floor; the horizontal engines, the Cornish engines that pumped mines a mile deep with legendary economy — Cornish engineers published their engines' 'duty' in league tables, an early leaderboard of efficiency. Within Watt's lifetime steam went from a mine pump to locomotives, steamships and the machinery of an empire. The hall's last engines are already dinosaurs of a second generation — bigger, faster, higher-pressure — and they set up the next gallery perfectly, where steam learns to move itself along rails."
+    },
+    {
+     "title": "Energy Revolution — Steam's Successors",
+     "text": "Before you leave the ground floor's energy story, note its modern coda: the museum's Energy Revolution gallery, the Adani Green Energy Gallery on Level 2, picks up exactly where these beam engines stop — how we power the world now, and how we might decarbonise it, from early wind and water power to hydrogen and fusion experiments. The through-line is deliberate: the museum that displays the first fossil-fuel machines also displays their replacements being invented. If energy is your subject, pair the two galleries across your visit — soot-black cast iron in the morning, solar and storage after lunch — and you will have walked the entire carbon age, in both directions, under one roof."
+    }
+   ],
    "image": "images/science-museum/02.jpg",
-   "text": "You enter the museum straight into its oldest and most atmospheric room: the Energy Hall, a cathedral of cast iron. Ranked around you are the beam engines that powered the Industrial Revolution, their great beams rocking — in their working lives — day and night, pumping mines dry, driving mill machinery and grinding corn. To understand what you're looking at, find the engines of Boulton and Watt. In 1712 Thomas Newcomen had built the first practical steam engine, but it devoured coal. James Watt's genius was the separate condenser, which made steam power efficient — and with his partner Matthew Boulton, who boasted that he sold 'what all the world desires to have: power,' Watt turned the engine into a product that factories queued to buy. Look for 'Old Bess,' an early Boulton & Watt engine of 1777, and the oldest surviving Watt beam engine in the world. Then find the strangest exhibit of all: Watt's attic workshop, recreated whole. When Watt died in 1819, his garret workshop at Heathfield Hall was locked up with everything in it — tools, models, half-finished experiments, even his tea things. When the house was demolished in 1927, the museum moved the entire room, all 8,300 objects, and rebuilt it here, dust and all. It's a time capsule of the mind that redesigned the world. As you leave, glance at the sheer scale of the later engines: within one lifetime, steam went from pumping a single mine to driving an empire's industry.",
-   "title": "The Energy Hall: Steam Changes the World"
+   "caption": "A Boulton & Watt beam engine — the partnership that put steam power into factories, mines and mills."
   },
   {
-   "caption": "Puffing Billy (1813–14), the oldest surviving steam locomotive in the world.",
-   "directions": "Making the Modern World runs along the ground floor; follow the timeline forward to the space age at the far end.",
+   "title": "Making the Modern World I — Locomotives and Transport",
+   "intro": "If you see only one gallery, make it this one: a single timeline of the museum's greatest objects from 1750 to now. This first half is movement — the oldest locomotive in the world, a Model T, and the machines that shrank Britain and then the planet.",
+   "subchapters": [
+    {
+     "title": "Puffing Billy — The Oldest Locomotive",
+     "text": "Start with the iron horse in front of you: Puffing Billy, built in 1813–14 by William Hedley, Jonathan Forster and Timothy Hackworth to haul coal at Wylam Colliery near Newcastle. It is the oldest surviving steam locomotive in the world — a tubby pioneer with a vertical boiler that clanked along the waggonway at walking pace, in service until 1862, years before the railways proper began. Hedley's key insight was that smooth iron wheels on smooth rails had grip enough, against the received wisdom demanding rack-and-pinion. Look at its flanged wheels and the return flue in its boiler; everything later railways did is here in embryo, including the exhaustion — Puffing Billy was rebuilt several times because early boilers kept failing under it.",
+     "directions": "Making the Modern World runs along the ground floor beyond the Energy Hall — follow the timeline forward."
+    },
+    {
+     "title": "Stephenson's Rocket — The Empty Plinth",
+     "text": "This gallery was for nearly 160 years the home of Stephenson's Rocket of 1829, winner of the Rainhill Trials and the template for every locomotive that followed — multi-tubular boiler, blast pipe, pistons driving the wheels almost directly. In 2019, after a UK tour, Rocket moved to its permanent home at the National Railway Museum in York, so consider this its honoured empty plinth: the story is told here, the star now lives up north, in the city where it was maintained. The museum is candid about the move, and it makes a point worth learning in this gallery of originals — objects have biographies too, and sometimes the right home for a thing changes. The locomotives around the space, from the Agenoria to great express engines, carry the story on without it."
+    },
+    {
+     "title": "Road Transport — From the Model T to the Cut-Away Car",
+     "text": "Keep walking and the rails give way to roads. Look for a Ford Model T, the car that put the world on wheels — over 15 million built between 1908 and 1927, its price falling as the production line learned — and for the museum's cut-away and sectioned vehicles that show engineering the way an anatomy lesson shows a body. Bicycles evolve along the wall from the boneshaker and the penny-farthing to the safety bicycle that liberated its riders, women emphatically included. The transport story here is social as much as mechanical: each machine widened the circle of who could travel, how far, and at whose command. The timeline's genius is juxtaposition — the locomotive that terrified villagers in 1814 shares a floor with the family car their great-grandchildren took for granted."
+    },
+    {
+     "title": "The V-2 and the One Million Volt Accelerator",
+     "text": "Two darker giants interrupt the timeline. The V-2 rocket, displayed here, was the first human-made object to reach the edge of space — and a weapon, built by enslaved labour under Wernher von Braun's programme, that killed thousands in London and Antwerp in 1944–45. The museum labels it without flinching: the space age's founding machine is also a war crime's instrument, and the Apollo story in the next gallery grows directly from it. Near it, the one-million-volt particle accelerator of 1937, built to split the atom in the Cavendish tradition, marks physics going big — the age when discovery itself needed industrial machinery. Together they are the timeline's conscience: the modern world was not only progress, and this gallery refuses to let you forget the price tags."
+    }
+   ],
    "image": "images/science-museum/03.jpg",
-   "text": "If you only see one gallery, make it this one. Making the Modern World lines up the museum's greatest hits along a single timeline, from the age of steam to the space age, and walking it is like fast-forwarding through 250 years. Start with the iron horse in front of you: Puffing Billy, built in 1813–14 by William Hedley to haul coal at Wylam Colliery near Newcastle. It's the oldest surviving steam locomotive in the world — a tubby, vertical-boilered pioneer that clanked along wooden and iron rails years before the railways proper began. This gallery was also the long-time home of Stephenson's Rocket of 1829, the winner of the Rainhill Trials and the template for every locomotive that followed; after nearly 160 years in London, Rocket moved in 2019 to its permanent home at the National Railway Museum in York, so consider this its empty plinth — the story is told here, the star now lives up north. Keep walking the timeline and the objects keep landing punches: the reconstruction of Crick and Watson's 1953 model of the double helix, built from metal plates and rods to crack the structure of DNA; a towering V-2 rocket, the first object to reach the edge of space, built as a weapon; early computers including the Pilot ACE, designed from Alan Turing's post-war plans. Slow down and read the labels — nearly everything here is the original, the first, or the only one.",
-   "title": "Making the Modern World: Icons in a Line"
+   "caption": "Puffing Billy (1813–14), the oldest surviving steam locomotive in the world."
   },
   {
-   "caption": "The Apollo 10 command module Charlie Brown, which orbited the Moon 31 times in May 1969.",
-   "directions": "From Exploring Space, backtrack slightly and take the lifts or stairs up to Level 1 for Medicine: The Wellcome Galleries.",
+   "title": "Making the Modern World II — DNA, Computing and Small Things That Changed Everything",
+   "intro": "The timeline's second half shrinks: from locomotives to molecules, from engines you climb on to objects you could hold in one hand — a DNA model, a dish of penicillin mould, the first Apple computer. Slow down here; nearly everything is the original, the first, or the only one.",
+   "subchapters": [
+    {
+     "title": "Crick and Watson's DNA Model",
+     "text": "Look for the reconstruction of Francis Crick and James Watson's 1953 model of the double helix, built from metal plates, rods and clamps in the Cavendish Laboratory's workshop to test whether DNA's structure could carry the code of life. It could: base pairs like rungs, A with T and C with G, the pairing itself suggesting how the molecule copies itself — the secret of life, as their famously understated Nature paper put it, in a structure that 'has not escaped our notice'. The model here is a reconstruction because the original was dismantled and its parts scattered; Rosalind Franklin's Photo 51, the X-ray image that confirmed the helix, gets its due in the telling. Few objects in the museum carry more future per kilogram."
+    },
+    {
+     "title": "Babbage's Difference Engine No. 1",
+     "text": "Face to face with DNA stands Charles Babbage's Difference Engine No. 1 — or rather, the magnificent portion of it assembled in 1832, all polished brass and steel, designed to calculate mathematical tables by the method of finite differences and never completed in Babbage's lifetime, defeated by cost, disputes and his own restless redesigns. Babbage's fuller Difference Engine No. 2 was finally built by this museum in 1991 for the bicentenary of his birth — over 4,000 parts, five tonnes, calculating to 31 digits — and it worked, vindicating the design a century and a half late. The 1832 portion here is the largest surviving fragment of Babbage's lifetime work: computing's foundation stone, beautiful enough to be sculpture, abandoned in a quarrel over money. Some stories in this museum never change."
+    },
+    {
+     "title": "Fleming's Penicillin Mould",
+     "text": "One of the smallest exhibits carries the largest death toll reversed: a sample of the mould from Alexander Fleming's laboratory — the Penicillium notatum whose stray spore, landing on a staphylococcus plate at St Mary's Hospital in 1928, produced the clear zone of killed bacteria that Fleming recognised as penicillin. The museum also tells the harder second half: Fleming could not turn his mould juice into a drug; that took Florey, Chain and their Oxford team in 1940–41, plus American fermentation plants, to make penicillin a medicine by D-Day. A speck of mould in a case, then — but read the label as a relay race: observation, recognition, development, manufacture. Science in this gallery is rarely a lone genius; it is a baton pass, and the mould is where this baton started."
+    },
+    {
+     "title": "The First Apple Computer and the Clock of the Long Now",
+     "text": "Two late arrivals bookend the timeline's philosophy. The Apple I of 1976 — a bare circuit board designed by Steve Wozniak, sold for $666.66, its buyers supplying case, keyboard and screen — represents the computer leaving the institution for the hobbyist's bench; within a generation its descendants would be in every pocket in this building. And the first prototype of the Clock of the Long Now, Danny Hillis's project to build a clock that will tick for 10,000 years, buried in a mountain and designed to outlast civilisations, asks the opposite question of the Apple: not how fast, but how long. A porcelain bowl salvaged from Hiroshima, displayed nearby, asks the hardest question of all — what our making is for. The gallery ends, deliberately, in ethics."
+    },
+    {
+     "title": "The Wells Cathedral Clock Mechanism",
+     "text": "Look, finally, for one of the museum's oldest and most cherished objects, currently displayed in this gallery on loan: the movement of the Wells Cathedral clock, made about 1390, among the oldest surviving clock mechanisms anywhere — a great iron frame of gears that once drove the famous dial where knights joust at the quarter hour. Mechanical clocks were new technology in 1390, and this one's survival is remarkable; the face still works in Wells, the original movement retired here like an honoured engineer. It also hands you neatly to two later chapters — the Clockmakers' Museum upstairs is this object's family home, and the Mathematics gallery explains the gearing. In this museum, everything connects; the timeline is a web wearing a straight line as a disguise."
+    }
+   ]
+  },
+  {
+   "title": "Exploring Space and the Apollo 10 Command Module",
+   "intro": "At the far end of the ground floor the lights dim and the rockets appear. This gallery tells how we left the planet — and its centrepiece is a scorched cone that has actually been to the Moon and back, faster than any crewed vehicle before or since.",
+   "subchapters": [
+    {
+     "title": "Charlie Brown — The Apollo 10 Command Module",
+     "text": "The centrepiece is a scorched, conical capsule you could almost miss if you blink: the Apollo 10 command module, Charlie Brown. In May 1969 astronauts Thomas Stafford, John Young and Eugene Cernan flew this capsule to the Moon as the final dress rehearsal for Apollo 11. They orbited the Moon 31 times, and Stafford and Cernan took the lunar module Snoopy down to within about 15 kilometres — roughly nine miles — of the surface before firing back up to rejoin Young. Everything Apollo 11 did, Apollo 10 did first except land. Look closely at the heat shield's charred honeycomb: this capsule still holds the record for the fastest any humans have ever travelled, 39,897 kilometres per hour on the way home.",
+     "directions": "Exploring Space is at the far end of the ground floor, beyond Making the Modern World."
+    },
+    {
+     "title": "The Lunar Lander and the Space Race",
+     "text": "Around Charlie Brown the gallery fills in the whole saga. A full-size replica of the Apollo lunar lander stands in a pool of light, gold foil and spindly legs — the real landers, of course, are still on the Moon. Rockets and missiles trace the arms race that powered the space race: the V-2's descendants, early British rockets like Black Arrow — the only satellite launcher a country has developed and then abandoned — and the Soviet story told in hardware and film. The gallery is honest about origins: spaceflight was a child of war, raised by rivalry, that grew up to deliver weather forecasting, GPS and the communications satellites hanging overhead here like fruit. Try the astronaut-glove challenge if it is free: doing up a bolt in pressurised gloves explains spacewalking better than any label."
+    },
+    {
+     "title": "Satellites, Spacesuits and Tim Peake's Capsule",
+     "text": "Look overhead and around for the working sky: communications and weather satellites, the technology that quietly rebuilt daily life — live television, storm warnings, the phone in your pocket knowing where it is. Spacesuits chart the problem of keeping a person alive in vacuum, from early pressure suits to the tailored armour of the Apollo era. The museum has also displayed the Soyuz capsule TMA-19M that brought Tim Peake, Britain's first ESA astronaut, home from the International Space Station in 2016, its exterior scorched by re-entry — a British chapter in a story Britons usually watch from the audience. Compare its roomy, rugged Soviet design with Charlie Brown's cone: two engineering cultures, one unforgiving physics."
+    },
+    {
+     "title": "Helen Sharman and Britain in Space",
+     "text": "Find the British thread deliberately, because it is easy to miss. Helen Sharman became the first Briton in space in 1991, flying to the Mir station on a Soviet-British mission after answering a radio advert — 'Astronaut wanted, no experience necessary' — and beating 13,000 applicants; her Sokol spacesuit and mission artefacts have been displayed here. Britain built satellites early, then chose for decades to buy rides rather than rockets — Black Arrow's 1971 success, cancelled the same year, is the gallery's great what-if. The spin-offs wall makes the counter-argument: British science rode others' rockets brilliantly. Either way, this corner teaches the national talent on display throughout the museum — world-class ingenuity, intermittent funding."
+    }
+   ],
    "image": "images/science-museum/04.jpg",
-   "text": "At the far end of the ground floor, the lights dim and the rockets appear. Exploring Space tells the story of how we left the planet, and its centrepiece is a scorched, conical capsule you could almost miss if you blink: the Apollo 10 command module, Charlie Brown. In May 1969, astronauts Thomas Stafford, John Young and Eugene Cernan flew this capsule to the Moon as the final dress rehearsal for Apollo 11. They orbited the Moon 31 times, and Stafford and Cernan took the lunar module Snoopy down to within about 15 kilometres of the surface — close enough to see their landing countrymen's future site — before firing back up to rejoin Young. Everything Apollo 11 did, Apollo 10 did first except land. Look closely at the heat shield's charred honeycomb: this capsule still holds the record for the fastest any humans have ever travelled, hitting 39,897 kilometres per hour on the way home. Around it, the gallery fills in the whole saga: early rockets, satellites hanging overhead, a full-size replica of the Apollo lunar lander standing in a pool of light, and the everyday spin-offs — from communications satellites to the technology in your phone — that spaceflight quietly delivered. Try the astronaut-glove challenge if it's free: doing up a bolt wearing pressurised gloves explains more about spacewalking than any label.",
-   "title": "Exploring Space and the Apollo 10 Command Module"
+   "caption": "The Apollo 10 command module Charlie Brown, which orbited the Moon 31 times in May 1969."
   },
   {
-   "caption": "Medicine: The Wellcome Galleries — five rooms and more than 3,000 objects on the story of health and healing.",
-   "directions": "Cross Level 1 to the Information Age gallery on Level 2 — or ride up to Level 3 for Flight if aeroplanes are calling louder.",
+   "title": "Medicine I: The Wellcome Galleries — Bodies and Beliefs",
+   "intro": "Upstairs, the tone changes from machines to bodies. These five galleries, opened in 2019 and among the largest medical displays in the world, trace how humans have understood sickness and healing — from amulets and humours to genome sequencing — through more than 3,000 objects, many from one man's magnificent obsession.",
+   "subchapters": [
+    {
+     "title": "Henry Wellcome and His Collection",
+     "text": "Much of the raw material comes from one man's magnificent obsession. Henry Wellcome, the pharmaceutical magnate who co-founded Burroughs Wellcome, spent a fortune collecting the entire material culture of medicine — surgical instruments, amulets, paintings, prosthetics, specimens — intending a museum of humankind's struggle with disease; his collectors bought at auctions across Europe, sometimes entire shopfuls at a time. The galleries that opened here in 2019, occupying the whole first floor, are the finest modern edit of that mountain. Keep your eyes open for two small objects with famous owners as you walk: Napoleon's toothbrush, ornate and silver-gilt, and Charles Darwin's walking stick, its handle carved as a skull — a memento mori its owner contemplated on his walks while evolution took shape in his head.",
+     "directions": "Take the lifts or stairs to Level 1 for Medicine: The Wellcome Galleries."
+    },
+    {
+     "title": "Medicine and Treatments — Amulets to Antibiotics",
+     "text": "The first galleries set ancient and modern side by side on purpose. Egyptian and Greek medicine, humoral theory, amulets against plague, trepanning tools — skulls in the collection show the holes, and the healed bone around them proving patients survived — sit in conversation with vaccination, anaesthesia and antibiotics. The point is not to laugh at the past: bloodletting made sense inside its theory, and some of our certainties will look like amulets in a century. Look for Jenner-era vaccination material, early anaesthetic apparatus — ether and chloroform turned surgery from a speed contest into a craft — and the penicillin story retold here at human scale, patient by patient, where downstairs it was a mould in a case."
+    },
+    {
+     "title": "Faith, Hope and Fear — The Art Commissions",
+     "text": "Interspersed through the galleries are contemporary art commissions that wrestle with what it means to be a patient now — most strikingly Marc Quinn's Self-Conscious Gene, a monumental bronze figure of Rick Genest, the model known as Zombie Boy, whose full-body tattoos are reimagined as a map of his own anatomy and illness. Eleanor Crook's wax saints and surgical votives, and works exploring dementia, prosthetics and transplantation, keep the galleries from becoming a triumphal march of instruments. Medicine, these rooms insist, is also fear, hope, faith and the experience of being looked at — the patient as a person, not a problem. It is the museum's newest masterpiece of tone: rigorous about objects, tender about people."
+    },
+    {
+     "title": "Surgery — From Speed to Precision",
+     "text": "The surgical displays chart the craft of repair in steel: amputation kits from the age when a good surgeon was a fast one — Robert Liston could take a leg off in under three minutes, and his most famous operation's mortality, legend says, reached 300 per cent — through Lister's carbolic spray and antisepsis, to gleaming 20th-century instrument sets and the first replacement joints. Prosthetic limbs tell the parallel story from the patient's side: wooden legs, articulated hands, and modern carbon running blades, each generation less apologetic than the last. Gleaming and grisly in equal measure, this is the section visitors photograph most and forget least. Give it time; it recalibrates your gratitude for anaesthesia more thoroughly than any textbook."
+    },
+    {
+     "title": "Diagnosis — X-Rays, MRI and Seeing Inside",
+     "text": "The final Wellcome theme is seeing without cutting. Early X-ray tubes — beautiful, fragile glass that burned its pioneers — lead to the first CT and MRI scanners' hulking ancestors, ultrasound, and the endoscopes that turned the body into a landscape to be navigated by camera. The gallery pairs machines with images: the first X-ray of a hand, Bertha Röntgen's, with her wedding ring floating on bone, which she reportedly met with a premonition of death. Diagnosis changed medicine's centre of gravity — from the doctor's hands and ears to the image on a screen — and these rooms let you watch that shift happen, object by object, across one floor."
+    }
+   ],
    "image": "images/science-museum/05.jpg",
-   "text": "Upstairs, the tone changes from machines to bodies. Medicine: The Wellcome Galleries, opened in 2019, are among the largest medical displays in the world: five galleries and more than 3,000 objects tracing how humans have understood sickness and healing from ancient Egypt to the age of genome sequencing. Much of the raw material comes from one man's magnificent obsession. Henry Wellcome, the pharmaceutical magnate, spent a fortune collecting the entire material culture of medicine — and the results are gloriously eclectic. Keep your eyes open for two small objects with famous owners: Napoleon's toothbrush, ornate and silver-gilt, and Charles Darwin's walking stick, its handle carved as a skull — a memento mori its owner contemplated on his walks while evolution took shape in his head. Between those poles, the galleries do serious work beautifully: gleaming surgical instruments and prosthetic limbs that chart the craft of repair; the story of vaccination, antibiotics and the discovery of penicillin; diagnostic machines from early X-rays to the first MRI scanners; and contemporary art commissions that wrestle with what it means to be a patient now. Give this floor longer than you planned. It's the museum's newest masterpiece, and the one visitors most often say they underestimated.",
-   "title": "Medicine: The Wellcome Galleries"
+   "caption": "Medicine: The Wellcome Galleries — five rooms and more than 3,000 objects on the story of health and healing."
   },
   {
-   "caption": "The Flight gallery — a hangar of full-size aircraft suspended three floors up, from biplanes to a Boeing 747 cross-section.",
-   "directions": "From Flight, come down one floor to Level 2 for the Clockmakers' Museum and Information Age.",
-   "image": "images/science-museum/06.jpg",
-   "text": "Now head up to Level 3 and walk into a hangar that has no business being inside a museum. The Flight gallery, first opened in 1963, packs full-size aircraft into the top of the building, suspended from the roof and stacked on the floor, so you walk in among wings, propellers and fuselages from the first half-century of powered flight. The star hangs near the centre: the Vickers Vimy in which John Alcock and Arthur Brown made the first non-stop crossing of the Atlantic in June 1919, flying 16 hours from Newfoundland to a bog in Ireland just eight years after... well, sixteen years after the Wright brothers first left the ground at all. Around it, find the fighters of the Second World War — a Supermarine Spitfire and a Hawker Hurricane, the pair that defended Britain in 1940 — and, poignantly, Amy Johnson's de Havilland Gipsy Moth, Jason, in which she flew solo from England to Australia in 1930, one of the great feats of the golden age of aviation. Don't miss the cross-section of a Boeing 747, sliced open so you can see how a jumbo jet is layered — seats, cargo, fuel and all — or the wall of aero engines showing how piston gave way to jet. Walk the gallery's length slowly and the story assembles itself: canvas and string to aluminium and jet fuel in under fifty years.",
-   "title": "Flight: A Hangar in the Sky"
+   "title": "Medicine II: Minds, Public Health and Everyday Care",
+   "intro": "Stay on Level 1 a little longer for the Wellcome story's second half — the medicine of populations and minds rather than individuals: epidemics mapped, water cleaned, teeth drilled, glasses ground. It is less glamorous than surgery and has saved far more lives.",
+   "subchapters": [
+    {
+     "title": "Public Health — Cholera, Sewers and the Map",
+     "text": "The public-health displays tell medicine's greatest detective story: John Snow mapping cholera deaths around London's Broad Street pump in 1854 and having the handle removed — the founding parable of epidemiology, retold here with maps and the water companies' filthy evidence. Around it: the sanitary revolution of sewers and clean water, vaccination campaigns, the long war on tuberculosis in sanatoria and posters, and the smoking story told in cigarette cards and warnings. The gallery's argument is statistical and proud of it: drains, vaccines and data have saved more lives than all the surgeons in the previous chapter combined. In a museum of heroic objects, the hero here is a map — and a removed pump handle."
+    },
+    {
+     "title": "The Mind — Asylums, Shell Shock and Talking Cures",
+     "text": "A quieter section takes on mental health: the instruments and restraints of the asylum age, displayed with care and context; shell shock's films and treatments from the First World War; the rise of psychoanalysis — Freud's London is a few miles north — and the pharmacological era of antidepressants and antipsychotics, with its genuine rescues and genuine controversies. Patient voices, letters and art carry much of this section, deliberately: the history of psychiatry told only through doctors' tools would repeat the field's oldest mistake. It is the Wellcome Galleries at their bravest, and visitors linger here unexpectedly long. If your time on this floor is short, do surgery fast and this slowly; the questions here are the ones still open."
+    },
+    {
+     "title": "Everyday Medicine — Teeth, Eyes and the Medicine Cabinet",
+     "text": "The everyday cases are a nostalgia trap with a serious core: dentists' drills from treadle to turbine, the chair nobody forgets; spectacles from rivet glasses to contact lenses; hearing aids disguised as furniture; and the domestic medicine cabinet across a century — tonics, powders, and patent cures that were mostly alcohol and confidence. Napoleon's toothbrush, back in its context here, shows hygiene as aristocratic luxury becoming mass habit within two generations. Darwin's skull-handled stick belongs to this world too — illness as a Victorian gentleman's daily companion. The section's charm is recognition: your grandparents' bathroom shelf, curated. Its point is that most medicine, most of the time, is not hospitals at all — it is this, at home, self-administered."
+    },
+    {
+     "title": "Birth, Death and the Body's Milestones",
+     "text": "Birth and death frame the floor's human story: obstetric forceps, once a family secret of the Chamberlen dynasty, kept hidden for a century while women died for lack of them — a case study in how not to share an invention; incubators for premature babies, first exhibited, astonishingly, as fairground attractions that funded the care; and the material culture of mourning and anatomy at the other end of life, from mourning jewellery woven with hair to the anatomists' models in wax and papier-mâché that taught students before bodies were legally available. The Wellcome Collection's breadth is the only reason one floor can hold a forceps, a fairground incubator and a wax Venus in conversation. Leave this floor slowly; it is the one visitors most often say they underestimated."
+    }
+   ]
   },
   {
-   "caption": "The Clockmakers' Museum — the world's oldest collection of clocks and watches, kept by the Clockmakers' Company since the 1630s.",
-   "directions": "The Information Age gallery is on the same floor, Level 2 — look for the giant Rugby tuning coil.",
+   "title": "Mathematics: The Winton Gallery",
+   "intro": "Level 2 opens with the museum's most beautiful room — a Zaha Hadid gallery built around the mathematics of airflow, where a 1929 aeroplane hangs in sculpted white waves and 120 objects argue that maths is not a school subject but the hidden structure of trade, war, weather and life.",
+   "subchapters": [
+    {
+     "title": "The Handley Page Gugnunc and Hadid's Airflow",
+     "text": "Hanging at the gallery's centre is the Handley Page 'Gugnunc', a 1929 experimental aeroplane built for a competition to design safer aircraft, its slotted wings an early answer to stalling. Zaha Hadid Architects wrapped the whole gallery around it: great white sculptural waves flow from the plane's wings, visualising the airflow equations — the floor plan, the display cases, even the benches follow the streamlines. It was Hadid's first permanent museum interior in Britain, opened in 2016, and it makes the gallery's argument before you read a word: mathematics is a physical force that shapes the world, and here it has shaped the room you are standing in. Walk around the plane and watch the waves recompose; the gallery is a graph you inhabit.",
+     "directions": "Take the stairs or lifts to Level 2 for Mathematics, Clockmakers' and Information Age."
+    },
+    {
+     "title": "Babbage, Again — The Analytical Engine Trial Piece",
+     "text": "The Winton Gallery holds Babbage's other ghost: a trial portion of the Analytical Engine, the general-purpose computer he conceived in the 1830s — with store, mill, and punched-card input borrowed from the Jacquard loom — and never finished. The portion built in his lifetime, assembled after his death by his son, represents about a seventh of the 'mill' alone, some 2,000 parts of beautiful, maddening precision. Ada Lovelace, who translated and vastly expanded a paper on it, saw what Babbage himself only half-said: such a machine might compose music and graphics if the relations could be expressed — the first vision of software. Between this trial piece and the Difference Engine downstairs, you have seen computing's entire 19th-century remains. Everything since is commentary, at scale."
+    },
+    {
+     "title": "Enigma, Astrolabes and Calculating Machines",
+     "text": "Around the gallery, 120 objects make maths' biography: a 17th-century Islamic astrolabe, the smartphone of medieval astronomy, computing prayer times and star positions in brass; an Enigma machine, its rotors turning letters into a code that Bletchley Park's mathematicians — Turing among them — turned back; Napier's bones and early slide rules; a differential analyser, Vannevar Bush's room-sized analogue computer of gears and discs that solved equations by turning; and the WISARD pattern-recognition machine of 1981, an early neural network that learned to recognise faces — artificial intelligence's British childhood, in a case. The gallery's groupings — people, trade, travel, war, life — keep asking the same question in different centuries: what did the numbers let them do?"
+    },
+    {
+     "title": "Money, Risk and the Architecture of Maths",
+     "text": "The least expected Winton stories are financial and architectural. Early calculating machines served banks and insurers; a 1987 IBM cash machine represents money becoming pure information; models and drawings show mathematics structuring buildings from Le Corbusier's Modulor proportions to the NatWest Tower's engineered curves, while a Perspex 'wind tunnel' of models recalls how, before computers, engineers tested buildings and bridges physically, with maths as the interpreter. Even gambling gets its case — probability was born in a correspondence about dice. The gallery's quiet triumph is to make a visitor who 'hates maths' spend twenty minutes inside it happily, because every object is a story first and an equation second. That was the design brief, and it works."
+    }
+   ]
+  },
+  {
+   "title": "The Clockmakers' Museum: Five Centuries of Ticking",
+   "intro": "Down the corridor is the quietest, most jewel-like gallery in the museum — the world's oldest collection of clocks and watches, kept by a City guild since the 1630s. Six hundred timepieces tick, chime and gleam here; after the roar of the ground floor, let your ears adjust to a room that whispers in seconds.",
+   "subchapters": [
+    {
+     "title": "The Wells Cathedral Clock and the Oldest Mechanisms",
+     "text": "Start with the heavyweight you met in embryo downstairs: the movement of the Wells Cathedral clock, from around 1390, among the oldest surviving clock mechanisms anywhere — a great iron frame of gears that once struck the hours for medieval Somerset, built when a mechanical clock was the most complex machine in most people's world. The Clockmakers' collection, assembled by the Worshipful Company of Clockmakers — the City of London guild chartered in 1631 — has been on display here since 2015, some 600 pieces spanning five centuries. Early verge-and-foliot movements, lantern clocks for the hall wall, and the first longcase clocks show time leaving the church tower and entering the home, one ticking room at a time.",
+     "directions": "The Clockmakers' Museum is on Level 2."
+    },
+    {
+     "title": "Tompion, Harrison and the Longitude",
+     "text": "From there, watch precision become an obsession. Thomas Tompion, the father of English clockmaking, made longcase clocks of such quality that one stands in this collection as the guild's pride; his protégé George Graham perfected the deadbeat escapement and the mercury pendulum. Then the longitude story, the gallery's epic: John Harrison spent a lifetime building marine timekeepers — H4, his sea watch of 1759, kept time so well on a voyage to Jamaica that it solved the longitude problem and earned, after a parliamentary fight, the great prize. A clock that could survive a sea voyage to seconds was worth a fortune because a ship's position — and its survival — depended on it. The gallery tells it in the metal itself."
+    },
+    {
+     "title": "Watches — Time Becomes Personal",
+     "text": "The watch cases shrink the story to the pocket and wrist: pair-cased verge watches in silver and gold, enamelled scenes, watches made for queens and for railwaymen — the latter's accuracy a safety system, after disasters taught railways that a guard's wrong minute could kill. John Arnold and Thomas Earnshaw miniaturised Harrison's lessons into chronometers that mapped the Empire's coasts; Swiss and English makers fought a century-long precision war in observatory trials. Look for the skeleton watches, movements exposed like the gallery's own argument — that beauty and accuracy are the same virtue seen from two sides. In a museum of enormous machines, this room of small ones makes a lovely contrast, and it connects directly to our next stop: once humanity could measure time exactly, it set about shrinking distance."
+    },
+    {
+     "title": "The Speaking Clock, Quartz and Atomic Time",
+     "text": "The final cases bring the tick into living memory: the Speaking Clock's original 1936 machinery and the voice of Ethel Jane Cain telling the nation the time at the third stroke; electric and quartz watches that killed the mechanical industry and then, as luxury, revived it; and the atomic clocks that now define the second itself — time no longer read from the Earth's wobbly spin but from caesium atoms, with GPS satellites broadcasting it to your phone. The Clockmakers' Company, founded to police a trade, now keeps a museum that ends by dissolving its own craft into physics. Stand a moment in the ticking hush: five centuries of seconds, all slightly disagreeing, in one room. It is the most peaceful gallery in South Kensington."
+    }
+   ],
    "image": "images/science-museum/07.jpg",
-   "text": "Come down to Level 2 and step into the quietest, most jewel-like gallery in the museum. The Clockmakers' Museum is the oldest collection of clocks and watches in the world, assembled by the Worshipful Company of Clockmakers — the City of London guild chartered in 1631 to govern the trade — and on display here since 2015. Six hundred and more timepieces tick, chime and gleam in the cases, spanning five centuries. Start with the heavyweights: the movement of the Wells Cathedral clock, from around 1390, is among the oldest surviving clock mechanisms anywhere — a great iron frame of gears that once struck the hours for medieval Somerset. From there, watch precision become an obsession: the longcase clocks of Thomas Tompion, the father of English clockmaking; the marine timekeepers of the longitude era, when a clock that could survive a sea voyage and keep time to seconds was worth a fortune, because a ship's position depended on it; and the pocket watches that turned time into a personal possession. The gallery rewards slow looking — enamel dials, skeleton movements, watches made for queens and for railwaymen. In a museum of enormous machines, this room of small ones makes a lovely contrast, and it connects directly to our next stop: because once humanity could measure time exactly, it set about shrinking distance instead.",
-   "title": "The Clockmakers' Museum: Five Centuries of Ticking"
+   "caption": "The Clockmakers' Museum — the world's oldest collection of clocks and watches, kept by the Clockmakers' Company since the 1630s."
   },
   {
-   "caption": "Information Age — six networks that shrank the world, from the telegraph cable to the smartphone in your pocket.",
-   "directions": "If Wonderlab is on your list, it's up on Level 3; otherwise begin drifting back toward the ground floor and the Wellcome Wing.",
+   "title": "Information Age: Six Networks That Shrunk the World",
+   "intro": "Also on Level 2, this gallery is built around a simple, brilliant idea: our connected world rests on six networks, and each gets its own island of objects — cable, broadcast, exchange, constellation, web and cell. A vast 1920s tuning coil presides, and a queen's first tweet gets a footnote.",
+   "subchapters": [
+    {
+     "title": "The Cable — The Victorian Internet",
+     "text": "The Cable network begins with the Victorian internet — the telegraph. Look for sections of the first transatlantic cables of 1858 and 1866, gutta-percha-insulated copper that let messages cross oceans in minutes instead of weeks; the 1858 cable failed within weeks, but the 1866 one, laid by Brunel's Great Eastern, the only ship big enough to carry it, worked — and the world shrank permanently. Samuel Morse's apparatus, Cooke and Wheatstone's railway telegraphs, and the pneumatic tubes that shot message canisters under London complete a network built of copper, clerks and codebooks. Stand over a cable section: it is thinner than your wrist, and it carried an empire's orders. Every fibre-optic strand under today's oceans is its direct descendant, doing the same job with light.",
+     "directions": "Information Age is on Level 2 — look for the giant Rugby Tuning Coil at its heart."
+    },
+    {
+     "title": "Broadcast and the Exchange",
+     "text": "Broadcast brings Guglielmo Marconi's early wireless gear — including apparatus from his first demonstrations — the first televisions, John Logie Baird's mechanical contraptions beside the electronic cameras that beat them, and the BBC's founding microphones; a network that spoke to everyone at once, and changed politics forever. The Exchange is a forest of telephone switchboards and Strowger switches that once clicked and clattered in every town — the automatic exchange, patented by an undertaker convinced operators were diverting his calls, let callers dial each other without human hands. Together the two islands tell the 20th century's twin stories: one voice to millions, and millions of voices to each other. Find the switchboard operators' headsets and imagine the gossip firewalls they represented."
+    },
+    {
+     "title": "The Rugby Tuning Coil and Constellation",
+     "text": "The gallery's monument is impossible to miss: the Rugby Tuning Coil, a vast wooden lattice wound with copper wire from the 1920s long-wave transmitter at Rugby, which beamed time signals and messages across the British Empire — industrial cathedral meets radio set, and a reminder that 'wireless' once needed architecture. Above and around it, the Constellation island rises with the satellites: models and hardware from Telstar, which relayed the first live transatlantic television in 1962, to the navigation and weather fleets. The coil and the satellite are the same idea at two scales — a signal, a network, a world listening — separated by forty years and the small matter of leaving the planet. Photograph them together if the sightline allows; the gallery was composed for exactly that shot."
+    },
+    {
+     "title": "Pilot ACE, the Web and the Queen's Tweet",
+     "text": "The computing heart of the gallery is the Pilot ACE, one of Britain's earliest stored-program computers, designed by Alan Turing at the National Physical Laboratory from 1945 and first run in 1950 — the oldest complete general-purpose electronic computer in Britain, all valves and mercury delay lines. The Web island brings Tim Berners-Lee's NeXT workstation's descendants and the first web servers' story; the Cell island ends at the smartphone in your pocket. And the royal footnote: this gallery was opened in 2014 by Queen Elizabeth II, who marked the occasion by sending her first-ever tweet from the museum — the network age receiving, at last, a sovereign's blessing, 138 characters at a time. From a cable thinner than your wrist to a queen on social media in one room: that is the Information Age's arc."
+    },
+    {
+     "title": "Colossus's Valve and the Secret Computers",
+     "text": "Look for a single sobering object: a valve from Colossus, the code-breaking computer built at Bletchley Park in 1943–44 to crack the German Lorenz cipher — 1,500 valves, reading paper tape at 5,000 characters a second, and secret for thirty years after the war, its machines dismantled on Churchill's orders. Britain built the world's first programmable electronic computer and then classified its own achievement, which is why the Pilot ACE nearby had to reinvent so much in public. The gallery handles the secrecy honestly — Tommy Flowers, the Post Office engineer who built Colossus against official scepticism, gets his due here. One valve, displayed like a relic, stands for the ten machines and the thousands of people history nearly forgot."
+    }
+   ],
    "image": "images/science-museum/08.jpg",
-   "text": "The Information Age gallery, here on Level 2, is built around a simple, brilliant idea: our connected world rests on six networks, and each gets its own island of objects. The Cable network begins with the Victorian internet — the telegraph — including sections of the first transatlantic cables and the equipment that let messages cross oceans in minutes instead of weeks. Broadcast brings Marconi's early wireless gear and the first televisions; the Exchange is a forest of telephone switchboards and Strowger switches that once clicked and clattered in every town; Constellation rises overhead with the satellites; the Web and the Cell bring the story to the smartphone in your pocket. The gallery's monument is impossible to miss: the Rugby Tuning Coil, a vast wooden lattice of copper wire from the 1920s long-wave transmitter that beamed signals across the British Empire — industrial cathedral meets radio set. This gallery has a royal footnote: it was opened in 2014 by Queen Elizabeth II, who marked the occasion by sending her first-ever tweet from the museum. Before you leave the floor, glance into the neighbouring Mathematics gallery, where a 1929 Handley Page aircraft hangs inside a flowing Zaha Hadid-designed landscape of equations — proof that even maths gets a blockbuster gallery in South Kensington.",
-   "title": "Information Age: Six Networks That Shrunk the World"
+   "caption": "Information Age — six networks that shrank the world, from the telegraph cable to the smartphone in your pocket."
   },
   {
-   "caption": "Inside the Science Museum — five floors of galleries around the central hall; Wonderlab, the hands-on favourite, is up on Level 3.",
-   "directions": "Exit through the Energy Hall; the Natural History Museum is next door on Exhibition Road, and South Kensington station is five minutes away.",
+   "title": "Flight: A Hangar in the Sky",
+   "intro": "Now head up to Level 3 and walk into a hangar that has no business being inside a museum — full-size aircraft suspended from the roof and stacked on the floor, so you walk in among wings, propellers and fuselages from the first half-century of powered flight. Canvas and string to jet fuel in fifty years, in one room.",
+   "subchapters": [
+    {
+     "title": "Alcock and Brown's Vickers Vimy",
+     "text": "The star hangs near the centre: the Vickers Vimy in which John Alcock and Arthur Brown made the first non-stop crossing of the Atlantic in June 1919, flying nearly sixteen hours from Newfoundland through fog, hail and a broken radio to a bog at Clifden in Ireland — sixteen years after the Wright brothers first left the ground at all. The Vimy, a converted bomber with Rolls-Royce Eagle engines, is the real aircraft, fabric and all. Stand under its wing and measure the courage: open cockpits, no radio, navigation by sextant, and a soft Irish bog as the planned best outcome. The £10,000 Daily Mail prize they won was the least of it; they had proven the ocean was a pond.",
+     "directions": "Head up to Level 3 for the Flight gallery."
+    },
+    {
+     "title": "Spitfire, Hurricane and the Battle of Britain",
+     "text": "Around it, find the fighters of the Second World War — a Supermarine Spitfire and a Hawker Hurricane, the pair that defended Britain in 1940. The Hurricane, fabric-skinned and forgiving, shot down more aircraft in the Battle of Britain; the Spitfire, R.J. Mitchell's elliptical-winged thoroughbred, became the legend. The gallery hangs them in company with the engines that powered them — Rolls-Royce Merlins sectioned to show their superchargers — and with the earlier Schneider Trophy seaplanes whose racing lines Mitchell carried into the Spitfire's design. Read the labels for the pilots' ages; many were younger than the students photographing them today. Flight galleries are usually triumphal; this one's best labels remember that the aeroplane's fastest development was driven by its worst use."
+    },
+    {
+     "title": "Amy Johnson's Jason and the Golden Age",
+     "text": "Don't miss Amy Johnson's de Havilland Gipsy Moth, Jason, in which she flew solo from Croydon to Darwin, Australia, in 1930 in nineteen and a half days — the first woman to do it alone, with a toolkit, a revolver against desert risks, and repairs made en route with whatever a small-town garage could offer. Jason's green fuselage is the genuine aircraft, bought by the museum after her flight. Johnson became a national heroine, flew for the Air Transport Auxiliary in the war, and died in 1941 ferrying an aircraft over the Thames Estuary, in circumstances still argued over. Around Jason, the golden-age machines — airliners, racers, a flying boat's elegance — show flight between the wars becoming glamorous, commercial and, in the right hands, gloriously individual."
+    },
+    {
+     "title": "The 747 Cross-Section and the Jet Age",
+     "text": "At the gallery's end, walk through the cross-section of a Boeing 747, sliced open so you can see how a jumbo jet is layered — passenger decks above, cargo and fuel below, miles of wiring and ducting in the walls — the aeroplane as a building that flies. The wall of aero engines nearby shows how piston gave way to jet: Frank Whittle's early jet engine, developed against official indifference in the 1930s, ran first in 1937 and powered the Gloster Meteor by 1944; the museum's jet story is a British parable of invention outrunning institutions. Walk the gallery's length slowly one last time and the story assembles itself: the Vimy needed a bog to land in; the 747 needs a city in the sky. Fifty years separate them, and they share a roof."
+    },
+    {
+     "title": "Schneider Trophy, Gipsy Moth's Cousins and the Cut-Away Engines",
+     "text": "A final sweep for the details most visitors miss: the Schneider Trophy seaplanes, especially the Supermarine S.6B that won the trophy outright for Britain in 1931 at over 340 miles per hour — the direct ancestor, via Mitchell and Rolls-Royce, of the Spitfire and the Merlin, so that a seaplane race effectively armed the RAF. The gallery's cut-away engines, sectioned and painted so each system reads in colour, are teaching models of the highest order; engineers still study them. And overhead, the earliest fragile machines — Lilienthal-influenced gliders and the Antoinette's elegance — remind you the whole gallery spans a single lifetime: someone who saw the Wrights' first hop as a child could have flown in a 747 as a pensioner. No other room in the museum compresses a revolution so completely."
+    }
+   ],
+   "image": "images/science-museum/06.jpg",
+   "caption": "The Flight gallery — a hangar of full-size aircraft suspended three floors up, from biplanes to a Boeing 747 cross-section."
+  },
+  {
+   "title": "Science City and the World of the Instrument Makers",
+   "intro": "Back on Level 2, Science City 1550–1800 tells the prequel to everything downstairs: London becoming a city of instrument makers, coffee-house demonstrations and royal science — the two and a half centuries when the tools of the Industrial Revolution were invented, one brass instrument at a time.",
+   "subchapters": [
+    {
+     "title": "London, City of Instruments",
+     "text": "Between 1550 and 1800 London grew into the world's workshop for precision: compasses, globes, microscopes, telescopes, orreries and air pumps poured from workshops around Fleet Street and the Strand, bought by merchants, navigators and the new Royal Society, founded in 1660. Science City, opened in 2019, displays some 300 of these objects — many from the collection of King George III, a genuinely scientific monarch whose instruments came to the museum in the 19th century. The gallery's argument is that the Industrial Revolution's engines needed this first: a culture that could measure. Watt's engines in the Energy Hall were built to tolerances these London workshops invented. Walk it as the museum's basement chapter — the foundations, in brass and mahogany.",
+     "directions": "Science City is on Level 2, near the Clockmakers' Museum."
+    },
+    {
+     "title": "Orreries, Telescopes and George III's Collection",
+     "text": "Look for the grand orrery, the clockwork solar system in brass, planets circling at correct relative speeds under a maker's proud signature — part clock, part sermon on Newtonian order, and the drawing-room marvel of the age. George III's collection includes superb microscopes, air pumps and electrical machines, and the king's own philosophical table; Herschel's telescopes connect the gallery to the discovery of Uranus in 1781, made with a homemade reflector in Bath. These were luxury goods and research tools at once, sold from shop windows to a public that attended lectures for fun. The craftsmanship is the content: when an instrument is this beautiful, a culture is telling you what it values."
+    },
+    {
+     "title": "The Air Pump, the Electrical Machine and Public Science",
+     "text": "Two demonstration instruments rule this gallery's story. The air pump — Robert Boyle's and Robert Hooke's engine of experiment — let lecturers suffocate candles and mice in evacuated jars before paying audiences, the direct ancestor of Wright of Derby's painting you met at the National Gallery, and of every museum demo since, Wonderlab included. The electrical machine, spinning glass to spark and shock volunteers holding hands in a ring, made science a parlour entertainment and a public spectacle simultaneously. Science City insists, rightly, that modern science was born as much in these ticketed demonstrations as in laboratories: a paying public for wonder created the market, the makers, and eventually the museum you are standing in."
+    },
+    {
+     "title": "Navigation, Empire and the Price of Accuracy",
+     "text": "The instruments in this gallery sailed with the Empire and sometimes sank with it. Marine chronometers — Harrison's descendants, made by Arnold and Earnshaw in London workshops — turned longitude from a guess into a routine, and their trials at Greenwich were a national sport of accuracy. Surveying chains, theodolites and the great standards of length and weight kept here connect measurement to taxation, maps and railways: an inch, agreed and embodied in brass, is an instrument of government as much as of science. Look for the dividing engines that cut gear teeth and scales to hair's-breadth precision — machines that made machines, the unglamorous ancestors of every engine downstairs. Science City's deepest lesson is that precision is a social achievement: standards, workshops, customers and trust, all built in two centuries within a mile of this room."
+    }
+   ]
+  },
+  {
+   "title": "Wonderlab: The Museum at Play",
+   "intro": "If you're travelling with kids — or you're honest about being one — Wonderlab, up on Level 3, is the museum at play: a ticketed gallery of hands-on experiments, live shows and a chemistry bar. It is also, in the museum's own tradition since 1931, the point of the whole building — understanding by doing.",
+   "subchapters": [
+    {
+     "title": "Friction Slides, Lightning and the Chemistry Bar",
+     "text": "Wonderlab's greatest hits are physical in every sense: giant slides that demonstrate friction — ride them on mats of different materials and race the physics; a lightning demonstration crackling from a Tesla coil that you feel in your teeth; rotating mirrors, thermal cameras, and a chemistry bar where lab-coated explainers run live experiments you can join, from indicators to elephant's toothpaste. Live science shows run through the day in the gallery's theatre spaces, and the explainers — the museum's secret weapon since the Children's Gallery era — are trained to answer a seven-year-old and a professor in the same sentence. Book ahead on busy days; Wonderlab sells out, and timed entry keeps the hands-on stations usable rather than mobbed.",
+     "directions": "Wonderlab is on Level 3, near Flight. It is ticketed — book ahead on busy days."
+    },
+    {
+     "title": "The Garden, Pattern Pod and the Youngest Scientists",
+     "text": "For younger children the museum hides two free gems. The Garden, in the basement, is a water-and-construction playground for under-fives — boats, cranes, dams and a great deal of joyful splashing, science as sensory play. Pattern Pod, on the ground floor for ages five to eight, builds mathematics from symmetry, tiling and kaleidoscopes — the Winton Gallery's themes at rug height. Together with Wonderlab they complete the museum's ladder: splash at three, patterns at six, chemistry at ten, Babbage at any age. If you are visiting as a family, work the ladder in order and let the historic galleries be the rest stops; the museum was redesigned, over ninety years, to make exactly that day possible."
+    },
+    {
+     "title": "Engineer Your Future and Technicians",
+     "text": "Near Wonderlab, the Engineer Your Future gallery — games, simulators and real engineers' stories aimed squarely at teenagers choosing subjects — and the Technicians gallery, which puts the spotlight on the skilled hands behind film sets, Formula 1, medicine and music production, carry the museum's other founding mission: recruitment. South Kensington was built to train Britain's scientists and engineers, Imperial College still next door, and these galleries are the modern prospectus. Even if your school days are long past, the technicians' benches — prosthetics workshops, racing-car bays recreated — are fascinating, and they correct the lone-genius story the older galleries sometimes tell. The modern world downstairs was made by teams; these rooms finally name them."
+    },
+    {
+     "title": "Why Hands-On Works",
+     "text": "Wonderlab is not the historic galleries with buttons added; it is a different theory of learning, and the museum has tested it longer than anyone — since the Children's Gallery of 1931, whose dioramas and working models scandalised traditionalists and delighted everyone else. The evidence the museum trusts is visible any morning: children who have floated, spun, mixed and raced their way through this gallery walk into the Energy Hall afterwards and interrogate the engines instead of enduring them. If you are visiting without children, come anyway and watch the explainers work — a good Wonderlab demonstration, timed, funny and exactly pitched, is a small masterpiece of science communication. Then try the friction slide yourself. Rank has no privileges in physics."
+    }
+   ]
+  },
+  {
+   "title": "Wrap-Up: The Wellcome Wing and Farewell",
+   "intro": "Our tour ends at the museum's west end, in the glass Wellcome Wing — IMAX screen, touring exhibitions, and the museum looking forward rather than back. Step out into Exhibition Road and consider what this building pulled off in one visit: the whole modern world, in original hardware.",
+   "subchapters": [
+    {
+     "title": "The Wellcome Wing, IMAX and Special Exhibitions",
+     "text": "The Wellcome Wing, opened in 2000 at the museum's west end, holds the IMAX cinema — documentaries on a screen the height of four double-deckers, science films as spectacle in the direct line of the 1851 Exhibition's showmanship — and the museum's big touring exhibition spaces, so check what's on: the Science Museum's special exhibitions, from space photography to science fiction, are reliably excellent and reliably busy. The Wing's own permanent displays have changed over the years, from the Who Am I? genetics gallery onward, as the museum refreshes its contemporary science. Treat the Wing as the museum's newspaper: today's headlines, where the historic galleries are its library. If a headline exhibition catches you, book it for the end of the day and let the crowds thin."
+    },
+    {
+     "title": "What This Building Argued",
+     "text": "Step back and consider what this building pulled off: in one visit you've stood beside the engine that industrialised the world, the locomotive age in embryo, the capsule that rehearsed the Moon landing, Babbage's brass computer, Fleming's mould, Napoleon's toothbrush and the coil that wired an empire. That's the Science Museum's argument, made in objects rather than words: the modern world wasn't inevitable — it was invented, piece by piece, by people whose actual tools are sitting in these rooms, quarrels, funding crises, accidents and all. Almost every label today contained a failure, a rival, or a lucky spore. Invention, this museum teaches better than any other, is a human habit, not a lightning bolt — which means it is available to the visitors now pouring into Wonderlab."
+    },
+    {
+     "title": "South Kensington and the Way Out",
+     "text": "If the day still has legs, the Natural History Museum is literally next door, and the Victoria and Albert is across the road — South Kensington may be the greatest museum neighbourhood on Earth, and it all stands on the Great Exhibition's profits, as you now know. South Kensington station is five minutes away, with the pedestrian tunnel running straight to the museum quarter. Thanks for walking with me — from a locked attic in Birmingham to a scorched capsule from the Moon, by way of a shaking gallery of clocks and a hangar in the sky. Exit through the Energy Hall if you can, and give Old Bess a nod on your way out. She started all of this — the modern world, and your day in it."
+    },
+    {
+     "title": "The Shop, the Cafés and a Last Look",
+     "text": "Practical farewells: the main shop by the exit is strong on books, kits and models — the museum publishes well, and a Babbage or Apollo souvenir here is at least thematically honest — and cafés on several floors mean you never had to leave the building hungry, which, given the size of the place, is a genuine service. If you have twenty minutes left and energy for one more room, the museum's own staff would mostly send you back to one of two places: Watt's workshop, for intimacy, or the Flight gallery's Vimy, for scale. Both are good answers. The better answer is whichever room you rushed. Go back, stand still, and let one object finish its story."
+    }
+   ],
    "image": "images/science-museum/09.jpg",
-   "text": "If you're travelling with kids — or you're honest about being one — Wonderlab, up on Level 3, is the museum at play: a ticketed gallery of hands-on experiments with live science shows, a chemistry bar, giant slides that demonstrate friction, and a lightning demonstration crackling from a Tesla coil that you feel in your teeth. Book it ahead on busy days; it sells out. The Wellcome Wing, at the museum's west end, holds the IMAX cinema and the museum's big touring exhibitions, so check what's on — the Science Museum's special exhibitions are reliably excellent. And with that, our tour is done. Step back and consider what this building pulled off: in one visit you've stood beside the engine that industrialised the world, the locomotive age in embryo, the capsule that rehearsed the Moon landing, Napoleon's toothbrush and the coil that wired an empire. That's the Science Museum's argument, made in objects rather than words: the modern world wasn't inevitable — it was invented, piece by piece, by people whose actual tools are sitting in these rooms. If the day still has legs, the Natural History Museum is literally next door, and the Victoria and Albert is across the road. South Kensington may be the greatest museum neighbourhood on Earth. Enjoy it.",
-   "title": "Wonderlab and Wrap-Up"
+   "caption": "Inside the Science Museum — five floors of galleries around the central hall; Wonderlab, the hands-on favourite, is up on Level 3."
   }
  ],
  "dayLabel": "Sunday",
@@ -87,7 +381,9 @@
  "sources": [
   "https://www.sciencemuseum.org.uk/",
   "https://en.wikipedia.org/wiki/Science_Museum,_London",
-  "https://www.sciencemuseum.org.uk/visit"
+  "https://www.sciencemuseum.org.uk/visit",
+  "https://www.sciencemuseum.org.uk/see-and-do/making-modern-world",
+  "https://collection.sciencemuseumgroup.org.uk/"
  ],
  "subtitle": "Steam engines, the Apollo 10 capsule, and 250 years of inventions that changed everything",
  "title": "The Science Museum"

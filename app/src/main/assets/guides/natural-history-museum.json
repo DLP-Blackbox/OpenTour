@@ -2,73 +2,395 @@
  "area": "London",
  "chapters": [
   {
-   "caption": "Alfred Waterhouse's terracotta palace (opened 1881) — look for the animals carved into its very walls.",
-   "directions": "Enter via the Cromwell Road main entrance, which brings you directly into Hintze Hall.",
+   "title": "Welcome: A Cathedral of Nature",
+   "intro": "Before you go in, stand across Cromwell Road and take in the building — here the container is half the exhibition. This is a cathedral built for specimens instead of saints, and its stonework is already telling you what is inside. Get your bearings by colour zone, then come in and look up.",
+   "subchapters": [
+    {
+     "title": "Waterhouse's Terracotta Palace",
+     "text": "The Natural History Museum opened in 1881, designed by Alfred Waterhouse, and it is quite deliberately a cathedral — a cathedral of nature. This was the vision of Richard Owen, the great anatomist who coined the word 'dinosaur': he wanted a temple to the variety of creation, grand enough to hold the natural history collections that had outgrown the British Museum in Bloomsbury. Waterhouse gave him a Romanesque palace clad in terracotta — chosen because it resists London's sooty air and can be washed clean — stretching over 200 metres along Cromwell Road. Every arch, gable and tower is part of the sermon: nature, the Victorians believed, deserved architecture as serious as any church.",
+     "directions": "Enter via the Cromwell Road main entrance, which brings you directly into Hintze Hall."
+    },
+    {
+     "title": "The Animals Carved in the Walls",
+     "text": "Run your eyes along the facade and the building becomes an index. Monkeys climb columns, pigeons and fish fill the arches, and extinct creatures — pterodactyls, ichthyosaurs, a dodo — peer from the stonework. There is a code to it: the west wing carries extinct species, the east wing living ones, so the building itself maps life and loss before you reach a single case. Inside, the theme continues in the terracotta monkeys scrambling over the arches of Hintze Hall. Waterhouse worked from the museum's own specimens to model many of them. Look for the armadillo and the aardvark — the Victorians' favourite alphabet of animals, carved to be read by children who might never see the real things."
+    },
+    {
+     "title": "Eighty Million Specimens",
+     "text": "Inside are some 80 million specimens — but hold that number the right way. You will see a few thousand; the rest form a working library of life on Earth: 27 kilometres of shelving in the Darwin Centre alone, jars of creatures preserved in spirit, drawers of beetles, herbarium sheets pressed by Joseph Banks's collectors. Behind the scenes this is one of the world's great research institutes, with hundreds of scientists working on malaria, meteorites, biodiversity loss and species nobody has named yet. Specimens collected a century ago are still yielding new species and new data — DNA, pollution records, shifting ranges. The galleries are the shop window; the collection is the stockroom of the planet."
+    },
+    {
+     "title": "The Four Colour Zones",
+     "text": "The galleries are colour-coded, and learning the code is learning the building. Blue Zone, to the west, is life at its largest and most familiar — dinosaurs and mammals. Green Zone, around and above Hintze Hall, follows evolution and the living world — birds, marine reptiles, minerals, treasures. Red Zone, to the east through the great globe, is the Earth itself — volcanoes, earthquakes, human evolution. Orange Zone, at the far west, is the working museum — the Darwin Centre and the gardens. This tour threads the best of all four in the order you'd naturally walk them, starting under the whale and ending in the garden. If you get lost, return to Hintze Hall; everything radiates from there."
+    },
+    {
+     "title": "Richard Owen, Darwin and the Argument",
+     "text": "Two men haunt this building. Richard Owen founded it, coined 'Dinosauria' in 1842, and fought evolution by natural selection with every weapon he had. Charles Darwin, whose theory Owen resisted, now sits in white marble at the top of the grand staircase, placed there in 2009 for the bicentenary of his birth, while Owen's own statue was moved to a less central spot. There's something very British, and very hopeful, about that rearrangement: the cathedral built by evolution's greatest critic became the place that proved evolution to the public. Keep both men in mind as you walk — the specimens ahead are the evidence in their argument, and the evidence won."
+    }
+   ],
    "image": "images/natural-history-museum/hero.jpg",
-   "text": "Before you go in, stand across Cromwell Road and take in the building, because here the container is half the exhibition. The Natural History Museum opened in 1881, designed by Alfred Waterhouse, and it is quite deliberately a cathedral — a cathedral of nature. This was the vision of Richard Owen, the great anatomist who coined the word 'dinosaur': he wanted a temple to the variety of creation, grand enough to hold the natural history collections that had outgrown the British Museum. Waterhouse gave him a Romanesque palace clad in terracotta — chosen because it would survive London's sooty air — and then covered it in animals. Run your eyes along the facade: monkeys, pigeons, fish and extinct creatures are carved into the arches and columns, and there's a code to it. The west wing carries extinct species; the east wing, living ones — the building itself is an index of life and loss. Inside are some 80 million specimens, though you'll see a tiny, carefully chosen fraction; behind the scenes this is one of the world's great research institutes, with hundreds of scientists working on everything from malaria to meteorites. The galleries are colour-coded into zones — Blue for dinosaurs and mammals, Red for the Earth, Green for birds and creepy-crawlies, Orange for the Darwin Centre — and this tour threads the best of them. Come in through the main Cromwell Road entrance. You're about to meet a whale.",
-   "title": "Welcome: A Cathedral of Nature"
+   "caption": "Alfred Waterhouse's terracotta palace (opened 1881) — look for the animals carved into its very walls."
   },
   {
-   "caption": "Hope, the 25-metre blue whale skeleton, diving through Hintze Hall since 2017.",
-   "directions": "The Dinosaurs gallery is on the ground floor to the left (west) of Hintze Hall.",
+   "title": "Hintze Hall: Hope the Blue Whale",
+   "intro": "Walk in and look up — then keep looking, because this hall is a gallery in itself, not just a lobby. A diving whale overhead, a cabinet of wonders in the bays, painted plants on the ceiling and Darwin on the stairs: the museum puts its whole argument in its entrance hall.",
+   "subchapters": [
+    {
+     "title": "Hope, Diving Overhead",
+     "text": "Suspended from the ceiling, diving toward you through the Romanesque arches, is Hope: a 25.4-metre skeleton of a blue whale, the largest animal known ever to have lived. Hope's story begins in 1891, when this young female stranded on a sandbank at Wexford in Ireland; the museum bought her skeleton for £250, and for decades she hung in the Mammals gallery. In 2017 she was moved here in a daring pose — head down, flippers back, as if feeding at depth — taking pride of place from Dippy the Diplodocus. The swap was a statement: out went an extinct giant, in came a living species humans hunted nearly to extinction and then pulled back. Hence the name.",
+     "directions": "Look up as you enter Hintze Hall from Cromwell Road — Hope hangs the length of the hall."
+    },
+    {
+     "title": "Dippy, Fern and the Whale That Replaced a Dinosaur",
+     "text": "For 112 years the hall belonged to Dippy, a plaster cast of a Diplodocus sent by Andrew Carnegie in 1905, so beloved that his removal in 2017 made national news. Dippy toured Britain's museums to queues everywhere, and a bronze version, nicknamed Fern, now stands in the museum's gardens — so the dinosaur never really left, he just moved outside. The curators' logic is worth hearing in the hall itself: a real skeleton of a real, recoverable species says more about the museum's mission now than a plaster extinct one. Stand at the far end and compare silhouettes — the whale's skull is broad and flat, her ribs a cathedral vault of their own. Both giants, one message each: extinction, and hope."
+    },
+    {
+     "title": "The Bays: A Cabinet of Wonders",
+     "text": "Don't rush through; the hall's side bays hold a hand-picked cabinet of wonders, ten alcoves of greatest hits. Look for an American mastodon, an elephant's smaller extinct cousin from the ice ages; an Atlantic blue marlin frozen mid-leap; a giant ground sloth rearing up; a giraffe's towering specimen; and Mantellisaurus, one of the most complete British dinosaurs, found on the Isle of Wight in 1914 and displayed here in its own case — 80 to 90 per cent real bone, and the type specimen its whole species is defined by. There is also a slice of a giant sequoia, felled in California in 1892 and marked with the dates of British history across its rings — a tree that was already old when this museum's oldest specimens were alive."
+    },
+    {
+     "title": "The Painted Ceiling and the Staircase",
+     "text": "Look up again before you leave — past the whale, the ceiling carries 162 hand-painted panels of plants from around the world, cotton, tea, cocoa and conifers among them, a Victorian botany lesson in the roof. The grand staircase at the end is watched over by the seated Charles Darwin, sculpted by Joseph Boehm and moved to this centre-stage position in 2009. On the landing walls, portraits of the museum's founders and keepers keep an eye on the crowds. The hall was renamed for Michael Hintze, the philanthropist whose gift restored it for the whale's arrival in 2017. Everything here — whale, ceiling, statue — is the museum introducing itself: life, plants, and the man who explained them."
+    },
+    {
+     "title": "The Giraffe, the Marlin and Reading a Skeleton",
+     "text": "Take one bay slowly and practise reading a skeleton, because you will meet dozens today. The giraffe shows how a mammal stretches a standard plan — same seven neck vertebrae as you, each one elongated — while the marlin shows a fish built for speed, all thrust and fin. Hope overhead rewards the same attention: her flipper bones are recognisably a hand, fingers and all, the land-mammal inheritance whales carried back into the sea. That is evolution you can see without a label, and it is why the museum hangs a mammal, not a dinosaur, over its door in the 21st century. When you reach the Mammals gallery later, compare this airy skeleton with the full-bodied blue whale model waiting there."
+    }
+   ],
    "image": "images/natural-history-museum/01.jpg",
-   "text": "Walk in, and look up. Suspended from the ceiling of Hintze Hall, diving toward you through the great Romanesque arches, is Hope: a 25-metre skeleton of a blue whale, the largest animal known ever to have lived on Earth. Hope's story begins in 1891, when this young female whale stranded on a sandbank at Wexford in Ireland; the museum bought her skeleton for £250, and for decades she hung in the Mammals gallery. In 2017 she was moved here, taking pride of place from a beloved predecessor — Dippy the Diplodocus, the plaster dinosaur who greeted visitors for over a century and is now out on long-term tour (a bronze Dippy, nicknamed Fern, stands in the gardens outside). The swap was a statement: out went an extinct giant, in came a living species that humans hunted to the edge of extinction and then, through conservation, pulled back — hence the name Hope. Don't rush through the hall; it's a gallery in itself. Around the bays you'll find a hand-picked cabinet of wonders: an American mastodon, an Atlantic blue marlin frozen mid-leap, one of the most complete British dinosaurs, a Mantellisaurus, and a piece of rock older than almost anything on the planet. Look up again before you leave — the ceiling carries 162 hand-painted panels of plants from around the world, and the grand staircase is watched over by a seated Charles Darwin, placed centre-stage in 2009, the bicentenary of his birth.",
-   "title": "Hintze Hall: Hope the Blue Whale"
+   "caption": "Hope, the 25-metre blue whale skeleton, diving through Hintze Hall since 2017."
   },
   {
-   "caption": "A Tyrannosaurus rex skull — the gallery also holds part of the first T. rex skeleton ever discovered.",
-   "directions": "Return toward Hintze Hall, then cross to the Exhibition Road side for Earth Hall — or take the East Entrance route past the gift shop.",
+   "title": "Treasures: Twenty-Two Objects in the Cadogan Gallery",
+   "intro": "Up the grand staircase, past Darwin, one small room holds the museum's desert-island disc selection: just 22 objects chosen from 80 million, spanning 4.6 billion years. It is the densest room in the building — give it twenty unhurried minutes and you will have met half the heroes of the rest of the tour.",
+   "subchapters": [
+    {
+     "title": "Guy the Gorilla at the Door",
+     "text": "Standing guard at the entrance is Guy, a western lowland gorilla who was London Zoo's most beloved resident from 1947 until his death in 1978 — famous for holding birds gently in his hands and for the crowds who sent him cards on his birthday, 30 May. His mounted specimen, made by the great taxidermists Rowland Ward, keeps his calm, appraising expression. Guy is not one of the 22 treasures; he is their guardian, and a reminder that this museum's specimens were often individuals with biographies. Londoners of a certain age still greet him by name. Beyond him, the Cadogan Gallery's ceiling is painted with a spreading tree of life made for Darwin's bicentenary — look up before you look down.",
+     "directions": "Climb the grand staircase in Hintze Hall to the first floor for the Cadogan Gallery."
+    },
+    {
+     "title": "Archaeopteryx — The Most Valuable Fossil Here",
+     "text": "Find the small slab of Bavarian limestone holding Archaeopteryx, the earliest known bird — the museum calls it the most valuable fossil in its collection. Found in the Solnhofen quarries of Germany in 1861, just two years after On the Origin of Species, it has flight feathers and wings alongside a dinosaur's teeth, clawed fingers and long bony tail: evolution caught mid-sentence. Richard Owen bought it for the British Museum for £700, and it became Exhibit A for Darwin's supporters. Only about a dozen Archaeopteryx specimens exist. This 'London specimen' is the type — the one the species is defined by — and its slab-and-counterpart fragility is why it sits in this treasury rather than a busy gallery."
+    },
+    {
+     "title": "Darwin's Pigeons and the First Edition",
+     "text": "Charles Darwin's pigeons look modest — stuffed domestic birds, a pouter, a fantail — and they are among the most important objects here. Back from the Beagle, Darwin bred pigeons obsessively, joining London pigeon clubs, to test how far selection could stretch one species; the first chapter of On the Origin of Species argues from these birds to all of nature. Beside them sits a first edition of that book, published 24 November 1859, its first printing sold out the same day. The museum's library holds hundreds of editions in dozens of languages. Feathers and print together: the experiment and the argument, in one case, still making converts."
+    },
+    {
+     "title": "Extinct Birds: Dodo, Great Auk and Moa",
+     "text": "Three cases mourn what is gone. The dodo is present as subfossil bones over a thousand years old, assembled from Mauritian marsh deposits — no complete skin survives anywhere. The great auk, a flightless northern 'penguin', is represented by a specimen collected on Papa Westray in Orkney in 1813; the species was extinct by the 1850s. And the moa of New Zealand appears as bone and skeleton — including the single fragment from which Owen, in 1839, correctly predicted a giant extinct flightless bird before ever seeing a whole bone, the triumph that made his reputation. Extinction in this room is not ancient history; two of these three birds vanished within living memory of the museum's founding."
+    },
+    {
+     "title": "Moon Rock, Blaschka Glass and Sloane's Nautilus",
+     "text": "The smallest treasure travelled furthest: a fragment of Moon rock from Apollo 17, the 1972 final Apollo mission, presented as a goodwill gift — a piece of the Taurus-Littrow valley in a London case. Near it, the Blaschka glass models of sea anemones and jellyfish, made by Leopold and Rudolf Blaschka in Dresden between 1876 and 1889, render creatures that fade to mush in preservative as perfect, permanent glass — techniques their makers took to the grave. And Hans Sloane's carved nautilus shell, from the collection whose purchase founded the British Museum in 1753, closes the circle: this entire museum exists because Sloane collected, and one of his shells still sits at its heart."
+    }
+   ]
+  },
+  {
+   "title": "Dinosaurs: Face to Face with the T. Rex",
+   "intro": "The blockbuster gallery, and it earns it: a raised one-way route through the age of reptiles, skeletons looming overhead, and at its heart a roaring robot that still makes adults step back. But the real stars are the genuine fossils — this museum, remember, invented the word dinosaur.",
+   "subchapters": [
+    {
+     "title": "The Animatronic Tyrannosaurus Rex",
+     "text": "The undisputed star still startles people: the animatronic Tyrannosaurus rex, which rears up, swings its massive head and roars as you approach, breathing and blinking in the gloom. It is theatre, yes — built at roughly two-thirds scale, its movements a best scientific guess — but theatre in a serious cause: to make you feel the scale of an animal no human ever saw alive. Around it, look for the genuine T. rex material the museum holds, including part of the first T. rex skeleton ever discovered, found in Montana in 1902 by Barnum Brown. The robot draws the crowd; the bones, quieter and darker, are the evidence. Give both their moment.",
+     "directions": "The Dinosaurs gallery is on the ground floor to the left (west) of Hintze Hall."
+    },
+    {
+     "title": "Triceratops, Horns and Armour",
+     "text": "Look for the horned skull of Triceratops, a three-horned, frill-necked herbivore the size of an elephant, whose great shield may have been for display as much as defence. Around it the gallery arranges dinosaur defences like an arms fair: the club-tailed ankylosaurs, plated and low-slung; the sail-backed spinosaurus relatives; stegosaurs with their paired back plates and spiked tails — the 'thagomizer', in the name science borrowed from a cartoon. The lesson the labels keep teaching is that most dinosaurs were plant-eaters and most of their hardware was about not being eaten, or about being noticed by their own kind. Predators were always the minority, here as in every ecosystem since."
+    },
+    {
+     "title": "Baryonyx — The Surrey Fish-Eater",
+     "text": "Seek out the very British predator: Baryonyx walkeri, dug from a Surrey clay pit at Ockley in 1983 by amateur fossil hunter William Walker, who first spotted its enormous thumb claw — baryonyx means 'heavy claw'. This crocodile-snouted, fish-eating theropod, about nine metres long, had a fish scale preserved where its stomach had been, the first direct proof of a dinosaur's diet, and it opened the door to the whole spinosaur family, later found to include the largest predatory dinosaur of all. Its discovery by an amateur in a brick pit, an hour from this gallery, is the museum's favourite kind of story: British mud, patient eyes, world-changing bones."
+    },
+    {
+     "title": "Iguanodon, Mantell and the First Dinosaurs",
+     "text": "The gallery's deepest roots are the Iguanodon material connecting to Gideon Mantell, the Sussex doctor who in 1822 — some say via his wife Mary Ann — recognised giant fossil teeth as belonging to an extinct iguana-like herbivore. Mantell's Iguanodon, William Buckland's Megalosaurus and the sea reptiles of Lyme Regis gave Owen the material to name Dinosauria in 1842. The early reconstructions got almost everything wrong — thumb spike placed on the nose, animals posed as lumbering lizards — and the gallery is honest about it, because that honesty is the science working. Compare the old Crystal Palace-style poses in the interpretation with the dynamic mounts around you: same bones, better questions."
+    },
+    {
+     "title": "How Dinosaurs Lived — Eggs, Herds and Feathers",
+     "text": "The far end of the gallery does the living, not just the dying: nests and eggs, including the story of Oviraptor, accused for decades of stealing eggs until one was found brooding its own; trackways that let scientists calculate herding and speed; growth series showing how fast young tyrannosaurs ballooned; and the feathered dinosaurs from China that settled the argument — birds are not descended from dinosaurs, they are dinosaurs, a point the gallery makes by ending within sight of the Birds gallery. A practical tip before you leave: this room queues at peak times, so if it is heaving on your way in, press on and circle back late in the day, when the school groups have gone and the T. rex roars for you alone."
+    }
+   ],
    "image": "images/natural-history-museum/02.jpg",
-   "text": "The Dinosaurs gallery is the museum's blockbuster, and it earns it. You walk a raised, one-way route through the age of reptiles, skeletons looming over and beside you, and the undisputed star still startles people half a century after the dinosaurs' renaissance began: the animatronic Tyrannosaurus rex, which rears up, swings its massive head and roars as you approach. It's theatre, yes, but theatre with a serious cast. Look for the genuine fossils the gallery is really about — including part of the first T. rex skeleton ever discovered, a reminder that this museum has been in the dinosaur business since the very beginning: the word 'dinosaur' itself was coined by this museum's founder, Richard Owen, in 1842. Seek out the horned skull of Triceratops, the sail-backed and the armoured giants, and the very British stories: Baryonyx, a fish-eating predator dug out of a Surrey clay pit in 1983, and the Iguanodon material that connects to Gideon Mantell, the Sussex doctor who recognised the first dinosaurs from teeth like an iguana's. The gallery does real science as it goes — how dinosaurs moved, ate, grew and raised young, and how birds are their living descendants. A practical tip: this gallery gets genuinely crowded, with a queue at peak times. If it's heaving, press on to the Earth galleries and circle back later in the afternoon, when the school groups have gone.",
-   "title": "Dinosaurs: Face to Face with the T. Rex"
+   "caption": "A Tyrannosaurus rex skull — the gallery also holds part of the first T. rex skeleton ever discovered."
   },
   {
-   "caption": "Sophie the Stegosaurus in Earth Hall — the most complete Stegosaurus skeleton ever found.",
-   "directions": "Ride the escalator up through the Earth sculpture to the Volcanoes and Earthquakes gallery.",
+   "title": "Fossil Marine Reptiles and British Fossils",
+   "intro": "Off Hintze Hall runs a quieter, older-fashioned gallery that many visitors miss — long wall cases of sea dragons from Lyme Regis, found by a working-class girl who changed science, and the giant sloth that helped Darwin think. This is palaeontology's founding generation, in bone.",
+   "subchapters": [
+    {
+     "title": "Mary Anning and the Ichthyosaur Skull",
+     "text": "In 1811, on the cliffs of Lyme Regis in Dorset, twelve-year-old Mary Anning and her brother Joseph found the skull and then the body of a strange sea creature — the first complete ichthyosaur recognised by science. The museum holds that first skull, Temnodontosaurus, in these cases. Mary Anning, poor, female and self-taught, became the greatest fossil hunter of her age, selling 'curiosities' to support her family while gentlemen geologists published her finds. She was, belatedly, given her due — a statue now stands at Lyme Regis — and this gallery is her monument in London: case after case of the sea reptiles she and her successors prised from the Jurassic cliffs."
+    },
+    {
+     "title": "Plesiosaurs — The First Complete Skeleton",
+     "text": "Anning's greatest single find came in 1823: the first complete plesiosaur skeleton, so strange that the great anatomist Georges Cuvier suspected a fake until he examined it — long neck, turtle-like body, four flippers, a creature Owen's generation struggled to believe. The museum's Attenborosaurus, named for Sir David Attenborough, is among the finest plesiosaur specimens anywhere, its paddle bones and gastroliths — stomach stones swallowed as ballast — preserved in detail. Ichthyosaurs in these cases include one with unborn young preserved inside her, evidence these sea reptiles gave birth to live young at sea. Look along the walls slowly; the slabs are dense, the lighting low, and every third stone contains a spine."
+    },
+    {
+     "title": "The Giant Ground Sloth",
+     "text": "Rearing at the gallery's end is Megatherium, the giant ground sloth of South America — six metres of extinct mammal, elephant-sized, that browsed on its hind legs. Charles Darwin collected sloth fossils on the Beagle voyage in the 1830s, and comparing these giants with the small tree sloths still living in the same forests was one of the threads that led him toward evolution: why should extinct giants resemble living locals, unless they were kin? The sloth here, and its smaller relative Mylodon — whose skin and dung Darwin's contemporaries marvelled at, preserved fresh-looking in a Chilean cave — make that argument in bone and hide. Stand underneath it; extinction feels different at this scale."
+    },
+    {
+     "title": "Fossils from Britain — The Swindon Stegosaur and Dacentrurus",
+     "text": "The British fossil cases tell a national story in stone: Dacentrurus, a stegosaur found in a Swindon brick pit in the 1870s and still among the largest stegosaur material in Europe; ammonites coiled like rams' horns from Whitby and Lyme; belemnites the Victorians called thunderbolts; fossil fish from the London Clay of Sheppey, when the Thames estuary was a tropical sea full of palms and turtles. Britain's rocks sample almost every chapter of life's history, which is why palaeontology was largely invented here. Many of these specimens were found not by professors but by quarrymen, canal diggers and railway navvies — the industrial revolution kept slicing fresh rock, and science learned to watch the cuttings."
+    },
+    {
+     "title": "The First Iguanodon Teeth and Owen's Dinosauria",
+     "text": "Among the smallest objects in the gallery are among the most consequential: the first Iguanodon teeth ever discovered, the ridged, leaf-shaped fossils Mantell matched to an iguana's in the 1820s. From such fragments — teeth, a femur, Buckland's jaw — Owen in 1842 reasoned his way to a whole new order of animals, defined by their upright, lizard-hipped stance, and named them Dinosauria, 'terrible lizards'. The word on every child's lips was coined over specimens in this collection. If the Dinosaurs gallery is the show, this quiet room is the archive that made the show possible — bring older children here and let them find the teeth that started everything."
+    }
+   ]
+  },
+  {
+   "title": "Birds and Creepy Crawlies — Wings, Eggs and Six Legs",
+   "intro": "The Green Zone's living galleries are the museum at its most Victorian and most vital: a dodo reconstructed from thousand-year-old bones, a cabinet of hummingbirds like spilled jewels, and the invertebrate multitudes most of the animal kingdom actually consists of. Small specimens, enormous numbers.",
+   "subchapters": [
+    {
+     "title": "The Dodo — Reconstructed from Bones",
+     "text": "The museum's dodo skeleton is a reconstruction from bones over 1,000 years old, dug from the Mare aux Songes marsh in Mauritius — no stuffed dodo survives anywhere, because the last ones were eaten, and their habitat trampled by pigs and rats, within a century of Dutch sailors arriving in 1598. The plump, hook-billed bird in the models nearby is itself partly guesswork, rebuilt from bones, sailors' accounts and a few paintings. That uncertainty is the exhibit: extinction so complete it erased even the evidence. The dodo was a giant flightless pigeon — DNA from museum specimens, including Oxford's famous head, settled that — and its name became the world's shorthand for avoidable loss.",
+     "directions": "Look for the Birds gallery off Hintze Hall in the Green Zone."
+    },
+    {
+     "title": "The Hummingbird Cabinet",
+     "text": "In the Birds gallery stands one of the museum's most dazzling Victorian survivals: a cabinet of hummingbirds, hundreds of tiny mounted specimens arranged like jewels, collected in the age when a hummingbird skin was a drawing-room treasure and a scientific specimen at once. John Gould, the great bird artist, assembled and exhibited such collections — his family monograph illustrated 360 species — and the iridescence is real physics, feather structures splitting light, not pigment. Stand close: gorgets flare emerald and ruby as you move, exactly as they did to rival males in life. Beside them, cases of eggs, nests and beaks teach the engineering — every bill in the gallery is a tool shaped to a flower, a fish, or a seed."
+    },
+    {
+     "title": "Audubon's Birds of America",
+     "text": "Look for plates from John James Audubon's The Birds of America, the double-elephant folio of the 1820s–30s that printed American birds life-size — herons and eagles sprawling across sheets nearly a metre tall. Audubon shot, wired and painted his subjects with operatic drama, and his book became the most famous bird book ever made; a plate also appears among the Treasures upstairs. The gallery's historic prints and paintings, the Images of Nature tradition, remind you that before photography, art was data. Compare an Audubon pose with the specimen in the next case: the drama was observed, then heightened — and several of his species, like the passenger pigeon, are now extinct, which turns his art into a record of loss."
+    },
+    {
+     "title": "Creepy Crawlies — The Majority of Animal Life",
+     "text": "The invertebrate displays make the museum's most important statistical point: most animal species have no backbone. Beetles alone account for a quarter of described animal species — prompting the biologist J.B.S. Haldane's quip that the Creator, if any, had an inordinate fondness for beetles. Look for the leafcutter ants' colony, tarantulas and scorpions under safe glass, a termite mound's architecture, and the parasitic wasps whose life cycles helped Darwin doubt a benevolent designer — he wrote that he could not persuade himself a beneficent God would have created them. Note that the old Creepy Crawlies gallery has been earmarked for renewal as a new family gallery, so displays may shift; the insects, in some form, always remain."
+    },
+    {
+     "title": "Butterflies, Moths and the Darwin Moth",
+     "text": "Among the Lepidoptera, look for the story of Darwin's moth: in 1862 Darwin examined a Madagascan orchid with a nectar spur nearly 30 centimetres long and predicted a moth with a tongue to match must exist; the hawkmoth Xanthopan praedicta — praedicta, the predicted one — was duly found decades later, its proboscis unrolling to the required length. Cases of morphos, birdwings and the enormous Attacus atlas moth show the group's range, while British moths make the ecological point: moths outnumber butterflies ten to one and pollinate through the night shift. The museum's entomology collection, millions strong, is a research tool for tracking exactly these insects as climates shift — pinned rows as a planetary instrument."
+    }
+   ]
+  },
+  {
+   "title": "Earth Hall: Through the Planet Itself",
+   "intro": "Cross to the east wing and change elements entirely — from life to the planet it lives on. A stegosaur stands guard, an escalator carries you through a glowing globe, and above you the Red Zone tells Earth's violent autobiography in lava, fossils and shaking floors.",
+   "subchapters": [
+    {
+     "title": "Sophie the Stegosaurus",
+     "text": "Earth Hall announces itself with a skeleton that stops everyone for a photograph — Sophie the Stegosaurus, the most complete Stegosaurus ever found, nearly every bone real, excavated in Wyoming in 2003 and unveiled here in 2014 after a mystery donor funded her purchase. Sophie is about 5.6 metres long, a young adult, her back plates and four tail spikes — the thagomizer again — arranged as in life. Scientists still argue about those plates: armour, display, radiator, or all three. Sophie's completeness let researchers scan her whole body and estimate her weight like a living animal, around 1,600 kilograms. She stands guard over the museum's best piece of showmanship, the escalator behind her.",
+     "directions": "Enter Earth Hall from the Exhibition Road side — Sophie is the first thing you see."
+    },
+    {
+     "title": "The Escalator Through the Earth",
+     "text": "Ride up through the giant metallic globe, its surface etched with constellations and its interior glowing red, so you quite literally travel through the Earth to reach the galleries above. The sculpture, by Neal Potter, turns a floor change into a thesis: everything upstairs — volcanoes, earthquakes, minerals, our own evolution — happened inside this. The escalator passes through a slit in the sphere, and the view back down through the globe to Sophie below is a stunner, so ride it slowly and look behind you. At night events the globe glows like a coal. It is the museum's second-best entrance effect after the whale, and it earns its drama honestly: scale, here, is the lesson."
+    },
+    {
+     "title": "Visions of Earth — The Avenue of Sculptures",
+     "text": "At the top, the Visions of Earth gallery lines the route with sculptures of the figures who made Earth science — and the myths that preceded it. Atlas shoulders his globe, and the scientists who first mapped deep time, from James Hutton, who read Scotland's rocks and saw 'no vestige of a beginning', to the seismologists who X-rayed the planet with earthquake waves, take their places in stone and bronze. It is a quiet, easily skipped gallery that repays a pause: geology is a young science, mostly younger than this building, and its heroes had to argue a reluctant world into accepting that Earth was billions, not thousands, of years old. The specimens upstairs are their evidence, arranged in order."
+    },
+    {
+     "title": "From the Beginning — Four and a Half Billion Years",
+     "text": "The From the Beginning gallery walks the whole timeline: the oldest rocks, some over four billion years old; stromatolites, layered mounds built by cyanobacteria that oxygenated the atmosphere; the first shells, fish, forests, tetrapods; and the five mass extinctions marked like chapters in a book that nearly closed. Look for the banded iron formations, rust-red rocks that are literally the rust of the young Earth, and for early fossil evidence of life from Australia and Greenland that scientists still debate grain by grain. This gallery is the Red Zone's foundation — everything else today, dinosaurs to humans, occupies only its final sliver. Touch the timeline rail as you walk: your whole species is the last millimetre."
+    },
+    {
+     "title": "Restless Surface and Lasting Impressions",
+     "text": "Two smaller Red Zone galleries reward hands and eyes. Restless Surface shows the Earth's skin being remade — rivers carving, glaciers grinding, coasts retreating — with specimens you can relate to a British cliff or beach. Lasting Impressions is the tactile one: a small gallery of rocks, fossils and minerals most of which you are actively invited to touch, polished stone, a fossil tree, textures the labels describe for visitors who read by hand. Museums are usually look-don't-touch; this room's honesty about it makes children and adults equally happy. Together the two galleries set up the drama upstairs: a surface that moves slowly here, and catastrophically in the next chapter."
+    }
+   ],
    "image": "images/natural-history-museum/03.jpg",
-   "text": "Now cross to the museum's east wing and change elements entirely: from life to the planet it lives on. Earth Hall announces itself with a skeleton that stops everyone for a photograph — Sophie the Stegosaurus, the most complete Stegosaurus ever found, nearly every bone real, excavated in Wyoming and unveiled here in 2014 after a mystery donor funded her purchase. Sophie stands guard over one of the great museum entrances: an escalator that carries you up through a giant metallic globe, its surface etched with the constellations, so you quite literally travel through the Earth to reach the galleries above. It's the museum's best piece of showmanship after the whale. At the top, the Red Zone tells our planet's violent story. In Volcanoes and Earthquakes you'll find the museum's most visceral exhibit: an earthquake simulator recreating the 1995 Kobe earthquake inside a shaking Japanese supermarket, tins rattling off the shelves as the floor bucks beneath you — thirty seconds that explain plate tectonics better than any textbook. Around it, the evidence accumulates: lava bombs and ash from real eruptions, seismometers tracing live tremors around the globe, and the story of how the Earth was built, layer by layer, from a molten ball to the thin green crust everything lives on. Take the escalator slowly on the way up. The view back down through the globe is a stunner.",
-   "title": "Earth Hall: Through the Planet Itself"
+   "caption": "Sophie the Stegosaurus in Earth Hall — the most complete Stegosaurus skeleton ever found."
   },
   {
-   "caption": "The Minerals Gallery — virtually unchanged since 1881, with The Vault guarding its greatest treasures at the far end.",
-   "directions": "The Human Evolution gallery is in the Green Zone, back toward the centre of the museum.",
+   "title": "Volcanoes, Earthquakes and Earth's Treasury",
+   "intro": "Upstairs in the Red Zone the planet stops being scenery and becomes an antagonist. You can stand in a shaking Kobe supermarket, watch live seismometers scratch, handle the evidence of eruptions — and then, in a dim treasury next door, see what the violence crystallises into: gems.",
+   "subchapters": [
+    {
+     "title": "The Kobe Earthquake Simulator",
+     "text": "The museum's most visceral exhibit recreates the morning of 17 January 1995 inside a Japanese supermarket: shelves stocked, tins lined up — then the floor bucks, goods rattle off the shelves and thirty seconds explain plate tectonics better than any textbook. The Great Hanshin earthquake killed over 6,000 people in Kobe; the simulator is respectful, factual and unforgettable, especially for children who have never felt the ground move. Around it, the gallery lays out the evidence: seismometers tracing live tremors around the globe on scrolling drums, fault models you can crank, and the story of how the Earth was built, layer by layer, from a molten ball to the thin green crust everything lives on.",
+     "directions": "Ride the escalator through the globe to the Volcanoes and Earthquakes gallery."
+    },
+    {
+     "title": "Volcanoes — Lava Bombs, Ash and Pompeii",
+     "text": "The volcano displays gather the debris of real eruptions: twisted lava bombs that fell molten and solidified mid-flight, ash that buried, obsidian that cooled to glass, and casts and accounts from Vesuvius, whose AD 79 eruption preserved Pompeii and Herculaneum — and whose victims' plaster forms taught geology the human cost of ignoring a mountain. Look for the story of Mount St Helens in 1980 and of Icelandic eruptions that grounded the world's aircraft in 2010 with a single ash cloud. The science is practical here: monitoring, gas sniffing, and the maps that decide evacuations. Britain has no volcanoes, which is precisely why this gallery fascinates British schoolchildren — it is disaster at a safe, geological distance."
+    },
+    {
+     "title": "Earth's Treasury — Rocks, Minerals and Gems",
+     "text": "Earth's Treasury dims the lights and lines its cases with the planet's chemistry set: rocks, minerals and gemstones in systematic order, from native gold and copper to quartz in a dozen habits — amethyst, citrine, smoky cairngorm — pyrite suns, fluorite that glows, and opals whose play of colour comes from silica spheres diffracting light. This is the mineralogical tradition the museum was founded on, Hans Sloane's stones among its ancestors. Wander it as a palate cleanser between dramas: no roaring, no shaking, just the periodic table showing off. Children hunt for the glow-in-the-dark case; adults linger, surprised, over the sheer variety a single element — carbon, say — can produce, from graphite to diamond."
+    },
+    {
+     "title": "The Minerals Gallery — The 1881 Room",
+     "text": "Tucked on the first floor is the museum's most quietly magical room: the Minerals Gallery survives almost exactly as Waterhouse built it in 1881, long rows of polished wooden cabinets under a barrel-vaulted ceiling painted with trees, case after case of crystals in every colour chemistry allows. It is the one gallery where the display itself is a specimen — systematic mineralogy in mahogany. Wander it slowly and you will understand why generations of geologists speak of this room the way art lovers speak of the Sistine Chapel. Because it is slightly out of the main flow, it is often the emptiest grand room in the museum; on a crowded day, it is your sanctuary of quartz and calm."
+    },
+    {
+     "title": "The Vault — Gold, Topaz, a Martian and a Curse",
+     "text": "At the far end of the Minerals Gallery, behind a door built like a bank's, is The Vault, where the museum keeps its crown jewels of geology. The regulars are extraordinary: the Latrobe Nugget, one of the largest lumps of gold ever found, 717 grams dug up in Victoria, Australia, in 1853; the Ostro Stone, the largest cut blue topaz in the world, flawless and the size of a brick; the Devonshire Emerald, a great uncut crystal; the Aurora Pyramid of Hope, 296 coloured diamonds arranged by hue; a meteorite from Mars — an actual piece of another planet, a metre from your nose; and the Winchcombe meteorite, which fell on a Gloucestershire driveway in 2021. And the Cursed Amethyst: a deep purple gem whose owner, Edward Heron-Allen, wove it a legend of theft and doom so persuasive that the museum still displays it in its little silver box, ringed with protective charms. He begged his daughter to throw it in the Thames; she donated it here instead. You're welcome."
+    }
+   ],
    "image": "images/natural-history-museum/04.jpg",
-   "text": "Tucked on the first floor of the east wing is the museum's most quietly magical room. The Minerals Gallery is the one space that survives almost exactly as Waterhouse built it in 1881: long rows of polished wooden cabinets under a barrel-vaulted ceiling painted with trees, case after case of crystals in every colour chemistry allows. Wander it slowly — amethyst geodes, pyrite suns, opals, quartz in a dozen habits — and you'll understand why generations of geologists speak of this room the way art lovers speak of the Sistine Chapel. At the far end, behind a door that looks built for a bank, is The Vault, where the museum keeps its crown jewels of geology. The treasures rotate, but the regulars are extraordinary: the Latrobe Nugget, one of the largest lumps of gold ever found, dug up in Australia in the 1850s; the Ostro Stone, the largest cut blue topaz in the world, flawless and the size of a brick; a meteorite from Mars — an actual piece of another planet you can stand a metre from — and the so-called Cursed Amethyst, a deep purple gem whose 19th-century owner wove it a legend of theft, misfortune and doom so persuasive that the museum still displays it in its little silver box, ringed with protective charms. Believe the curse or not — Edward Heron-Allen, who owned it, had it locked away and begged his daughter to throw it in the Thames. She donated it here instead. You're welcome.",
-   "title": "Minerals and The Vault: Earth's Crown Jewels"
+   "caption": "The Minerals Gallery — virtually unchanged since 1881, with The Vault guarding its greatest treasures at the far end."
   },
   {
-   "caption": "Gough's Cave, Cheddar Gorge — where Cheddar Man, Britain's oldest complete human skeleton, was found in 1903.",
-   "directions": "Head for the Blue Zone's Mammals gallery, on the ground and first floors of the west wing.",
+   "title": "Human Evolution: Meeting the Family",
+   "intro": "A compact gallery with the biggest question of all: how did we get here? The specimens are small — skulls, teeth, tools — and the stories are enormous, from a Gibraltar skull science ignored for a decade to a 10,000-year-old Briton whose DNA rewrote his own portrait.",
+   "subchapters": [
+    {
+     "title": "The Gibraltar Neanderthal Skull",
+     "text": "Start with the skull in the case that changed science before science noticed it: the Neanderthal skull from Forbes' Quarry, Gibraltar, found in 1848 — eight years before the famous Neander Valley specimen gave Neanderthals their name, and presented to a local scientific society, then forgotten in a museum drawer. Had anyone recognised what it was, we would call them Gibraltarians. The skull is a woman's, heavy-browed and long, and its journey — quarry, society, drawer, fame — is a parable about evidence: a fact can sit in a collection for decades waiting for the question that makes it an answer. The museum, which received it in the 1860s, displays it with suitable humility.",
+     "directions": "The Human Evolution gallery is in the Red Zone, reached from Earth Hall."
+    },
+    {
+     "title": "Cheddar Man — Britain's Oldest Complete Skeleton",
+     "text": "Look especially for Cheddar Man: his skeleton, found in Gough's Cave in Somerset in 1903, is the oldest complete human skeleton in Britain at around 10,000 years old. When scientists sequenced his DNA in 2018, the results startled everyone, suggesting this Mesolithic hunter-gatherer had dark to black skin, blue-green eyes and dark hair — a combination that forced a rewrite of what the first Britons looked like, and made national news. The museum displays his skeleton with the reconstruction the DNA demanded. Beside him, the roughly 400,000-year-old Swanscombe skull fragments show humans hunting in a warmer, elephant-roamed Kent, and handaxes from Boxgrove push skilled tool-making in Britain back half a million years."
+    },
+    {
+     "title": "Lucy, Naledi and the Family Tree",
+     "text": "Around the gallery, casts and originals line up our extended family. Australopithecines of Lucy's kind — small, upright, ape-brained — walk out of Africa three million years ago; Homo naledi, the small-brained, long-limbed species announced from South Africa's Rising Star cave in 2015, buried its dead in darkness astonishingly recently; Homo erectus spreads fire and handaxes across the Old World. The gallery is honest about the tree becoming a bush: multiple human species overlapped, interbred and vanished, and we are the last twig, not the inevitable crown. Interactive displays let you compare your own hand, brain and gait with a Neanderthal's. Spoiler: the family resemblance is strong."
+    },
+    {
+     "title": "Neanderthal DNA in You",
+     "text": "A few per cent of most non-African genomes today are Neanderthal inheritance — genes affecting skin, hair, immunity and even how some people experience altitude and, studies suggest, certain diseases. The gallery's DNA displays explain how ancient genomes are read from a pinch of bone powder, and how a finger bone from Siberia's Denisova Cave defined a whole new human group, the Denisovans, known almost entirely from their genes. This is where the museum's behind-the-scenes science walks onstage: the same laboratories in this building sequence specimens for galleries like this one. You may, quite literally, be looking at a cousin — the displays invite you to check your own ancestry against the skulls, and most visitors leave doing mental arithmetic."
+    },
+    {
+     "title": "Tools, Fire and the Swanscombe Handaxe",
+     "text": "Finish with the tools, because tools are the fossils of behaviour. The Swanscombe handaxe — a flint teardrop knapped with symmetry no practical need required — hints that its maker cared about beauty half a million years ago. Flint scrapers, Levallois points prepared with geometric foresight, bone harpoons, and the ochre pigments our ancestors ground for paint or sunscreen trace minds becoming modern. The gallery sets these beside the evidence for fire, cooking and language's slow assembly. A handaxe fits your palm today exactly as it fitted its maker's; hold that thought in front of the case. Of everything in this museum, these grey stones may be the objects most continuous with your own hands."
+    }
+   ],
    "image": "images/natural-history-museum/05.jpg",
-   "text": "The Human Evolution gallery, in the Green Zone, takes on the biggest question of all: how did we get here? It's a compact gallery, so give it your full attention — the specimens are small and the stories enormous. Start with the skull in the case that changed science before science noticed it: the Neanderthal skull from Forbes' Quarry, Gibraltar, found in 1848 — eight years before the famous Neander Valley specimen gave Neanderthals their name. Had anyone recognised what it was, we'd call them Gibraltarians. Around it, the gallery lines up our extended family: casts of Homo naledi, the small-brained, long-limbed species announced from a South African cave in 2015; Lucy-era australopithecines; the tools our ancestors knapped from flint; and the British evidence that pulls the story home. Look especially for Cheddar Man: his skeleton, found in Gough's Cave in Somerset in 1903, is the oldest complete human skeleton in Britain at around 10,000 years old — and when scientists sequenced his DNA in 2018, the results startled everyone, suggesting this Mesolithic hunter had dark skin and blue-green eyes. Beside him, the 400,000-year-old Swanscombe skull fragments show humans hunting in a warmer, elephant-roamed Kent. Interactive displays let you compare your own hand, brain and gait with a Neanderthal's. Spoiler: the family resemblance is strong, and a few per cent of most non-African genomes today are Neanderthal inheritance — you may be looking at a cousin.",
-   "title": "Human Evolution: Meeting the Family"
+   "caption": "Gough's Cave, Cheddar Gorge — where Cheddar Man, Britain's oldest complete human skeleton, was found in 1903."
   },
   {
-   "caption": "The 28-metre blue whale model in the Mammals gallery — built in the 1930s and still the gallery's presiding giant.",
-   "directions": "The Darwin Centre is at the museum's west end, beyond the Mammals gallery — follow signs for the Orange Zone.",
-   "text": "You've met the blue whale's skeleton; now meet its body. The Mammals gallery, in the Blue Zone, is presided over by a full-size model of a blue whale, 28 metres long, built in the 1930s when no complete whale could be preserved any other way — craftsmen modelled it from photographs and measurements of real whales, and it remains one of the museum's most beloved objects. Swimming alongside it, in model and specimen form, is the rest of the mammal clan, and the gallery's pleasure is sheer variety at full scale: an African elephant at the rotunda, giraffes stooping, hippos, polar bears, and case after case of the order we belong to doing everything mammals do — flying, burrowing, swimming, hunting. This is one of the museum's older galleries, and its traditional, specimen-rich style is part of its charm; where newer galleries interpret, this one simply shows, trusting the animals to be astonishing enough. It's also a quiet history lesson in how museums used to work — many of these specimens were collected in the age of empire and expedition. Compare the two whales before you leave: the airy skeleton in Hintze Hall, all engineering and lightness, and this blue leviathan, all bulk and presence. Between them, you'll have a better sense of the largest animal that has ever lived than any film can give you.",
-   "title": "Mammals: The Other Blue Whale"
+   "title": "Mammals: The Other Blue Whale",
+   "intro": "You've met the blue whale's skeleton; now meet its body. The Blue Zone's Mammals gallery is the museum's grand old menagerie — full-size, specimen-rich, and presided over by a 1930s whale model that generations of Londoners grew up under. Its traditional style is part of its charm: here, the animals do the talking.",
+   "subchapters": [
+    {
+     "title": "The Blue Whale Model",
+     "text": "The gallery is presided over by a full-size model of a blue whale, about 28 metres long, built in the 1930s when no complete whale could be preserved any other way — craftsmen modelled it in sections from photographs and measurements of real whales, and it remains one of the museum's most beloved objects. It hangs at the gallery's heart with dolphins and smaller whales in attendance, a pod in plaster and paint. Compare the two whales before you leave the museum today: the airy skeleton in Hintze Hall, all engineering and lightness, and this blue leviathan, all bulk and presence. Between them you will have a better sense of the largest animal that has ever lived than any film can give you.",
+     "directions": "Head for the Blue Zone's Mammals gallery, on the ground and first floors of the west wing. This chapter has no chapter image — the gallery's whale is best met in person."
+    },
+    {
+     "title": "Elephants, Giraffes and the Rotunda",
+     "text": "At the gallery's rotunda an African elephant holds court, surrounded by the great company of land mammals at full scale: giraffes stooping to drink, hippos, rhinos, buffalo, big cats in mid-prowl. Many of these specimens arrived in the age of empire and expedition — shot, skinned and shipped by collectors whose names fill the old labels — and the gallery does not hide that history; it is a document of how museums used to work as much as of how mammals live. The sheer variety at full size is the point a screen cannot make: a mouse deer you could step over, a giraffe you must look up at, one order of animals spanning both in a single room."
+    },
+    {
+     "title": "Primates — Our Own Order",
+     "text": "The primate cases bring the tour home: lemurs with their wet noses and huge eyes, monkeys of the Old and New Worlds — the latter with prehensile tails the former never evolved — and the great apes, chimpanzee, orangutan and gorilla, whose hands, faces and family groups make visitors quieten without knowing why. Compare thumbs and eyes as you go: forward-facing eyes and grasping hands, the primate inheritance you used to hold your phone up to photograph them. The gallery's older labels have been joined by conservation notes; many of these species are rarer now than when the specimens were collected, which gives the cases a second, sadder legibility the Victorians never intended."
+    },
+    {
+     "title": "Marine Mammals, Bats and the Odd Orders",
+     "text": "Finish with the orders that break the mammal rules. Whales and dolphins show mammals returned to the sea; seals and sea lions, mammals halfway back; bats — a fifth of all mammal species — are the only ones that truly fly, and their cases range from fruit bats with fox faces to pipistrelles smaller than your thumb. Then the glorious oddments: pangolins in scale armour, anteaters, sloths, the platypus that 18th-century scientists suspected was a hoax stitched together by a taxidermist. Mammals are only about 6,000 species — the museum's insects dwarf them — but this gallery makes the case for quality over quantity: warm blood, milk, hair, and astonishing variety of address."
+    }
+   ]
   },
   {
-   "caption": "The Cocoon, inside the Darwin Centre — eight storeys of collections and laboratories wrapped in a giant white pod.",
-   "directions": "Return toward the Cromwell Road side; the Wildlife Garden is reached from the museum grounds on the west side.",
+   "title": "Fish, Amphibians, Reptiles and Marine Life",
+   "intro": "The Blue Zone's other galleries are the museum's cold-blooded departments — sharks' jaws, a coelacanth that came back from the dead, giant turtles and the spineless multitudes of the sea. They are quieter than the dinosaurs and, for the patient, just as strange.",
+   "subchapters": [
+    {
+     "title": "The Coelacanth — A Fossil That Swam Up",
+     "text": "Look for the coelacanth, the lobe-finned fish science knew only from fossils until a living one was trawled off South Africa in 1938 and recognised by a young museum curator, Marjorie Courtenay-Latimer, and the ichthyologist J.L.B. Smith, who flew in and could hardly believe his eyes. Coelacanths were thought extinct for 66 million years; their fleshy, limb-like fins are cousins to the fins that became our arms. The museum's specimen embodies the 'Lazarus species' idea — lineages hiding in deep water while their fossil record stops. Stand here a moment: this fish is the rebuttal to anyone who thinks the museum is only about dead things. Some of its exhibits refused to stay extinct.",
+     "directions": "Look for the fish and marine galleries in the Blue Zone, near Mammals."
+    },
+    {
+     "title": "Sharks, Rays and Jaws",
+     "text": "The fish galleries arrange their stars by engineering: shark jaws hinged with replaceable teeth — a great white sheds thousands in a lifetime — sawfish rostra like chainsaws, a sailfish's bill and fin, lungfish that breathe air and aestivate in mud through droughts, waiting out years for rain. The ocean sunfish, or mola, a two-tonne disk that is mostly head, shows how far the fish plan can stretch. Many specimens are 19th-century, their labels in copperplate, and the gallery's calm, systematic rows are a good place to teach a child — or yourself — how classification works: fins, scales and skeletons, each case an argument about who is related to whom."
+    },
+    {
+     "title": "Reptiles and Amphibians — Turtles, Crocs and Frogs",
+     "text": "The reptile cases hold the dinosaurs' surviving cousins: crocodilians, unchanged in outline for 200 million years — look for the long-snouted gharial, a fish specialist from Indian rivers, beside broad-snouted alligators; giant tortoises from Aldabra and the Galápagos, some of whose species were still alive when this museum opened; and snakes from the reticulated python's patterned immensity to tiny burrowers. The amphibians, fewer and smaller, carry the warning: frogs and salamanders, including the Chinese giant salamander at over a metre, are among the most threatened animals on Earth, their permeable skin a sensor for a changing world. The museum's researchers work on exactly this — the gallery is their field guide and their alarm bell."
+    },
+    {
+     "title": "Marine Invertebrates — Crabs, Shells and the Giant Crab",
+     "text": "The marine invertebrate displays celebrate the sea's spineless majority: a Japanese spider crab spanning over three metres claw to claw; corals that are animals building limestone cities; shells from the money cowrie, once currency across continents, to the chambered nautilus whose logarithmic shell Sloane's collectors prized; and the molluscs that include the fastest invertebrates (squid) and some of the longest-lived (ocean quahog clams that were alive in Shakespeare's time, one dated at 507 years). This is also where to remember Archie, the 8.62-metre giant squid preserved in the Darwin Centre's tank room — not on general display, but viewable on the museum's behind-the-scenes spirit tours, and famous far beyond his tank."
+    },
+    {
+     "title": "Images of Nature and the Investigate Centre",
+     "text": "Two smaller stops complete the Blue and Green zones' quieter pleasures. The Images of Nature tradition — wildlife art from early engravings to the Wildlife Photographer of the Year ethos — shows art and science still sharing a desk, as they did for Audubon and Gould. And the Investigate Centre, the museum's hands-on basement for families, puts real specimens — fossils, shells, antlers, minerals — into children's hands under microscopes, with scientists' tools and no glass at all. It is the museum's philosophy in miniature: specimens are for using. If Investigate is open and you have young naturalists, budget half an hour; it is the one place today where touching is the whole point."
+    }
+   ]
+  },
+  {
+   "title": "The Darwin Centre and the Cocoon",
+   "intro": "At the museum's western end the Victorian palace gives way to the 21st century: a glass atrium, working laboratories, and an eight-storey white Cocoon holding millions of specimens. This is the museum undressed — a research institute that lets the public wander its corridors.",
+   "subchapters": [
+    {
+     "title": "The Cocoon",
+     "text": "The Darwin Centre is the museum's working science campus, opened in two phases in 2002 and 2009, and its centrepiece is unmissable: the Cocoon, a vast eight-storey white pod, like a silkworm's casing blown up to architectural scale, floating inside a glass atrium. Inside it are the collections you never normally see — millions of specimens, including the spirit collection of creatures preserved in jars — and the laboratories of some 200 scientists. When the visitor route through the Cocoon is open, you wind down its ramps, peer through windows at researchers at work, and grasp the museum's true scale: the galleries you have walked today display perhaps one specimen in ten thousand.",
+     "directions": "The Darwin Centre is at the museum's west end, beyond the Mammals gallery — follow signs for the Orange Zone."
+    },
+    {
+     "title": "The Spirit Collection and Archie",
+     "text": "The Darwin Centre's first phase houses zoology's spirit collection: some 22 million specimens preserved in alcohol, in jars and tanks ranked in a cathedral of shelving. Its celebrity is Archie, an 8.62-metre giant squid taken alive in a fishing net near the Falkland Islands in 2004 and preserved in a custom tank — one of the largest, best-preserved giant squid anywhere. Archie is not on general display; he stars on the ticketed behind-the-scenes Spirit Collection tours, where you also pass specimens collected by Darwin and Wallace. Even from the public atrium, the message lands: for every animal in a gallery case, thousands rest here in spirit, waiting for a question only they can answer."
+    },
+    {
+     "title": "Scientists at Work",
+     "text": "The Cocoon's public route was designed to put visitors inside the workflow: windows into preparation labs where fossils are freed from rock with dental drills and acids, imaging suites scanning specimens in 3D, and the Angela Marmont Centre where the public can bring in a found fossil, bone or insect and have museum scientists identify it — a service as old as the museum, in a room built for it. Talks at the Attenborough Studio and the centre's public benches put researchers in front of visitors daily. This is also your reminder that the Natural History Museum is not a museum with a research department attached. It is a research institute — tackling biodiversity loss, disease and planetary science — that generously lets the public wander its front rooms."
+    },
+    {
+     "title": "Botany, Herbarium Sheets and Banks's Collectors",
+     "text": "The Darwin Centre also guards the botany collections: herbarium sheets of pressed plants gathered over three centuries, including specimens collected on Captain Cook's first voyage by Joseph Banks and Daniel Solander in 1768–71 — plants from Botany Bay itself, still consulted by taxonomists. The museum holds some 450,000 type specimens across its collections, the reference originals to which species names are permanently anchored. A pressed flower from 1770 sounds fragile; in fact these sheets yield DNA, pollen and pollution data their collectors never imagined. If a botany display or tour is running during your visit, take it — the plant half of natural history is the quieter half, and the more surprising for it."
+    },
+    {
+     "title": "The Contrast: Terracotta and White",
+     "text": "Even if the Cocoon route is closed on your visit, the atrium is worth the walk. Stand where Waterhouse's terracotta, all carved animals and Romanesque arches, meets the Darwin Centre's bright white pod and glass, and you have the museum's whole history in one glance: 1881's cathedral of creation beside 2009's laboratory of evolution, both stuffed with specimens, both open to anyone who walks in. The architects of the Cocoon, C.F. Møller, shaped it like a cocoon precisely because metamorphosis is the building's job — specimens enter as dead things and emerge as data. Take a photograph here; it is the museum's before-and-after portrait, in a single frame."
+    }
+   ],
    "image": "images/natural-history-museum/07.jpg",
-   "text": "At the museum's western end, the Victorian palace gives way to the 21st century. The Darwin Centre is the museum's working science campus, opened in two phases in 2002 and 2009, and its centrepiece is unmissable: the Cocoon, a vast eight-storey white pod, like a silkworm's casing blown up to architectural scale, floating inside a glass atrium. Inside the Cocoon are the collections you never normally see — millions of specimens, including the spirit collection of creatures preserved in jars — and the laboratories of some 200 scientists. When the visitor route through the Cocoon is open, you can wind down its ramps, peer through windows at researchers at work, and get a sense of the museum's true scale: the galleries you've walked today display perhaps one specimen in ten thousand. Even if the Cocoon route is closed on your visit, the atrium is worth the walk — the contrast between Waterhouse's terracotta and this bright white pod is the museum's whole history in one glance, and there are often scientists giving talks or showing specimens at the centre's public benches. This is also your reminder that the Natural History Museum is not really a museum with a research department attached. It's a research institute — tackling biodiversity loss, disease and planetary science — that generously lets the public wander its front rooms.",
-   "title": "The Darwin Centre and the Cocoon"
+   "caption": "The Cocoon, inside the Darwin Centre — eight storeys of collections and laboratories wrapped in a giant white pod."
   },
   {
-   "caption": "The Wildlife Garden — an acre of British habitats in the museum's grounds, home to thousands of recorded species.",
-   "directions": "Head back inside to Hintze Hall for the wrap-up — or exit from the gardens onto Queen's Gate.",
+   "title": "The Gardens: Wildlife Garden and Evolution Garden",
+   "intro": "End the tour outdoors. The museum's grounds have become an exhibit in themselves — a Wildlife Garden of British habitats running since 1995, and the newer Evolution Garden walking you from ancient rocks to the dinosaurs in planting and stone. After marble and terracotta, this is nature, live and unlabelled — almost.",
+   "subchapters": [
+    {
+     "title": "The Wildlife Garden",
+     "text": "The Wildlife Garden, opened in 1995 in the museum's west grounds, is a living exhibit: a carefully planted patchwork of the habitats that make up the British countryside, compressed into a city block. In a short stroll you pass chalk downland, a reed-fringed pond busy with dragonflies and moorhens, hedgerows, meadow and a small woodland — and the astonishing statistic is that thousands of species have been recorded living here, wild, in the middle of Kensington: moths, beetles, fungi, birds, bats and bees, all monitored by the museum's scientists as a baseline for urban nature. In 2007 a moth resembling Arocatus roeselii found here was investigated as a possible new species — a discovery in the museum's own garden. Allow it a good twenty minutes in season.",
+     "directions": "The Wildlife Garden is reached from the museum grounds on the west side."
+    },
+    {
+     "title": "The Pond, Meadow and Woodland",
+     "text": "Walk the garden as a transect of Britain. The pond, with its dipping platform, is the busiest address: damselflies in summer, moorhens nesting, frogs in spring, and water boatmen rowing upside down under the surface film. The meadow is managed the old way, cut late so orchids and the insects that need them complete their cycles; the chalk downland plot grows the wildflowers of the South Downs on imported chalk; the woodland corner layers oak, coppiced hazel and a dead hedge where wrens and stag beetles live. Every habitat is labelled like a gallery case, except the specimens arrive and leave on their own wings. Gardeners and scientists work it together — it is simultaneously a display, a refuge and a long-term experiment in what a city plot can hold."
+    },
+    {
+     "title": "The Evolution Garden",
+     "text": "The museum's newer Evolution Garden, opened in 2024 as part of the grounds' transformation, walks you through deep time outdoors: a path winding past rocks of increasing youth — some genuinely ancient British stones — through planting that echoes each era, from fern-filled coal forests to grasslands, with bronze dinosaurs, including a Diplodocus — Fern, the bronze Dippy — presiding. It was designed to be step-free and to carry the museum's story outside its walls, free to anyone passing on Queen's Gate. Children read it instantly: walk forward, time passes, life complicates. If you arrived by the east entrance and missed the gardens, this is your reward for circling back — the whole tour, retold in landscape, in five minutes."
+    },
+    {
+     "title": "Fern, the Bronze Dippy",
+     "text": "Give Fern a proper look, because he closes a circle you opened in Hintze Hall. When Dippy's plaster original left the hall in 2017, London campaigned for his return; the answer was this life-size bronze, cast to stand outdoors permanently, weather and all, in a planted Jurassic landscape of tree ferns, cycads and a Wollemi pine — itself a 'living fossil' species known from fossils until living trees were found in Australia in 1994. Bronze Dippy in a garden of living fossils is the museum's wit at its best: cast, copy, original and survivor all questioned in one sculpture. Pat his nose if the path allows; generations of children have kept the plaster one's polished the same way."
+    },
+    {
+     "title": "Seasonal Hours and Quiet Hours",
+     "text": "A practical note: the Wildlife Garden keeps seasonal hours and closes over the winter months, roughly November to March, so if the gate is locked on your visit, take that as the exhibit being honest about the British year — and peer through the fence at the pond anyway. The Evolution Garden, as part of the public grounds, keeps longer hours. In spring and summer, though, the gardens are the museum's pressure valve: when the Dinosaurs gallery is at its most crowded, out here there are benches, shade, birdsong and the museum's towers rising behind the trees. It is one of London's loveliest surprises, and the right place to let a specimen-saturated brain settle before the wrap-up."
+    }
+   ],
    "image": "images/natural-history-museum/08.jpg",
-   "text": "End the tour outdoors, in the museum's most peaceful acre. The Wildlife Garden, opened in 1995 in the museum's west grounds, is a living exhibit: a carefully planted patchwork of the habitats that make up the British countryside, compressed into a city block. In a short stroll you pass through chalk downland, a reed-fringed pond busy with dragonflies and moorhens, hedgerows, meadow and a small woodland — and the astonishing statistic is that more than 3,000 species have been recorded living here, wild, in the middle of Kensington: moths, beetles, fungi, birds, bats and bees, all monitored by the museum's scientists as a baseline for urban nature. It's the museum's argument made in grass and water: you don't need a rainforest to find biodiversity; you need to look properly at what's already here. A practical note: the garden keeps seasonal hours and closes over the winter months, roughly November to March, so if the gate is locked on your visit, take that as the exhibit being honest about the British year — and peer through the fence at the pond anyway. In spring and summer, though, allow it a good twenty minutes; after the marble and terracotta, the quiet out here, with the museum's towers rising behind the trees, is one of London's loveliest surprises.",
-   "title": "The Wildlife Garden: Nature, Live"
+   "caption": "The Wildlife Garden — an acre of British habitats in the museum's grounds, home to thousands of recorded species."
   },
   {
-   "caption": "The grand staircase of Hintze Hall, with Darwin seated at its heart since 2009.",
-   "directions": "All three exits are close: Cromwell Road for the main hall, Exhibition Road for the Science Museum next door, Queen's Gate for Gloucester Road station.",
+   "title": "Wrap-Up: Under the Whale",
+   "intro": "Let's finish back under the whale, where we started — the museum's heroes rearranged, its collections still growing, and its symbol chosen with intent. A few parting thoughts to carry down the steps with you, and the practical routes out to the rest of South Kensington.",
+   "subchapters": [
+    {
+     "title": "What You Have Actually Seen",
+     "text": "First, remember what this place is for: of the 80 million specimens in the building, you have seen a few thousand, and the rest are a working library of life on Earth, consulted daily by scientists from around the world — including, in recent years, researchers who identified new species from specimens collected a century ago and sitting in a drawer ever since. The galleries you walked are an argument arranged in cases: life diversifies, the planet changes, species vanish and — the whale's point — sometimes, with help, they come back. If one gallery defeated you with crowds, it was probably the dinosaurs; late in the day, now, is your moment to return.",
+     "directions": "Head back inside to Hintze Hall for the wrap-up — or exit from the gardens onto Queen's Gate."
+    },
+    {
+     "title": "Owen's Cathedral, Darwin's Museum",
+     "text": "Second, notice how the museum's heroes have changed. Richard Owen, its founder, lost his famous argument with Darwin, yet it is Darwin who sits on the staircase and Darwin's name on the science centre, while Owen's cathedral houses the evidence that proved evolution to the world — including the Archaeopteryx Owen himself bought. The building has out-argued its builder, politely, in marble and terracotta. There is a lesson in that for every institution, and the museum teaches it without a single label saying so: collections outlive theories, which is exactly why you keep the specimens. Today's certainties are tomorrow's old labels; the bones remain, ready to be re-read."
+    },
+    {
+     "title": "South Kensington's Trio",
+     "text": "Third — if you have energy left, the Science Museum is two minutes east along Exhibition Road, and the V&A two minutes beyond it; South Kensington's trio of great free museums, all founded from the profits and spirit of the Great Exhibition of 1851, is unmatched anywhere on Earth. The pedestrian tunnel from South Kensington station links them all, lined, fittingly, with museum posters. A perfect day here needs no plan B: whale in the morning, Apollo capsule after lunch, Raphael in the V&A by tea. But do not rush off on our account — the Natural History Museum rewards a second, slower visit aimed at a single zone, the way the National Gallery rewards a single wing."
+    },
+    {
+     "title": "Lates, Exhibitions and Coming Back",
+     "text": "If you are here on the last Friday of the month, check for the museum's Lates evenings, when the whale, the bars and the dinosaurs stay open after dark for adults — the earthquake simulator with a drink in hand is a different exhibit entirely. Special exhibitions, above all Wildlife Photographer of the Year in the East Pavilion each autumn, are ticketed and sell out on weekends; they are worth planning a return around. Membership, for Londoners, turns the cloakroom queue and the exhibition fees into non-events. However you end it, walk out under Hope once more. A century ago her species numbered in the hundreds; today there are thousands of blue whales again. The museum chose its symbol well — and now you know the whole building is arranged to make you feel why."
+    },
+    {
+     "title": "Farewell — Exits and Onward",
+     "text": "All three exits are close from Hintze Hall: Cromwell Road, back under the whale, for buses and the main facade photograph; Exhibition Road, past Sophie, for the Science Museum next door; Queen's Gate, through the gardens, for Gloucester Road station. South Kensington station is five minutes via the tunnel. Thanks for walking with me — through a cathedral of nature, past sea dragons and cursed amethysts, a predicted moth, a shaking supermarket and two blue whales. If you remember only three things, make them these: the word dinosaur was invented here; a twelve-year-old girl from Lyme Regis changed science from these cases; and the largest animal that ever lived is, against the odds, still alive — and hanging, in skeleton, over the door to prove it can stay that way."
+    }
+   ],
    "image": "images/natural-history-museum/09.jpg",
-   "text": "Let's finish back under the whale. A few parting thoughts to take with you. First, remember what this place is for: of the 80 million specimens in the building, you've seen a few thousand, and the rest are a working library of life on Earth, consulted daily by scientists from around the world — including, in recent years, researchers who identified new species from specimens collected a century ago and sitting in a drawer ever since. Second, notice how the museum's heroes have changed: Richard Owen, its founder, lost his famous argument with Darwin, yet it is Darwin who now sits on the staircase and Darwin's name on the science centre, while Owen's cathedral houses the evidence that proved evolution to the world. There's something very British, and very hopeful, about that. Third — if you have energy left, the Science Museum is two minutes east along Exhibition Road, and the V&A two minutes beyond it; South Kensington's trio of great free museums is unmatched anywhere. If the Dinosaurs gallery defeated you with its crowds earlier, now — late in the day — is your moment to go back. And if you're here on the last Friday of the month, check for the museum's Lates evenings, when the whale, the bars and the dinosaurs stay open after dark for adults only. However you end it, walk out under Hope once more. A century ago her species numbered in the hundreds; today there are thousands of blue whales again. The museum chose its symbol well.",
-   "title": "Wrap-Up: Under the Whale"
+   "caption": "The grand staircase of Hintze Hall, with Darwin seated at its heart since 2009."
   }
  ],
  "dayLabel": "Sunday",
@@ -94,7 +416,9 @@
   "https://www.nhm.ac.uk/",
   "https://www.nhm.ac.uk/visit.html",
   "https://www.nhm.ac.uk/visit/exhibits-impact-adults-self-guided-tour.html",
-  "https://en.wikipedia.org/wiki/Natural_History_Museum,_London"
+  "https://en.wikipedia.org/wiki/Natural_History_Museum,_London",
+  "https://www.nhm.ac.uk/visit/galleries-and-museum-map.html",
+  "https://www.nhm.ac.uk/discover/highlights-of-the-treasures-gallery.html"
  ],
  "subtitle": "Hope the blue whale, roaring dinosaurs, a trip through the Earth, and a cursed amethyst",
  "title": "The Natural History Museum"
