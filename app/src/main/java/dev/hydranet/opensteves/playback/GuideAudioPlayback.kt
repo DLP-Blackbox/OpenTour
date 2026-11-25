@@ -444,7 +444,7 @@ class GuideAudioPlayback(
                     // the rest of the guide, as it did before the bundle.
                     val guide = currentGuide
                     backend = Backend.TTS
-                    if (guide != null) fallback.speakFrom(guide, nextItem.chapterIndex, nextItem.subchapterIndex)
+                    if (guide != null) tts.speakFrom(guide, nextItem.chapterIndex, nextItem.subchapterIndex)
                 }
             }
             else -> {
