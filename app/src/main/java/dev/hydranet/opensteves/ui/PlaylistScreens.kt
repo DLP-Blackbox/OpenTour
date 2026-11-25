@@ -238,7 +238,13 @@ internal fun CustomBadge() {
 }
 
 @Composable
-fun CustomGuideScreen(repository: PlaylistRepository, guideId: String, tts: TtsPlayer, onOpenWikipedia: (String) -> Unit) {
+fun CustomGuideScreen(
+    repository: PlaylistRepository,
+    guideId: String,
+    tts: TtsPlayer,
+    onOpenWikipedia: (String) -> Unit,
+    initialChapter: Int? = null,
+) {
     var guide by remember(guideId) { mutableStateOf<CustomGuide?>(null) }
     var loaded by remember(guideId) { mutableStateOf(false) }
     val context = LocalContext.current
@@ -289,6 +295,15 @@ fun CustomGuideScreen(repository: PlaylistRepository, guideId: String, tts: TtsP
                 next++
                 if (current.chapters.isNotEmpty()) next++
                 List(current.chapters.size) { next + it }
+            }
+            // Arriving from search: open the guide at the matched chapter,
+            // expanded and scrolled into view, like a Contents jump.
+            LaunchedEffect(current.id, initialChapter) {
+                val chapter = initialChapter
+                if (chapter != null && chapter in current.chapters.indices) {
+                    if (chapter !in expandedChapters) expandedChapters.add(chapter)
+                    listState.scrollToItem(chapterItemIndices[chapter])
+                }
             }
             LazyColumn(
                 Modifier.fillMaxSize(), state = listState,

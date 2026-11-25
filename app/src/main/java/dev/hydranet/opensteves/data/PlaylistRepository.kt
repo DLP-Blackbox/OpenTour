@@ -47,6 +47,20 @@ class PlaylistRepository private constructor(private val context: Context) {
         return guide
     }
 
+    // Every bundled guide, for app-wide search. Guide files sit directly
+    // under GUIDES_PATH as "<id>.json"; the subdirectories alongside them
+    // (images, wiki) are not guides and are skipped by the suffix filter.
+    suspend fun loadAllGuides(): List<CustomGuide> {
+        val names = withContext(Dispatchers.IO) {
+            runCatching {
+                context.assets.list(GUIDES_PATH).orEmpty()
+                    .filter { it.endsWith(".json") }
+                    .sorted()
+            }.getOrDefault(emptyList())
+        }
+        return names.mapNotNull { name -> loadGuide(name.removeSuffix(".json")) }
+    }
+
     // Wikipedia copies are bundled per guide as "<guideId>--<slug>.json"
     // files; a guide without any bundled article returns an empty list.
     suspend fun loadWikipediaArticles(guideId: String): List<WikipediaArticle> {
