@@ -238,7 +238,7 @@ internal fun CustomBadge() {
 }
 
 @Composable
-fun CustomGuideScreen(repository: PlaylistRepository, guideId: String, tts: TtsPlayer) {
+fun CustomGuideScreen(repository: PlaylistRepository, guideId: String, tts: TtsPlayer, onOpenWikipedia: (String) -> Unit) {
     var guide by remember(guideId) { mutableStateOf<CustomGuide?>(null) }
     var loaded by remember(guideId) { mutableStateOf(false) }
     val context = LocalContext.current
@@ -297,7 +297,7 @@ fun CustomGuideScreen(repository: PlaylistRepository, guideId: String, tts: TtsP
                 item(key = "header") { GuideHeaderBlock(current) }
                 if (current.practical.isNotEmpty()) item(key = "practical") { GuidePracticalBlock(current) }
                 if (current.location != null || current.mapNote.isNotBlank()) item(key = "map") { GuideMapBlock(current) }
-                item(key = "wikipedia") { WikipediaBlock(current.id) }
+                item(key = "wikipedia") { WikipediaEntryButton(current.id) { onOpenWikipedia(current.id) } }
                 item(key = "controls") { GuidePlaybackControls(current, ttsState, tts) }
                 item(key = "contents") {
                     Box {

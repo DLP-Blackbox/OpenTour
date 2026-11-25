@@ -68,6 +68,7 @@ fun TourApp(
     var selectedId by rememberSaveable { mutableStateOf<Int?>(null) }
     var playlistId by rememberSaveable { mutableStateOf<String?>(null) }
     var guideId by rememberSaveable { mutableStateOf<String?>(null) }
+    var wikipediaGuideId by rememberSaveable { mutableStateOf<String?>(null) }
     var playerTourId by rememberSaveable { mutableStateOf<Int?>(null) }
     var deletion by remember { mutableStateOf<Tour?>(null) }
     var sharingDialog by remember { mutableStateOf(false) }
@@ -112,10 +113,12 @@ fun TourApp(
         selectedId = null
         playlistId = null
         guideId = null
+        wikipediaGuideId = null
         screen = destination
     }
     fun back() {
         when {
+            wikipediaGuideId != null -> wikipediaGuideId = null
             guideId != null -> guideId = null
             playlistId != null -> playlistId = null
             else -> selectedId = null
@@ -223,7 +226,7 @@ fun TourApp(
     LaunchedEffect(message) { message?.let(report) }
     LaunchedEffect(player.error) { player.error?.let(report) }
     LaunchedEffect(group.error) { group.error?.let(report) }
-    BackHandler(selectedId != null || playlistId != null || guideId != null) { back() }
+    BackHandler(selectedId != null || playlistId != null || guideId != null || wikipediaGuideId != null) { back() }
     val selected = selectedId?.let { id -> tours.find { it.id == id } ?: installed[id]?.tour }
     val current = player.tourId?.let { id -> installed[id]?.tour ?: tours.find { it.id == id } }
     val playingTour = current ?: playerTourId?.let { installed[it]?.tour }
@@ -252,6 +255,7 @@ fun TourApp(
                     title = {
                         Text(
                             if (selected != null) { if (selected.isCustom) "Audio details" else "Tour details" }
+                            else if (wikipediaGuideId != null) "Wikipedia"
                             else if (guideId != null) "Guide"
                             else if (playlistId != null) playlists.find { it.id == playlistId }?.title ?: "Playlist"
                             else when (screen) {
@@ -264,7 +268,7 @@ fun TourApp(
                         )
                     },
                     navigationIcon = {
-                        if (selectedId != null || playlistId != null || guideId != null) IconButton(onClick = ::back) {
+                        if (selectedId != null || playlistId != null || guideId != null || wikipediaGuideId != null) IconButton(onClick = ::back) {
                             Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                         }
                     },
@@ -333,8 +337,10 @@ fun TourApp(
                 TourInfoScreen(selected, repository, installed[selected.id], downloads[selected.id], player.tourId, group.role != "none",
                     onDownload = { download(selected) }, onCancel = { repository.cancelDownload(selected.id) },
                     onPlay = { play(selected) }, onPlayChapter = { position -> play(selected, position) }, onOpenPlayer = { navigate(1) })
+            } else if (wikipediaGuideId != null) {
+                WikipediaScreen(playlistRepository, wikipediaGuideId!!)
             } else if (guideId != null) {
-                CustomGuideScreen(playlistRepository, guideId!!, tts)
+                CustomGuideScreen(playlistRepository, guideId!!, tts, onOpenWikipedia = { wikipediaGuideId = it })
             } else if (playlistId != null) {
                 val playlist = playlists.find { it.id == playlistId }
                 if (playlist != null) PlaylistScreen(playlist, tours, installed, playlistRepository,
