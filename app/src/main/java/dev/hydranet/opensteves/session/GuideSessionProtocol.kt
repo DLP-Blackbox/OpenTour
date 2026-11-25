@@ -65,8 +65,12 @@ internal object GuideSessionTiming {
 
     // Where the item position will be at nowMs for a snapshot taken at atMs:
     // it advances in real time while playing (guides play at 1x; there is no
-    // speed control) and is clamped to the item's duration when known.
+    // speed control) and is clamped to the item's duration when known. A
+    // snapshot carrying neither a position nor a duration (the TTS relay's
+    // 0/0) has nothing to project: projecting one would fabricate a position
+    // the speech engine cannot honour, so its position stays 0.
     fun position(snapshot: GuidePlaybackSnapshot, atMs: Long, nowMs: Long): Long {
+        if (snapshot.positionMs == 0L && snapshot.durationMs == 0L) return 0
         val projected = snapshot.positionMs +
             if (snapshot.playing) (nowMs - atMs).coerceAtLeast(0) else 0
         val ceiling = if (snapshot.durationMs > 0) snapshot.durationMs else MAX_POSITION_MS
