@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.AccountBalance
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.outlined.Bluetooth
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.ChevronRight
@@ -72,6 +73,7 @@ import dev.hydranet.opensteves.data.Chapter
 import dev.hydranet.opensteves.data.TimedText
 import dev.hydranet.opensteves.data.Tour
 import dev.hydranet.opensteves.data.TourRepository
+import dev.hydranet.opensteves.playback.GuideTtsPlayback
 import dev.hydranet.opensteves.playback.PlaybackConnection
 import dev.hydranet.opensteves.playback.PlaybackUiState
 import dev.hydranet.opensteves.session.SessionManager
@@ -85,10 +87,12 @@ internal fun TogetherScreen(
     session: SessionManager,
     repository: TourRepository,
     playback: PlaybackConnection,
+    guideSession: GuideTtsPlayback,
     current: Tour?,
     startingSession: Boolean,
     onStartSession: () -> Unit,
     onOpenPlayer: () -> Unit,
+    onOpenGuide: (String) -> Unit,
     report: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -187,7 +191,10 @@ internal fun TogetherScreen(
                         if (!host || starting) Text(state.status, style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
                     }
                 }
-                current?.let { tour ->
+                val sessionGuideId = state.sessionGuideId
+                if (sessionGuideId != null) {
+                    SessionGuide(guideSession, sessionGuideId, state.sessionGuideTitle, onOpenGuide)
+                } else current?.let { tour ->
                     val playbackState = player
                     SessionTour(repository, tour, playbackState, onOpenPlayer, onToggle = { playback.setPlaying(!playbackState.playing) })
                 }
@@ -202,13 +209,25 @@ internal fun TogetherScreen(
                     SessionPhone("This phone", "Joined the session")
                 }
                 Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Text(if (host && state.peers.isEmpty()) "Friends can join from Together on their paired phones." else "Everyone can pause, seek, and change speed.", style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+                    Text(when {
+                        host && state.peers.isEmpty() -> "Friends can join from Together on their paired phones."
+                        sessionGuideId != null -> "Everyone hears the same section, read aloud on each phone. Anyone can pause or jump to another section."
+                        else -> "Everyone can pause, seek, and change speed."
+                    }, style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
                     if (host && state.peers.isEmpty()) {
                         OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = ::openBluetoothSettings, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text("Bluetooth settings") }
                     }
-                    OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = onOpenPlayer, enabled = current != null, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text(if (current?.isCustom == true) "Back to player" else "Back to tour") }
+                    if (sessionGuideId != null) {
+                        OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = { onOpenGuide(sessionGuideId) }, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text("Back to guide") }
+                    } else {
+                        OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = onOpenPlayer, enabled = current != null, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text(if (current?.isCustom == true) "Back to player" else "Back to tour") }
+                    }
                     if (host || state.peers.isNotEmpty()) {
-                        OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = playback::stop, enabled = current != null, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text("Stop playback for everyone") }
+                        if (sessionGuideId != null) {
+                            OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = guideSession::requestStop, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text("Stop playback for everyone") }
+                        } else {
+                            OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors(), onClick = playback::stop, enabled = current != null, modifier = Modifier.fillMaxWidth().height(48.dp)) { Text("Stop playback for everyone") }
+                        }
                     }
                     Spacer(Modifier.height(4.dp))
                     OutlinedButton(shape = MaterialTheme.shapes.small, colors = TourButtonDefaults.outlinedColors().copy(contentColor = colors.error), onClick = { confirmRole = state.role }, modifier = Modifier.fillMaxWidth().height(48.dp)) {
@@ -314,6 +333,39 @@ internal fun TogetherScreen(
             },
             dismissButton = { TextButton(shape = MaterialTheme.shapes.small, onClick = { confirmRole = null }) { Text("Cancel") } },
         )
+    }
+}
+
+@Composable
+private fun SessionGuide(guideSession: GuideTtsPlayback, guideId: String, guideTitle: String?, onOpenGuide: (String) -> Unit) {
+    val colors = MaterialTheme.colorScheme
+    val snapshot by guideSession.uiSnapshot.collectAsState()
+    val current = snapshot?.takeIf { it.guideId == guideId }
+    val playing = current?.playing == true
+    Surface(shape = RoundedCornerShape(7.dp), color = colors.surfaceContainerLow,
+        border = BorderStroke(1.dp, colors.outlineVariant),
+        modifier = Modifier.padding(horizontal = 16.dp)) {
+        Column {
+            Row(Modifier.fillMaxWidth().clickable { onOpenGuide(guideId) }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                TourThumbnail(null, Modifier.size(52.dp).clip(RoundedCornerShape(4.dp)), fallbackIcon = Icons.Default.MenuBook)
+                Column(Modifier.weight(1f).padding(start = 14.dp)) {
+                    Text(guideTitle?.takeIf { it.isNotBlank() } ?: current?.guideTitle?.takeIf { it.isNotBlank() } ?: "Custom guide", style = MaterialTheme.typography.titleMedium)
+                    Text("Custom guide / Bundled with the app", Modifier.padding(top = 4.dp), style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+                }
+                Icon(Icons.Outlined.ChevronRight, "Back to guide", tint = colors.primary, modifier = Modifier.size(20.dp))
+            }
+            HorizontalDivider(color = colors.outlineVariant)
+            Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp, top = 8.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(if (playing) Icons.Default.Equalizer else Icons.Outlined.Headphones, null, tint = colors.primary, modifier = Modifier.size(20.dp))
+                Column(Modifier.weight(1f).padding(start = 12.dp)) {
+                    Text(current?.let { "Chapter ${it.chapterIndex + 1}" } ?: "Guide", style = MaterialTheme.typography.titleSmall)
+                    Text(if (playing) "Playing" else "Paused", style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+                }
+                IconButton(onClick = { if (playing) guideSession.requestPause() else guideSession.requestResume() }, colors = TourButtonDefaults.iconColors()) {
+                    Icon(if (playing) Icons.Default.Pause else Icons.Default.PlayArrow, if (playing) "Pause for everyone" else "Play for everyone")
+                }
+            }
+        }
     }
 }
 

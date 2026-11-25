@@ -74,6 +74,7 @@ class SessionService : Service() {
             }
             when (intent?.action) {
                 ACTION_HOST -> manager.beginHost()
+                ACTION_HOST_GUIDE -> manager.beginHostGuide()
                 ACTION_JOIN -> manager.beginJoin(intent.getStringExtra("address").orEmpty(), intent.getBooleanExtra("downloadFromHost", false))
                 else -> manager.leave()
             }
@@ -99,6 +100,7 @@ class SessionService : Service() {
 
     companion object {
         const val ACTION_HOST = "dev.hydranet.opensteves.HOST"
+        const val ACTION_HOST_GUIDE = "dev.hydranet.opensteves.HOST_GUIDE"
         const val ACTION_JOIN = "dev.hydranet.opensteves.JOIN"
         const val ACTION_LEAVE = "dev.hydranet.opensteves.LEAVE"
         private const val CHANNEL = "group_session"
