@@ -70,7 +70,7 @@ internal fun SessionDebugScreen(session: SessionManager, onBack: () -> Unit, rep
             Text("Session debug", Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
             IconButton(onClick = {
                 val text = buildString {
-                    appendLine("OpenSteves session debug")
+                    appendLine("OpenTour session debug")
                     appendLine("Role: ${state.role}")
                     appendLine("Status: ${state.status}")
                     state.error?.let { appendLine("Error: $it") }

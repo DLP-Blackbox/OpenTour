@@ -55,7 +55,7 @@ class SessionService : Service() {
         )
         val notification = Notification.Builder(this, CHANNEL)
             .setSmallIcon(android.R.drawable.stat_sys_data_bluetooth)
-            .setContentTitle("OpenSteves group session")
+            .setContentTitle("OpenTour group session")
             .setContentText("Shared playback over Bluetooth")
             .setContentIntent(open)
             .setOngoing(true)

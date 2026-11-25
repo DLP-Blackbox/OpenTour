@@ -1,4 +1,4 @@
-# OpenSteves
+# OpenTour
 
 An open source Android player for [Rick Steves Europe Audio Tours](https://www.ricksteves.com/watch-read-listen/audio/audio-tours).
 
@@ -30,4 +30,4 @@ See the [build workflow](.github/workflows/build-apks.yml) for CI signing and pu
 ## Content
 
 Audio, maps, images, and transcripts belong to their respective copyright holders.
-OpenSteves is not affiliated with Rick Steves Europe. Tour content is not bundled with the application.
+OpenTour is not affiliated with Rick Steves Europe. Tour content is not bundled with the application.
