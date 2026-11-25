@@ -2,99 +2,464 @@
   "area": "London",
   "chapters": [
     {
-      "caption": "The Tower from the Thames — White Tower at the centre, Traitors' Gate below",
-      "directions": "Enter via the Middle Byward Gate at the southwest corner. Once inside, resist the urge to wander — head straight ahead, past the White Tower on your right, toward the Waterloo Barracks along the north wall for the Crown Jewels.",
+      "title": "Arrival — Moat, Middle Tower and Byward Tower",
+      "intro": "Start down by the river and look before you enter. In ten minutes you cross a dry moat, pass two gate towers and step from modern London into a fortress that has guarded this bend of the Thames for nearly 950 years. Every layer you pass was added because someone feared an attack.",
+      "subchapters": [
+        {
+          "title": "The View from Tower Hill and the Thames",
+          "text": "Look at the fortress whole before you pick it apart. At the centre rises the pale White Tower, begun around 1078 for William the Conqueror, barely a decade after 1066. Around it sit two rings of walls built mainly under Henry III and Edward I in the 1200s, then a broad moat. William built in stone imported in part from Caen in Normandy, in a city of timber houses, and the message was deliberate: I am here to stay. From the river path you also see Traitors' Gate low in the south wall and, behind the fortress, the City's towers — the contrast that defines this corner of London, Norman keep against glass office blocks."
+        },
+        {
+          "title": "The Moat — Once Water, Now Grass",
+          "text": "You cross what was once a water-filled moat, fed by the Thames and, contemporaries complained, famously smelly. Edward I enlarged it in the 1270s as part of his outer wall. It was drained in 1843 after it was blamed for disease among the garrison — the stagnant water was a health hazard, not a defence, by then. Today it is grass, used for great set pieces: in 2014 it was filled with 888,246 ceramic red poppies, one for each British and Commonwealth soldier killed in the First World War, in the installation Blood Swept Lands and Seas of Red. Walk a stretch of it if you have time; the scale of the ditch only makes sense from inside it."
+        },
+        {
+          "title": "The Middle Tower and the Lion Tower Site",
+          "text": "Your entrance passes the Middle Tower, the outer gate on the west front, rebuilt in the early 1700s and bearing the arms of Queen Anne. Just beyond stood the Lion Tower, the Barbican-like entrance where the Royal Menagerie was kept — which is why lions still appear in Tower names here. Edward I built a causeway across the moat to this point, so every important visitor, prisoner and cart of supplies funnelled through a single, easily guarded choke point. Look for the portcullis grooves and the tight turn in the passage: the gate was designed to slow you down and expose you to fire from above, not to welcome you quickly."
+        },
+        {
+          "title": "The Byward Tower and the Nightly Password",
+          "text": "The Byward Tower, guarding the inner entrance at the southwest corner, dates from the 1200s and contains a fine upper chamber with medieval wall paintings of the Crucifixion, rediscovered under later plaster. It also has a living job. Each night in the Ceremony of the Keys the Chief Yeoman Warder is challenged hereabouts for the password and the keys. The name probably comes from 'by the Ward' — the guard ward beside it. Pause under its arch: you are passing from the Outer Ward, the service ring of the castle, toward Water Lane and the Inner Ward, where kings lived and prisoners waited."
+        },
+        {
+          "title": "Water Lane and Your First Bearings",
+          "text": "Once inside, resist the urge to wander — our route is deliberate. Water Lane runs east along the river wall past the Wakefield Tower and Traitors' Gate. Ahead on your right the White Tower dominates the green; along the north wall stands the long Waterloo Barracks, home of the Jewel House. Head straight there first, while the Crown Jewels line is shortest. Keep perspective, too: for all its dark fame, only seven people were executed inside these walls, on Tower Green. Most Tower executions happened publicly on Tower Hill outside — the Tower's terror was largely reputation, which was quite enough.",
+          "directions": "Enter via the Middle Byward Gate at the southwest corner and head north to the Waterloo Barracks for the Crown Jewels first."
+        }
+      ],
       "image": "images/tower-of-london/01.jpg",
-      "text": "Start outside the walls if you can, down by the river, and just look at it for a moment. That pale stone keep rising in the middle — the White Tower — was already old when half the buildings of Europe were timber. William the Conqueror began it around 1078, barely a decade after he'd conquered England, and the message was not subtle: a stone fortress, in a city of wooden houses, planted right at London's gate. I'm here to stay. Over the next 900 years, his successors wrapped it in two rings of walls and a moat, and the Tower became the Swiss Army knife of English monarchy — palace, fortress, treasury, prison, mint, zoo, and execution ground. Three queens of England lost their heads here. Two little princes vanished here, in the most famous unsolved mystery in British history. And the Crown Jewels — the actual crowns worn at coronations — still live here, guarded around the clock. As you come in through the Middle Byward Gate, notice you're crossing what was once a water-filled moat. And keep perspective: for all its dark fame, only a handful of executions happened inside these walls. The Tower's terror was mostly reputation — which, as you'll see, was quite enough.",
-      "title": "Welcome to the Tower"
+      "caption": "The Tower from the Thames — White Tower at the centre, Traitors' Gate below"
     },
     {
-      "caption": "The Imperial State Crown — worn by the monarch at the State Opening of Parliament",
-      "directions": "The Jewel House is inside the Waterloo Barracks, the long 19th-century building along the north wall. Exit, and turn right (east), then head back south toward the White Tower in the centre of the grounds.",
+      "title": "The Crown Jewels I — A Working Collection, Not a Museum Set",
+      "intro": "The Jewel House, in the Waterloo Barracks along the north wall, holds the working regalia of the monarchy — more than 100 objects and over 23,000 gemstones. These crowns still leave for coronations and the State Opening of Parliament. Go first, go slowly, and loop the moving walkway twice.",
+      "subchapters": [
+        {
+          "title": "The Waterloo Barracks and the Jewel House",
+          "text": "The long, castle-like Waterloo Barracks were built in 1845, when the Duke of Wellington was Constable of the Tower, to house around 1,000 soldiers — and they still look like a barracks pretending to be a fortress. The Crown Jewels moved into the ground floor Jewel House here in 1994, in a vault strong enough that the display is effectively inside a safe you walk through. The jewels have been kept at the Tower since the 1660s, after the Restoration; before that the regalia lived mainly at Westminster Abbey, where a notorious theft in 1303 showed how insecure an abbey could be. Security here is discreet but total — you are watched, and photography is not allowed."
+        },
+        {
+          "title": "Coronation Film and the Order of the Ceremony",
+          "text": "The exhibition deliberately slows you down with film and explanation before you see gold. Watch the coronation footage — most fully from 1953 and 2023 — for the choreography: the monarch is presented, anointed, invested with spurs, sword, orb and sceptres, and only then crowned. Each object you are about to see has a line in that script and a meaning: the sword for justice and mercy, the orb for Christ's dominion over the world, the ring for faithfulness. Understanding the order matters, because the display follows it. By the time you reach the cases, you are not just looking at jewellery; you are reading a job description for kingship written in gold."
+        },
+        {
+          "title": "The Coronation Spoon and the Ampulla — The Oldest Survivors",
+          "text": "Look carefully for two small gold objects that outrank everything here in age. The Coronation Spoon, probably made in the 1100s, is the oldest piece of the regalia in use: the Archbishop pours holy oil from the eagle-shaped Ampulla into this spoon to anoint the monarch, the most sacred moment of the coronation. Almost all the medieval regalia was melted down after Charles I's execution in 1649, on Parliament's orders — crowns, sceptres and plate sold or coined. The spoon survived, probably because it was sold off and quietly bought back. The present Ampulla is a 1661 replacement in gold, shaped as an eagle with outspread wings, its head unscrewing to receive the oil."
+        },
+        {
+          "title": "St Edward's Crown — Used for One Moment Only",
+          "text": "St Edward's Crown is the crown of the crowning itself. The present solid-gold crown was made in 1661 for Charles II to replace the medieval crown destroyed in 1649, and it is named for Edward the Confessor, England's saint-king, whose original crown was the holiest object in the old regalia. It weighs 2.23 kilos — nearly five pounds — which is why monarchs wear it only for the crowning moment in Westminster Abbey, then exchange it for a lighter crown. Elizabeth II practised wearing it around the palace before 1953. Charles III was crowned with it on 6 May 2023. Notice its gold arches, crosses and fleurs-de-lis, set with semi-precious stones rather than great historic diamonds: its power is symbolic, not gemological."
+        },
+        {
+          "title": "The Sovereign's Orb and the Two Sceptres",
+          "text": "Find the Sovereign's Orb, made in 1661: a hollow gold globe surmounted by a cross, banded with diamonds, emeralds, rubies, sapphires and pearls, placed in the monarch's right hand to signify that power is held under God. Beside the sceptres, compare the two. The Sceptre with the Cross, also 1661, carries at its top Cullinan I — we will meet that diamond next. The Sceptre with the Dove, sometimes called the Rod of Equity and Mercy, ends in a gold dove with outspread wings, for the monarch's spiritual role and for mercy tempering power. At a coronation the monarch holds one sceptre in each hand — a deliberate visual balance of temporal and spiritual authority.",
+          "directions": "Exit the Jewel House and, if the walkway allows, loop back for a second pass before leaving the Barracks."
+        }
+      ],
       "image": "images/tower-of-london/02.jpg",
-      "text": "Head straight here, before anything else — this is why we came in early. The Crown Jewels are not museum replicas. This is the working regalia of the British monarchy, still taken out and used: the Imperial State Crown leaves this vault every year for the State Opening of Parliament. The exhibition walks you through coronation film and ceremony first — watch for the sheer choreography of it — and then you step onto a moving walkway that glides you past the crowns themselves. Look for St Edward's Crown, the heavy gold crown used at the actual moment of coronation, worn only once in a monarch's reign. Then the Imperial State Crown: nearly 3,000 diamonds, and set into it, a who's-who of famous stones — the Black Prince's Ruby (actually a spinel, worn by Henry V at Agincourt), the Stuart Sapphire, and Cullinan II, the second-largest stone cut from the biggest diamond ever found. And find the Sovereign's Sceptre with the Cross: on top sits Cullinan I, the Great Star of Africa, at 530 carats the largest clear-cut diamond in the world. One honest warning: the walkway keeps you moving. If you want a second, slower look, just loop around and ride it again — nobody minds. No photos in here, so take your time and actually look.",
-      "title": "The Crown Jewels — Go First"
+      "caption": "The Imperial State Crown — worn by the monarch at the State Opening of Parliament"
     },
     {
-      "caption": "The White Tower (c. 1078) — London's original Norman keep",
-      "directions": "Exit the White Tower and head east to the Salt Tower, where stairs take you up onto the Inner Wall Walk (the Battlements).",
+      "title": "The Crown Jewels II — Crowns, Diamonds and the Great Stones",
+      "intro": "Now ride the moving walkway past the crowns themselves. Nearly 3,000 diamonds glitter on one crown alone, and several stones here have biographies longer — and bloodier — than most of the kings who wore them. Names, carats and dates are the story, so look for the labels as you glide.",
+      "subchapters": [
+        {
+          "title": "The Imperial State Crown and Its 2,868 Diamonds",
+          "text": "The Imperial State Crown, made in 1937 for George VI, is the crown the monarch actually wears in public — leaving Westminster Abbey after the coronation and at the State Opening of Parliament each year. It is set with 2,868 diamonds, 17 sapphires, 11 emeralds, 269 pearls and 4 rubies, and weighs just over a kilo — heavy enough that Elizabeth II said it could break your neck if you looked down to read a speech. Its frame deliberately copies Queen Victoria's 1838 crown. Because it travels, it is the most seen crown in the world, carried to Parliament in its own carriage procession, with a hostage MP traditionally held at Buckingham Palace to guarantee the monarch's safe return."
+        },
+        {
+          "title": "Cullinan I and Cullinan II — The Great Star of Africa",
+          "text": "The Cullinan diamond, found in South Africa in 1905, weighed 3,106 carats uncut — the largest gem-quality rough diamond ever found. The Transvaal government gave it to Edward VII, and Joseph Asscher in Amsterdam cut it into nine major stones. Cullinan I, the Great Star of Africa, at 530.2 carats the largest clear-cut diamond in the world, sits in the head of the Sovereign's Sceptre with the Cross; it can be removed and worn as a brooch. Cullinan II, 317.4 carats, sits in the front band of the Imperial State Crown, directly below the Black Prince's Ruby. Stand still on the walkway if you can and get both in one glance: the two biggest pieces of one stone, divided between sceptre and crown."
+        },
+        {
+          "title": "The Black Prince's Ruby and St Edward's Sapphire",
+          "text": "The large red stone in the front cross of the Imperial State Crown is not a ruby at all — it is a balas spinel, known as the Black Prince's Ruby. It was given in 1367 by Pedro of Castile to Edward, the Black Prince, after a campaign in Spain, and Henry V wore it in his crown at Agincourt in 1415, where, legend says, it helped deflect a blow. Higher in the same crown, in the centre of the topmost cross, sits St Edward's Sapphire, said to have been worn in a ring by Edward the Confessor and taken from his tomb when his body was moved in Westminster Abbey in 1163. If true, it is the oldest stone in the crown — a Saxon gem in a 1937 setting."
+        },
+        {
+          "title": "The Stuart Sapphire and the Koh-i-Noor",
+          "text": "At the back of the Imperial State Crown — it was moved there to make room for Cullinan II — sits the Stuart Sapphire, a large blue stone associated with the Stuart kings and taken into exile by James II in 1688 before finding its way back. Then look for the Koh-i-Noor, 105.6 carats, set in the Crown of Queen Elizabeth the Queen Mother, made in 1937. Probably from the Golconda mines in India, the diamond passed through Mughal emperors, Persian shahs, Afghan emirs and Sikh maharajas before the East India Company took it from the young Maharaja Duleep Singh under the Treaty of Lahore in 1849. Queen Victoria had it recut in 1852, reducing it from about 186 carats to improve its brilliance. Its history is contested to this day, which the display now acknowledges."
+        },
+        {
+          "title": "Crowns of Queens, Swords, Trumpets and Banqueting Plate",
+          "text": "Do not rush past the supporting cast. There are crowns made for queens consort, including Queen Mary's Crown of 1911 and the Queen Mother's crown with its removable arches; the State Sword and Sword of Offering, carried before the monarch; long silver-gilt trumpets used to announce the coronation; and, in the Treasury section, astonishing banqueting plate — great gold dishes, wine cisterns and a christening font. One punch bowl is so large it is said to hold 144 bottles of wine. Together these objects explain why the collection numbers over 100 pieces, not just crowns: monarchy performed itself at table, in procession and in church, and every performance needed its props in gold."
+        }
+      ],
+      "image": "images/tower-of-london/02.jpg",
+      "caption": "Cullinan I in the Sovereign's Sceptre — the largest clear-cut diamond in the world"
+    },
+    {
+      "title": "The White Tower I — William's Keep from the Outside",
+      "intro": "The building that gives the whole fortress its name stands at the centre: 27 metres high, walls up to 4.6 metres thick at the base, built of Kentish ragstone with pale Caen stone for the corners and windows. Whitewashed under Henry III in 1240, it has been London's landmark for nine centuries.",
+      "subchapters": [
+        {
+          "title": "Caen Stone, Ragstone and Gundulf the Builder",
+          "text": "Look closely at the stonework. The bulk is rough Kentish ragstone, but the quoins — the neat corner stones — and the window surrounds are smooth, pale stone shipped from Caen in Normandy. Tradition credits Gundulf, Bishop of Rochester, as William's builder; he also built Rochester Cathedral and Castle. Construction ran from about 1078 into the early 1100s, finished under William's sons. The four turrets are not identical: three are square and the northeast one is round, because it contained a spiral stair. The onion-shaped caps are not Norman at all — they were added under Henry VIII or in later restorations, giving the keep its familiar silhouette."
+        },
+        {
+          "title": "Why the Entrance Is Up a Flight of Stairs",
+          "text": "You enter, as medieval visitors did, at first-floor level, up an external stair on the south side. The present stair is a replacement, but the principle is original and defensive: the doorway was high, reached by wooden steps that defenders could destroy, leaving attackers facing a sheer wall and a narrow door. Once inside, a garrison could hold the stairwell and the entrance chamber against far larger numbers. Notice, too, that the basement has almost no windows and the upper floors have progressively larger ones — in a keep, light was a luxury you earned by height, and vulnerability decreased as you climbed away from the ground."
+        },
+        {
+          "title": "The Whitewash of 1240 and the Name",
+          "text": "The tower is 'white' because Henry III ordered it whitewashed in 1240, part of a programme that also decorated its chapel and chambers. Medieval great buildings were routinely painted and whitewashed — bright, not bare stone — and the Tower would have gleamed over the river, visible for miles. Rain, pollution and stripping in later centuries removed most of that finish, though the name stuck. In the 1600s and 1700s the building served mainly as a storehouse and record office, its dignity fading; Sir Christopher Wren remodelled some windows after the Restoration, which is why a few openings look more classical than Norman. What you see is a Norman skeleton wearing touches from almost every later century."
+        },
+        {
+          "title": "A Keep That Was Palace, Prison and Storehouse",
+          "text": "For its first centuries the White Tower was the king's ultimate strong room and last refuge: royal apartments on the top floor, a council chamber, the chapel, and storage for treasure, records and weapons below. Prisoners of the highest rank were held here, including, tradition says, Ranulf Flambard, Bishop of Durham, in 1101 — the Tower's first recorded prisoner and, delightfully, its first recorded escapee, who got out down a rope smuggled in a wine cask after getting his guards drunk. John II of France was held in the Tower after Poitiers in the 1300s. Later the keep became the home of the Royal Armouries, Britain's national collection of arms and armour, which still fills its floors today."
+        },
+        {
+          "title": "The Well, the Basement and the Bones of 1674",
+          "text": "Before you climb, note the basement: vaulted, dim and built for storage — wine, weapons and, at times, gunpowder — with a well to supply the garrison in a siege. This lower level is also tied to the Tower's greatest mystery. In 1674, workmen demolishing a staircase near the White Tower — a stair leading toward the chapel — found a wooden box containing the skeletons of two children. They were assumed to be the Princes in the Tower, Edward V and his brother Richard, and Charles II had them reburied in Westminster Abbey. A 1933 examination found two children's bones of roughly the right ages, but they have never been DNA-tested. We will return to the princes at the Bloody Tower; remember that the physical evidence surfaced here.",
+          "directions": "Enter the White Tower by the south stair and work upward floor by floor."
+        }
+      ],
       "image": "images/tower-of-london/03.jpg",
-      "text": "Now for the building that gives the whole place its name. The White Tower is the oldest complete Norman keep in England — begun around 1078, built of pale stone imported from Caen in Normandy, and whitewashed in 1240, which is how it got its name. For over 200 years this was the tallest building in London. You enter, as medieval visitors did, up an external stair to the first floor — defenders could chop the wooden steps away behind them. Work your way up to St John's Chapel, and stop. This little chapel, from about 1080, is one of the purest Norman interiors in Europe: round arches, thick barrel vault, almost no decoration — and somehow more moving for it. Kings prayed here; prisoners awaited their fate here. Then explore the Royal Armouries floors. The star is the Line of Kings — a parade of armours worn by monarchs, first arranged in the 1600s as a piece of royal propaganda. Find Henry VIII's foot-combat armour from 1540: a gleaming ton of steel engineering, and yes, everyone notices the codpiece — it's meant to be noticed. Compare it with the much slimmer armour Henry wore as a young man; the two suits together tell the story of a king's expanding waistline more honestly than any portrait. Don't miss the executioner's block and axe on this floor either — grim, real, and quietly displayed.",
-      "title": "The White Tower — St John's Chapel, the Line of Kings, and Henry VIII's Armour"
+      "caption": "The White Tower (c. 1078) — London's original Norman keep"
     },
     {
-      "caption": "The Wall Walk along the inner curtain wall, looking toward Tower Bridge",
-      "directions": "Follow the Wall Walk south and west. It delivers you toward the Wakefield and Lanthorn Towers — the Medieval Palace — on the south wall above the river.",
+      "title": "The White Tower II — Chapel, Council Chamber and Armour",
+      "intro": "Inside, climb through the Armouries to the top floor, where the building turns from fortress to palace: a great council chamber and one of the finest Norman chapels in Europe. The contrast is the point — the same walls that stored weapons also framed prayer, judgement and kingship at its most theatrical.",
+      "subchapters": [
+        {
+          "title": "St John's Chapel — Norman Simplicity at Its Purest",
+          "text": "Stop and be quiet for a moment in St John's Chapel, built about 1080 on the top floor. This is one of the purest Norman interiors in England: massive round piers, a barrel-vaulted ceiling, a tunnel-vaulted nave and almost no carved decoration — and somehow more moving for it. Kings prayed here before coronations and battles; Knights of the Order of the Bath kept vigil here the night before their creation. Prisoners also heard mass here while awaiting their fate, which gives the calm a sharper edge. Look at the thickness of the walls in the window openings — you could stand in some of them. The chapel was used for centuries as a record store, its beauty hidden behind shelves, before being restored in the 1800s."
+        },
+        {
+          "title": "The Council Chamber and the Royal Apartments",
+          "text": "The large upper room beside the chapel served as the king's council chamber and great chamber — where the monarch received important visitors, held council and displayed power in a space that was defensible and magnificent at once. Imagine it hung with tapestries, lit by candles and a fire, the stone softened by textiles that have long vanished. From here the king could retreat to smaller private chambers. This floor-plan — hall, chamber, chapel, all stacked above storage and guardrooms — became the template for English castle keeps. When you stand here you are in the oldest surviving royal apartment in London, older than any room at Westminster."
+        },
+        {
+          "title": "The Line of Kings — Armour as Propaganda",
+          "text": "The Line of Kings is one of Britain's oldest museum displays: a parade of royal armours arranged in the 1600s, originally on wooden horses, to impress visitors with an unbroken line of English kingship. It was propaganda in steel — some armours were attributed to kings who never wore them — and the Royal Armouries has since re-researched and re-presented it honestly. Move slowly along the row and read bodies through armour: height, breadth and posture are all recorded in shaped steel. The display includes armours associated with Henry VIII, Charles I and James II, and the craftsmanship — fluting, etching and gilding — shows armour functioning as court dress as much as battlefield protection."
+        },
+        {
+          "title": "Henry VIII's Two Bodies — Slim Prince, Massive King",
+          "text": "Find Henry VIII's armours and compare them, because together they tell his biography better than portraits. The foot-combat armour of 1540, made in the royal workshop at Greenwich, is a masterpiece of engineering — a toned, gleaming shell designed for fighting on foot at the barriers, with every plate articulated. And yes, everyone notices the codpiece; it was meant to be noticed. Set it against the much slimmer armour Henry wore as a young, athletic prince, and against his later harness with a waist that expanded dramatically across his reign. Armour cannot flatter like a painter can. The measurements chart a king who grew from sportsman to a man so large and ulcerated he had to be moved with mechanical aids."
+        },
+        {
+          "title": "The Executioner's Block and Axe, and the Armouries' Oddities",
+          "text": "Quietly displayed among the splendour is a grim oak block and an executioner's axe, long associated with Tower executions — the block is traditionally linked to the last beheading on Tower Hill, that of the Jacobite Lord Lovat in 1747. Treat the association as tradition rather than proof, but the objects themselves are period-real. Around them, look for the Armouries' stranger pieces: tournament helms like great steel buckets, a shield painted with a hand holding a dagger, armour for horses, and tiny, exquisite armours made for royal children and for men of unusually small stature. The national collection began here because the Tower was the kingdom's arsenal — weapons were made, tested and stored in this fortress long before anyone called it a museum.",
+          "directions": "Exit the White Tower and head east to the Salt Tower to climb onto the Wall Walk."
+        }
+      ],
+      "image": "images/tower-of-london/03.jpg",
+      "caption": "St John's Chapel and the Line of Kings inside the White Tower"
+    },
+    {
+      "title": "The Wall Walk I — Salt, Broad Arrow and Constable Towers",
+      "intro": "Climb at the Salt Tower onto the inner curtain wall, built under Henry III and Edward I, and walk the battlements east to north. From up here the whole geometry clicks: White Tower centre, green and chapel below, moat and outer wall beyond, and a small tower with a distinct job every few dozen paces.",
+      "subchapters": [
+        {
+          "title": "The Salt Tower — Jesuit Prisoners and a Carved Astrolabe",
+          "text": "The Salt Tower, built about 1235 under Henry III at the southeast corner of the inner wall, may take its name from salt storage — salt was a valuable military supply for preserving food. In Elizabethan and Jacobean times it held Catholic priests and Jesuit prisoners during the religious persecutions. Look inside for prisoner carvings, including a remarkably detailed carved astrolabe — an astronomical instrument cut into the stone by a prisoner with time, education and no other outlet for either. From its upper chamber you also get one of the best views back across the White Tower to Tower Bridge, a Victorian structure doing its best, in stone cladding, to look as old as the wall you are standing on."
+        },
+        {
+          "title": "Arrow Slits, Portcullis Grooves and Crossfire",
+          "text": "Walk slowly and read the defences as engineering, not decoration. Arrow slits are narrow outside and splayed wide inside, so an archer had room to aim while presenting almost no target. Murder holes, portcullis grooves and angled approaches all exist because somebody once tried to get in. The inner wall made the Tower a concentric fortress — a castle inside a castle — so an attacker who breached the outer wall found himself in a narrow killing ground, overlooked from this walk, with a second wall ahead. Edward I, who had campaigned in Wales and built great concentric castles there, applied the same lessons here in the 1270s and 1280s."
+        },
+        {
+          "title": "The Broad Arrow Tower — Stores Marked with the King's Arrow",
+          "text": "The Broad Arrow Tower takes its name from the broad-arrow mark stamped on government stores — weapons, cloth and equipment owned by the Crown — a mark you will still see on military property. Towers like this were working stores and lodgings as much as fighting platforms: garrisons needed dry rooms for bowstaves, arrows, salt, grain and gunpowder, distributed around the wall so a single fire or breach could not destroy everything. Inside displays have covered the Tower's defences and the work of the Board of Ordnance, the department that ran Britain's armaments from offices here for centuries. Look outward from here across the moat to Tower Hill, where public executions drew enormous crowds."
+        },
+        {
+          "title": "The Constable Tower — Home of the Tower's Governor",
+          "text": "The Constable Tower is associated with the Constable of the Tower, historically the fortress's commanding officer — a great magnate in medieval times, later a senior soldier or courtier; the Duke of Wellington held the post from 1826 until his death in 1852. The Constable received prisoners, kept the keys in a literal sense, and was answerable for escapes — a responsibility with personal consequences. Today the Constable still has a ceremonial role, including receiving the monarch's representative at ceremonies, and the Tower is run day-to-day by the Resident Governor. As you pass, notice how many of these wall towers are still homes and offices: this is a working community, not a roped-off ruin."
+        },
+        {
+          "title": "The Martin Tower and Colonel Blood's Theft of the Jewels",
+          "text": "The Martin Tower, on the northeast stretch, held the Crown Jewels from 1669 to 1842 — and was the scene of the most audacious theft attempt in Tower history. On 9 May 1671 Colonel Thomas Blood, an Irish adventurer who had befriended the elderly Jewel House keeper Talbot Edwards in disguise, returned with accomplices, gagged and stabbed Edwards, flattened St Edward's Crown with a mallet to hide it under a cloak, sawed the Sceptre in half and stuffed the Orb down a trouser leg. They were caught at the gate. Astonishingly, Charles II pardoned Blood, gave him a pension and land in Ireland — perhaps because the king admired the nerve, perhaps because Blood knew too much. The jewels were thereafter guarded behind bars.",
+          "directions": "Continue along the Wall Walk southward toward the Wakefield and Lanthorn Towers."
+        }
+      ],
       "image": "images/tower-of-london/04.jpg",
-      "text": "Climb up here and get your bearings — this is the best orientation point in the Tower. You're standing on the inner curtain wall, much of it built by Henry III and Edward I in the 1200s as they turned William's keep into a concentric fortress: a castle inside a castle, so attackers who breached one wall faced another. Walk slowly and look both ways. Outward: the grassy moat (once filled with Thames water, and famously smelly), the outer wall, and beyond it, Tower Bridge doing its best to look medieval — it's actually Victorian, from 1894, and we'll cross it later. Inward: the whole geometry of the place makes sense from up here — White Tower in the middle, Tower Green below, the river sliding past Traitors' Gate. The small towers you'll pass along this walk each have a job and a story: they served as lookout posts, stores, lodgings, and — as the wall became a prison — cells for prisoners important enough to keep comfortably and securely. Look for the reconstructions of defensive features as you go: portcullis grooves, arrow slits angled for crossfire, and the sheer drop designed into every approach. Medieval military engineering wasn't decorative. Every quirk up here exists because somebody, at some point, tried to get in.",
-      "title": "The Battlements — Walking the Wall Walk"
+      "caption": "The Wall Walk along the inner curtain wall, looking toward Tower Bridge"
     },
     {
-      "caption": "The Wakefield Tower chamber, centrepiece of the Medieval Palace",
-      "directions": "From the Lanthorn Tower, continue west along the inner wall to the Bloody Tower, just north of Traitors' Gate.",
+      "title": "The Medieval Palace — Wakefield, Lanthorn and St Thomas's Towers",
+      "intro": "Come down off the south wall into rooms that turn the fortress into a home. Henry III and Edward I built a palace along the river wall in the 1200s, and the recreated chambers — throne, bed, oratory, even a medieval toilet — show how a king actually lived in his safest address.",
+      "subchapters": [
+        {
+          "title": "The Wakefield Tower — The King's Great Chamber",
+          "text": "The Wakefield Tower, one of the largest towers on the inner wall, was built under Henry III around the 1220s-40s and formed the heart of his palace. The recreated great chamber shows a throne under a canopy, painted wall decoration based on medieval patterns, and the bright colour medieval rooms actually had — forget bare stone. Henry III was a devout, artistic king who rebuilt Westminster Abbey; his Tower rooms were meant to rival any palace in Europe. The tower later held records, and from 1870 to 1967 it housed the Crown Jewels — the vault you saw this morning is only the jewels' latest home in a long series of Tower strong rooms."
+        },
+        {
+          "title": "The Private Oratory — Prayer Tucked Beside Power",
+          "text": "Tucked off the great chamber is a tiny oratory, a private prayer room with a small altar space and a window angled so the king could hear mass in seclusion. Medieval kingship ran on ceremony and piety in roughly equal measure, and this pairing — throne room with a prayer cell attached — shows both in a single glance. Henry III heard mass multiple times a day and fed paupers as a religious duty. Look at the vaulting and the piscina, the little basin for washing sacred vessels. It is the most intimate room in the Tower, and a useful corrective: the same Henry who fortified these walls spent as much energy on candles, relics and painted saints."
+        },
+        {
+          "title": "Henry VI — Murdered at Prayer, Tradition Says Here",
+          "text": "The Wakefield Tower carries a darker association. Henry VI — gentle, pious and catastrophically unsuited to kingship — was imprisoned here after his deposition in the Wars of the Roses and died on the night of 21-22 May 1471, almost certainly murdered after Edward IV's victory at Tewkesbury removed any reason to keep him alive. Tradition says he was killed while at prayer in the oratory. His body was displayed at St Paul's, then buried at Chertsey and later Windsor, where he was venerated as a saint and miracle-worker by popular devotion, though never formally canonised. An annual ceremony still marks his death: lilies and roses are laid here by Eton College and King's College, Cambridge, the two foundations Henry created."
+        },
+        {
+          "title": "Edward I's Bedchamber in the Lanthorn Tower",
+          "text": "Cross to the Lanthorn Tower — named, tradition says, for a lantern lit to guide river traffic — for the domestic end of the palace: Edward I's recreated bedchamber. Look for the great bed with hangings, the chests that held the royal wardrobe, and wall paintings recreated from medieval schemes. A medieval king's household travelled constantly, and the Tower palace had to be furnishable at short notice from stored textiles and furniture — hence the chests, which were the wardrobes, cupboards and suitcases of the age in one. Notice the fireplace, a real luxury, and the garderobe, a medieval toilet discharging into a shaft in the wall. Comfort here was relative, but by 1280 this was among the most comfortable rooms in England."
+        },
+        {
+          "title": "St Thomas's Tower and the King's New Apartments",
+          "text": "Above Traitors' Gate sits St Thomas's Tower, built by Edward I in 1275-79 to add royal accommodation over the new water gate, and named for St Thomas Becket. Edward, a warrior king who spent years away on campaign, wanted a self-contained apartment entered from the river — private, defensible and splendid. The tower once contained a chapel and chambers with large windows facing the Thames, a striking statement that the river frontage was a facade, not just a defence. Stand in the passage below and you feel the design's double nature: a palace window above, a prisoner's gate below. Few buildings compress the Tower's two identities — residence and jail — into one wall as neatly as this one."
+        }
+      ],
       "image": "images/tower-of-london/05.jpg",
-      "text": "Come down off the wall into the Wakefield and Lanthorn Towers, and suddenly the fortress turns into a home. This is the Medieval Palace, built mainly for Henry III and Edward I in the 1200s, and the rooms have been re-created to show how a medieval king actually lived when he stayed here — which was often, especially in troubled times, because the Tower was the safest address in London. In the Wakefield Tower, look for the king's great chamber: a throne under a canopy, painted decoration, and a private oratory — a tiny prayer room tucked off the main space. Medieval kingship ran on ceremony and piety in about equal measure, and this one room shows both. Notice the details that made it liveable: a real fireplace (a luxury), garderobe — that's a medieval toilet — and windows positioned to catch light while staying defensible. Edward I's bedchamber in the Lanthorn Tower gives you the domestic end of it: a great bed, chests for the royal wardrobe that travelled with the king, and wall paintings re-created from medieval patterns. It's easy to tour the Tower as pure prison-and-execution theatre. These rooms are the corrective. For most of its life, this was a working royal residence — the king's furniture, clerks, and household moved in and out, and state business was done right here.",
-      "title": "The Medieval Palace — How Kings Actually Lived"
+      "caption": "The Wakefield Tower chamber, centrepiece of the Medieval Palace"
     },
     {
-      "caption": "The Bloody Tower — last home of the two princes, Edward V and Richard of York",
-      "directions": "Before moving on, glance down at Traitors' Gate on the river wall below — prisoners arrived by boat through this water gate. Then head north across Tower Green to the chapel.",
+      "title": "Traitors' Gate and the Bloody Tower",
+      "intro": "On the river wall, water meets stone at the most famous entrance in British penal history, and just inside it stands the tower renamed by a mystery. Give this stretch time: a gate, a portcullis, a porter's lodge and two vanished princes are all within a few yards of each other.",
+      "subchapters": [
+        {
+          "title": "Traitors' Gate — Arriving by River to Prison",
+          "text": "Traitors' Gate, built under Edward I around 1275 as a water gate for the royal apartments, let boats enter a small basin inside the walls from the Thames. It became the prisoners' entrance because the river was London's highway and a barge was the most secure, least rescuable way to deliver a high-status prisoner. Anne Boleyn passed through it in 1536, Sir Thomas More in 1534, and the future Elizabeth I in 1554, who, legend says, protested her innocence on these steps and at first refused to land in the rain. The wide Tudor timber framing above the arch dates from 1532. The gate's original name was simply the Water Gate; 'Traitors' stuck because of who came through it, usually never to leave by it again."
+        },
+        {
+          "title": "The Engine House and the Tower's Water Supply",
+          "text": "Behind Traitors' Gate, in the pool and engine house, stood an ingenious machine: an engine driven first by the tide, then by horses and later steam, which raised Thames water to a cistern on the roof of the White Tower — a fortress needs its own water if it is to withstand a siege. Around 1724 the same power was adapted to drive machinery for boring gun barrels for the Ordnance. It is an easily missed corner that reminds you the Tower was an industrial site as well as a palace: workshops, forges, mills and stores filled the Outer Ward for centuries, employing hundreds of craftsmen whose names, unlike the prisoners', are barely recorded."
+        },
+        {
+          "title": "The Bloody Tower — From Garden Tower to a Name in Blood",
+          "text": "The Bloody Tower, originally the Garden Tower because it overlooked the Lieutenant's garden, was built under Henry III and guards the main gateway into the Inner Ward — you pass under it between wards. Its portcullis, still in working order, is one of the oldest in the Tower. The sinister name, recorded by the later 1500s, comes from the belief that the Princes in the Tower were murdered in or near it. The tower's upper rooms were a residence-prison for important captives: Sir Walter Raleigh lived here, comparatively comfortably, during parts of his 13 years in the Tower, writing his History of the World and tending a garden and a still for his cordials."
+        },
+        {
+          "title": "The Princes in the Tower — The Story, Step by Step",
+          "text": "In April 1483 Edward IV died. His 12-year-old son was proclaimed Edward V and lodged, with his 9-year-old brother Richard, in the Tower while his coronation was prepared — normal practice. Their uncle Richard, Duke of Gloucester, as Lord Protector, had the boys declared illegitimate by Parliament, on the claim that Edward IV's marriage was invalid, and took the throne as Richard III on 6 July. The princes were seen playing in the grounds that summer — then less, then not at all. No bodies, no funeral, no announcement. Sir Thomas More, writing decades later, described them smothered by agents of Richard; Shakespeare fixed that version in the public mind. Alternative suspects proposed since include Henry VII, who defeated Richard at Bosworth in 1485 and married the princes' sister."
+        },
+        {
+          "title": "What We Actually Know — And the Raleigh Postscript",
+          "text": "Stand here and separate evidence from legend. We know the boys disappeared in 1483, that contemporaries suspected murder, and that two children's skeletons found near the White Tower in 1674 were reburied in Westminster Abbey as theirs — untested by DNA to this day, by royal permission withheld. Everything else is argument, and the argument has run for over 540 years because the evidence is genuinely thin. The Bloody Tower's other famous resident closes the story on a different note: Raleigh, released once, was executed on Tower Hill's scaffold's cousin — at Westminster in 1618 — after a failed expedition to Guiana. His Tower rooms, furnished for a gentleman prisoner with books and a family who visited, show that imprisonment here could mean a household in confinement, not a dungeon.",
+          "directions": "Head north across Tower Green toward the chapel of St Peter ad Vincula."
+        }
+      ],
       "image": "images/tower-of-london/06.jpg",
-      "text": "This tower's original name was the Garden Tower — it overlooked the Lieutenant's garden. It earned its current name from the darkest cold case in English history. In 1483, King Edward IV died, and his 12-year-old son was proclaimed Edward V. The boy king and his 9-year-old brother, Richard, were lodged here in the Tower — normal practice while a coronation was prepared. Their uncle, Richard, Duke of Gloucester, had himself declared protector, then declared the boys illegitimate, then took the throne as Richard III. The princes were seen playing in the grounds that summer. Then they were seen less. Then not at all. They were never seen alive again. No bodies were produced, no trial, no announcement — just silence, and a mystery that has run for over 540 years. Did Richard III order their murder, as Shakespeare insists? Or was it Henry VII, who beat Richard at Bosworth and had his own reasons? In 1674, workmen demolishing a staircase in the White Tower found a wooden box containing the skeletons of two children, roughly the right ages. Charles II had them reburied in Westminster Abbey, where they remain — and where, despite modern DNA science, they remain untested by royal permission. Stand here a moment. Whatever happened, it happened within a few yards of where you're standing.",
-      "title": "The Bloody Tower — The Princes in the Tower"
+      "caption": "The Bloody Tower — last home of the two princes, Edward V and Richard of York"
     },
     {
-      "caption": "Tower Green and the Chapel Royal of St Peter ad Vincula",
-      "directions": "From the chapel, walk east along the north side of the Green to the Beauchamp Tower, in the northwest stretch of the inner wall.",
+      "title": "Tower Green — The Scaffold Site",
+      "intro": "This quiet lawn, west of the White Tower, is the most charged ground in the fortress. A glass memorial marks the scaffold where seven people were beheaded in private, before small invited crowds — a privilege of rank, since most Tower executions were public spectacles on Tower Hill outside the walls.",
+      "subchapters": [
+        {
+          "title": "The Memorial and the Seven Names",
+          "text": "The circular glass-and-stone memorial, designed as a pillow-like glass disc on a granite ring inscribed with names, marks the scaffold site. Read the names slowly: William Hastings (1483), Anne Boleyn (1536), Margaret Pole, Countess of Salisbury (1541), Catherine Howard (1542), Jane Boleyn, Viscountess Rochford (1542), Lady Jane Grey (1554) and Robert Devereux, Earl of Essex (1601). Private execution inside the walls spared the condemned the mob and the long public procession — and spared the authorities the risk of a sympathetic crowd. It was mercy of a very relative kind. The memorial's glass pillow is deliberately unsettling: a place to lay a head, rendered in the material of a jewel."
+        },
+        {
+          "title": "Anne Boleyn — 19 May 1536",
+          "text": "Anne Boleyn, Henry VIII's second queen, was tried in the King's Hall here on charges of adultery, incest with her brother George, and treason — charges most historians now consider fabricated to remove her after she failed to produce a son and lost the king's favour. George Boleyn and four other men died two days before her. Anne asked for, and Henry granted, a swordsman from Saint-Omer in Calais rather than the English axe — a single clean stroke from a practiced executioner, in a final twisted courtesy. Contemporary accounts say she kept her nerve and wit, remarking that she had, in the reported phrase, 'a little neck.' She was buried in an arrow chest, without ceremony, in the chapel a few steps away."
+        },
+        {
+          "title": "Catherine Howard and Margaret Pole — Two Very Different Deaths",
+          "text": "Five years later Anne's cousin Catherine Howard, Henry's fifth wife, followed her to this scaffold in February 1542, aged about 19, condemned by Act of Attainder without a trial for her past and alleged conduct. Tradition says she practised laying her head on the block the night before. Between the two queens, in May 1541, came one of the Tower's most botched killings: Margaret Pole, Countess of Salisbury, aged 67, a Plantagenet princess and mother of Cardinal Pole, was hacked at by an inexperienced executioner in a scene contemporary reports described with horror. She had committed no proven offence beyond her bloodline and her son's opposition to Henry from abroad. The Green holds queens and an elderly countess in the same small patch of grass — Tudor justice made little distinction when dynasty was at stake."
+        },
+        {
+          "title": "Lady Jane Grey and the Earl of Essex — The First and Last",
+          "text": "In February 1554 the 'nine days' queen', Lady Jane Grey — a teenager proclaimed queen by her father-in-law's faction after Edward VI's death, then abandoned when Mary Tudor rallied the country — was executed here with her husband Guildford Dudley, after her father's involvement in a fresh rebellion sealed her fate. She watched Guildford's body carried back past her window, then mounted the scaffold with composure that impressed even hostile witnesses. The Green's last execution, in 1601, was Elizabeth I's fallen favourite, Robert Devereux, Earl of Essex, after his absurd, failed rebellion in the City. It took, accounts say, three strokes. After Essex, the scaffold here fell silent; later condemned prisoners died on Tower Hill or elsewhere."
+        },
+        {
+          "title": "Tower Hill — Where the Crowds Watched",
+          "text": "Turn outward for the context the Green needs. Most Tower prisoners who were executed died publicly on Tower Hill, just northwest of the walls, where a memorial in Trinity Square Gardens marks the scaffold site. Over 125 people died there across the centuries, including Thomas More, John Fisher, Thomas Cromwell, Archbishop Laud, the Duke of Monmouth — whose executioner Jack Ketch needed five strokes and a knife in 1685 — and, last of all, the Jacobite Simon Fraser, Lord Lovat, in 1747, beheaded before a crowd so large a viewing stand collapsed, killing spectators. Executions were theatre, warning and holiday at once. The Green's privacy was the exception that proved how public Tudor and Stuart punishment normally was.",
+          "directions": "Step into the Chapel of St Peter ad Vincula beside the Green."
+        }
+      ],
       "image": "images/tower-of-london/07.jpg",
-      "text": "This quiet patch of grass is the most charged ground in the Tower. The glass-and-stone memorial in the middle marks the scaffold site where, in front of small invited crowds, seven people were beheaded — among them two queens of England. Anne Boleyn died here on 19 May 1536, executed on charges of adultery and treason that most historians now consider fabricated. She'd asked — and Henry VIII had agreed, in a final twisted courtesy — for a swordsman from Calais rather than the clumsy English axe. Contemporary accounts say she kept her nerve and her wit to the end, remarking that she had 'a little neck.' Five years later her cousin Catherine Howard, Henry's fifth wife, followed her to the same scaffold, aged about 19. And in 1554, the 'nine days' queen,' Lady Jane Grey — a teenager used as a pawn by ambitious men — was executed here too. Most Tower executions actually happened publicly on Tower Hill, outside the walls; a private death on the Green was, perversely, a privilege of rank. Now step into the Chapel of St Peter ad Vincula, just beside the Green. Anne, Catherine, and Jane are all buried under its floor, near the altar — identified when the chapel was restored in Victorian times. It's still a working chapel, and its plainness is the point. After the theatre of the scaffold, this is where the Tower keeps its dead, quietly.",
-      "title": "Tower Green and St Peter ad Vincula — Anne Boleyn's Resting Place"
+      "caption": "Tower Green and the Chapel Royal of St Peter ad Vincula"
     },
     {
-      "caption": "Prisoner graffiti carved into the Beauchamp Tower walls",
-      "directions": "Continue around the inner wall to the Bell Tower and the Royal Beasts exhibition area on the west side, near the entrance.",
+      "title": "St Peter ad Vincula and the Queen's House",
+      "intro": "Beside the Green stands the Tower's parish church — St Peter in Chains — where the executed were buried under the floor, and the timber-framed Queen's House, home of the Tower's Lieutenant and, briefly, of prisoners from Anne Boleyn to Rudolf Hess. Church and house together are the Tower's domestic, spiritual core.",
+      "subchapters": [
+        {
+          "title": "St Peter ad Vincula — St Peter in Chains",
+          "text": "The Chapel Royal of St Peter ad Vincula — Peter in Chains, a fitting patron for a prison church — was rebuilt in its present form under Henry VIII around 1519-20, on the site of an older chapel. From outside it is modest: a small Tudor church with a short tower and brick-and-stone walls. It is still a working chapel, the parish church of the Tower community, with regular services, a professional choir and an organ — not a museum that happens to look like a church. Because of that, access is often as part of a Yeoman Warder tour. Its plainness is the point: after the theatre of the scaffold a few yards away, this is where the Tower keeps its dead, quietly."
+        },
+        {
+          "title": "The Burials Beneath the Floor — Anne, Catherine, Jane",
+          "text": "Under the floor near the altar lie, among many others, Anne Boleyn, Catherine Howard and Lady Jane Grey, along with George Boleyn, Thomas Cromwell and others executed on the Green or Tower Hill. When the chapel was restored in 1876-77, Victorian investigators opened the graves and identified remains then believed to be Anne's — bones of a woman of the right age and slight build — which were reburied under a marble pavement with her name. Identification by Victorian standards was approximate, and the honest position is that these are traditional attributions. Look for the memorial tiles and the list of the buried: a roll call of Tudor high politics, laid in a space smaller than a village church."
+        },
+        {
+          "title": "Monuments, Organ and the Chapel's Living Life",
+          "text": "Look around the walls for monuments to Tower officers and residents — the chapel served the garrison and the Warders' families as much as the famous dead. The organ, originally built by Bernard Smith in 1699 for Whitehall, found its way here; the choir of the Chapel Royal maintains a serious musical tradition, with evensong and concerts that Tower residents treat as their local cultural life. Notice the royal pew and the banners. If a service or rehearsal is under way, sit at the back for a minute: hearing music in a building where Anne Boleyn's remains lie under the floor collapses five centuries in a way no display case can."
+        },
+        {
+          "title": "The Queen's House — Built for a Queen Who Never Really Lived Here",
+          "text": "The handsome half-timbered Queen's House, on the south side of the Green, was built around 1530, probably as the Lieutenant of the Tower's residence — tradition associates its building with Anne Boleyn's coronation preparations, and she is said to have lodged in this area during the days before her execution in 1536, though in the royal apartments nearby rather than provably in this house. The timber framing is genuine Tudor domestic architecture, rare inside a fortress. Today it is the Resident Governor's home and is not open to visitors — a private house in the middle of a World Heritage Site, with curtains, a front door and a garden, which is exactly the Tower's strangeness in miniature."
+        },
+        {
+          "title": "Prisoners in the Queen's House — From Guy Fawkes to Rudolf Hess",
+          "text": "The Queen's House has doubled as a high-status prison. Guy Fawkes was interrogated in its council chamber in November 1605 after the Gunpowder Plot, before torture was authorised against him. The last prisoner held here was Rudolf Hess, Hitler's deputy, who flew to Scotland in May 1941 on his bizarre solo peace mission and was held in the Queen's House for four nights before transfer elsewhere. Earlier, the house and its predecessors lodged a roll of Tudor prisoners awaiting trial or death. As you look at its leaded windows from the Green, hold both uses in mind at once: a family home, a governor's residence, and a waiting room for the scaffold, separated only by which century you visit in."
+        }
+      ],
+      "image": "images/tower-of-london/07.jpg",
+      "caption": "The Queen's House and St Peter ad Vincula on Tower Green"
+    },
+    {
+      "title": "The Beauchamp Tower and the Prison Towers of the West and North Walls",
+      "intro": "Walk the northwest wall now, tower by tower. These were the Tower's prime prison rooms — comfortable enough for earls, secure enough for traitors — and their walls preserve the most human documents in the fortress: the carvings of men waiting to learn whether they would live.",
+      "subchapters": [
+        {
+          "title": "The Beauchamp Tower — Ninety Inscriptions in Stone",
+          "text": "The Beauchamp Tower — say 'Beecham' — built in the 1280s under Edward I, was a prime cell for high-status Tudor prisoners, and its residents had time, tools and a desperate need to be remembered. So they carved. There are around 90 inscriptions here: names, dates, prayers, coats of arms and elaborate emblems cut deep into the stone. Carving was permitted, sometimes encouraged — it occupied prisoners and, cynically, kept them quiet. For a man facing execution with no tomb guaranteed, a name in this wall was a bid for exactly what you are giving it now: not to be forgotten. Bring your eyes close and let your vision adjust; the carvings reward slow looking more than any other display in the Tower."
+        },
+        {
+          "title": "John Dudley's Bear and Ragged Staff — A Family in Flowers",
+          "text": "Find the carving by John Dudley, Earl of Warwick, from 1553-54. John and his brothers were imprisoned after their father, the Duke of Northumberland, tried to put Lady Jane Grey on the throne; John's brother Guildford was Jane's husband and died with her. John carved his family emblem — the bear and ragged staff of Warwick — surrounded by flowers and leaves, each plant punning on a brother's name, with a verse hoping the work would outlast them. He died shortly after his release in 1554, still in his twenties. The carving has outlasted him by nearly five centuries. It is at once heraldry, a family portrait and a young man's message in a bottle, cut in stone because paper could be taken away."
+        },
+        {
+          "title": "Philip Howard and the Catholic Prisoners",
+          "text": "Look too for the inscription of Philip Howard, Earl of Arundel — a leading Catholic nobleman imprisoned by Elizabeth I after he tried to leave England, convicted of praying for the success of the Spanish Armada, in the official charge. He died in the Tower in 1595, after ten years' imprisonment, and was later canonised as one of the Forty Martyrs of England and Wales. Around his carving, find the simple scratched crosses and IHS monograms — the sacred monogram of Christ — cut by men measuring out their last weeks. Not every prisoner had Dudley's skill or Howard's rank in stone; some left only a cross and initials, which makes those marks, if anything, harder to walk past."
+        },
+        {
+          "title": "The Devereux, Flint and Bowyer Towers — Bowmakers and a Burned Keeper",
+          "text": "Continuing east along the north wall, the Devereux Tower is named for Robert Devereux, Earl of Essex, held in this area before his execution in 1601. The Flint Tower takes its name from flint used in building or stored for weapons. The Bowyer Tower was the workshop and store of the royal bowyers — the makers of longbows, the artillery of medieval England, when a trained archer could loose a dozen arrows a minute. A grim story attaches to the Bowyer Tower in the 1400s: the Duke of Clarence, tradition in Shakespeare's telling says, was drowned in a butt of Malmsey wine in the Tower in 1478 — the tower named in the tradition varies, and the wine story may be legend built on a real secret execution. Treat it as the Tower in folklore, labelled as such."
+        },
+        {
+          "title": "The Brick Tower and the Bell Tower — Jane's Lodging and the Curfew Bell",
+          "text": "The Brick Tower, built largely of brick under Henry VIII-era repairs, is associated with Lady Jane Grey's imprisonment — she may have been lodged in the Brick Tower or the Queen's House area, watching from a window as her husband went to execution. At the southwest end, the Bell Tower, built in the 1190s under Richard I, is among the oldest towers on the wall. Its bell has rung a curfew over the Tower for centuries — historically the signal to close gates and douse fires — and it still rings each evening before the Ceremony of the Keys. Elizabeth I was held in the Bell Tower area in 1554 after Wyatt's Rebellion, walking the leads for exercise, convinced she would follow her mother to the scaffold. She survived, and later returned to the Tower as queen the night before her coronation.",
+          "directions": "Continue around the inner wall toward the Royal Beasts exhibition on the west side."
+        }
+      ],
       "image": "images/tower-of-london/08.jpg",
-      "text": "If you only linger in one small tower, make it this one — and bring your eyes close to the walls. The Beauchamp Tower (say 'Beecham') was a prime cell for high-status prisoners in Tudor times, and its residents had time, tools, and a desperate need to be remembered. So they carved. There are around 90 inscriptions here, and they're extraordinary: names, dates, prayers, coats of arms, and elaborate emblems cut deep into the stone. Find the carving by John Dudley, Earl of Warwick, from 1553–54: he and his brothers were imprisoned after their father tried to put Lady Jane Grey on the throne. John carved his family emblem — the bear and ragged staff — surrounded by flowers for each brother, with a verse hoping the carvings would outlast them. He died shortly after his release; the carving did outlast him, by nearly five centuries now. Look too for the poignant inscription of Philip Howard, Earl of Arundel, a Catholic prisoner of Elizabeth I, and the simple scratched crosses and 'IHS' monograms of men measuring out their last weeks in stone. Remember, these weren't vandals — carving was permitted, sometimes even encouraged. For a prisoner facing execution with no tomb guaranteed, a name in the wall was a bid for exactly what you're giving it right now: to not be forgotten.",
-      "title": "The Beauchamp Tower — Prisoner Graffiti"
+      "caption": "Prisoner graffiti carved into the Beauchamp Tower walls"
     },
     {
-      "caption": "Wire sculptures recall the lions, elephants and polar bears of the Royal Menagerie",
-      "directions": "Walk toward the Middle Tower area and look for the Tower Mint exhibition along the outer wall, east of the entrance.",
+      "title": "Royal Beasts — Six Hundred Years as London's Zoo",
+      "intro": "Here's the chapter nobody expects: from the 1200s to the 1830s the Tower was also London's zoo. Foreign rulers sent lions, leopards, an elephant and a polar bear as diplomatic gifts, and the wire sculptures scattered around the site mark where their cages and yards once stood.",
+      "subchapters": [
+        {
+          "title": "Henry III's Leopards, Elephant and Polar Bear",
+          "text": "Henry III started the serious collecting. In 1235 Frederick II gave him three leopards — the animals that, confused with lions, live on in England's royal arms. In 1255 Louis IX of France sent an African elephant, the first seen in England since Roman times; the chronicler Matthew Paris drew it from life, and a special elephant house was built — the elephant, fed a diet including beef and red wine by its keepers' accounts, died within a few years. The King of Norway sent a polar bear in 1252, famously kept muzzled and chained but allowed, under its keeper, to swim and fish in the Thames on a long leash. Imagine your commute including a polar bear fishing beside the wharves."
+        },
+        {
+          "title": "The Lion Tower and the Menagerie's Heyday",
+          "text": "The menagerie settled at the western entrance, around the Lion Tower — the name outlived the animals. By the 1700s it was a commercial public attraction: admission was a penny-halfpenny, or, in a notorious piece of Georgian pricing, the alternative of bringing a small dog or cat to feed to the lions. Visitors saw lions named for reigning monarchs, tigers, zebras, monkeys and, by the early 1800s, kangaroos and a grizzly bear named Martin, a gift associated with the Hudson's Bay Company. The wire sculptures by Kendra Haste that you will find around the Tower — lions, an elephant, a polar bear, monkeys, even a family of baboons on a tower — are placed where the real animals lived, and their mesh form makes them ghostly in the right way."
+        },
+        {
+          "title": "Life for the Animals — And the Keepers",
+          "text": "Be honest about the conditions: cramped cages, unsuitable diets, crowds licensed to poke animals with sticks, and keepers learning exotic-animal care by trial and error. Accidents were inevitable. In 1686 a maidservant was mauled by a lion she had petted; in other incidents a horse and a keeper were attacked, and an ostrich, legend in the menagerie records says, died after being fed nails by visitors who believed the old myth that ostriches digest iron. Yet some animals lived remarkably long, and the menagerie was a genuine centre of early zoological observation — its lions and elephants were drawn and described by naturalists who had nowhere else in Britain to see them alive."
+        },
+        {
+          "title": "Closure in the 1830s and the Birth of London Zoo",
+          "text": "By the 1820s public and official opinion turned. A lion's near-escape, a soldier bitten, a wolf loose — the incidents accumulated, and the Duke of Wellington, as Constable, ordered the menagerie closed in the 1830s. The surviving animals — around 150 of them — transferred to the Zoological Society's new gardens in Regent's Park, becoming a founding collection of London Zoo, which had opened in 1828. A few animals stayed briefly, and the last left by 1835. So the modern zoo was, in a direct institutional line, born inside this fortress. When you pass the empty Lion Tower site on your way out, you are passing the first address of London's zoo, six centuries before its second."
+        },
+        {
+          "title": "The Royal Beasts Exhibition — Bones, Games and Wire Animals",
+          "text": "The Royal Beasts exhibition, in the Brick Tower area on the west wall, tells this story with the animals' remains, games and film: look for the skulls of Tower lions — including Barbary lions, a subspecies now extinct in the wild, whose DNA, extracted from these very skulls, has informed modern conservation genetics. That is a startling thought: the menagerie's dead animals still contribute to science two centuries on. Children gravitate to the interactive elements; adults should linger on the gift records — every elephant and leopard here was diplomacy by other means, a living treaty between courts that had few ways to impress each other at a distance of months.",
+          "directions": "Walk toward Mint Street along the outer wall, east of the entrance."
+        }
+      ],
       "image": "images/tower-of-london/09.jpg",
-      "text": "Here's the chapter nobody expects: for about 600 years, the Tower of London was also London's zoo. From the 1200s, foreign rulers sent exotic animals as diplomatic gifts, and the Royal Menagerie housed them at the Tower's western entrance — which is why the tower there is still called the Lion Tower. Henry III started the serious collecting: three leopards (the gift, and the origin of the lions on England's coat of arms confusion), an African elephant in 1255 — the first seen in England since Roman times, drawn from life by the chronicler Matthew Paris — and a polar bear, also from the King of Norway, which was famously allowed to swim and fish in the Thames on a long chain. Imagine commuting past that. The wire animal sculptures you'll see around the site mark where the menagerie animals lived. Life for them was rough — cramped cages, strange diets, and crowds poking them with sticks, which occasionally ended badly for the crowds. A lion named after whoever was fashionable, monkeys, zebras, even kangaroos by the 1700s. By the 1820s the menagerie had become a popular public attraction, but welfare concerns and one too many escaped-animal incidents led the Duke of Wellington to close it in the 1830s. The animals moved to Regent's Park — and became the founding collection of London Zoo.",
-      "title": "Royal Beasts — The Tower Menagerie"
+      "caption": "Wire sculptures recall the lions, elephants and polar bears of the Royal Menagerie"
     },
     {
-      "caption": "A shilling struck at the Tower Mint — for 500 years England's coins were made inside these walls",
-      "directions": "Continue to the Lower Wakefield Tower, on the south inner wall near the Medieval Palace, for the Torture at the Tower exhibition.",
+      "title": "Mint Street — Where England's Money Was Made",
+      "intro": "Money needs guarding, so for over 500 years England made its money in the safest place in the kingdom: a lane inside the outer wall now called Mint Street. From about 1279 to 1810, nearly every English coin in circulation began as metal delivered under guard to this street.",
+      "subchapters": [
+        {
+          "title": "Hammered Coins — A Moneyer's Trade by Hand",
+          "text": "The early Mint worked by muscle. Silver and gold arrived under guard, was melted and assayed, rolled or hammered into sheets, cut into blanks, and struck between two dies — one coin at a time, by a man swinging a hammer. A good moneyer struck thousands of coins a day, and accuracy was a matter of life and death: clipping metal from coins, or debasing the alloy, was treason. Look at the displays of dies, punches and finished coins, from medieval pennies — the silver penny was England's main coin for centuries, cut into halves and quarters for small change, which is why old coins are sometimes found deliberately cut — to the milled coinage of the 1600s, whose lettered edges finally defeated the clippers."
+        },
+        {
+          "title": "The Great Recoinage and Isaac Newton, Mint Detective",
+          "text": "The Mint's most famous Master was Isaac Newton — yes, that Newton. After revolutionising physics and mathematics, he became Warden of the Mint in 1696 and Master in 1699, and ran it until his death in 1727. He professionalised the operation, oversaw the Great Recoinage of the 1690s, when England's entire battered, clipped currency was called in and replaced, and personally hunted counterfeiters through London's underworld with terrifying zeal — interviewing suspects himself, building cases, and sending several forgers, including the notorious William Chaloner, to the gallows. Chaloner had accused Newton of corruption in a pamphlet war; Newton methodically assembled the evidence that hanged him in 1699. The father of gravity was also, effectively, a detective."
+        },
+        {
+          "title": "Mint Street Itself — Workshops Inside a Fortress",
+          "text": "Walk the lane itself and imagine it as an industrial village: furnaces, rolling mills, coining presses after machinery arrived in the 1600s, assay offices, and the Mint's own officials living on site — the Mint was a self-contained department with its own jurisdiction inside the Tower's liberty. Workers were searched leaving, for obvious reasons. The street also housed other Tower departments over time, and its buildings now serve as homes for Tower staff — the laundry lines and doorbells you may glimpse are the modern echo of a lane that has been lived-in and worked-in, continuously, for seven centuries. Look for the Mint's boundary markers and the change in paving as you walk it: this was a precinct within a precinct, with its own gates and its own rules, because a single missing bag of blanks was a scandal and a fortune at once."
+        },
+        {
+          "title": "Leaving the Tower — The New Mint and the Move to Wales",
+          "text": "By 1800 the Tower Mint was cramped and outdated. In 1810 production moved to a purpose-built, steam-powered Royal Mint on nearby Tower Hill, designed with machinery by Boulton and Watt's circle — the factory whose site you pass near Tower Hill station. There it stayed until the 1960s, when Britain's coinage, facing decimalisation in 1971, needed a vast modern plant: the Royal Mint moved to Llantrisant in Wales, where it still strikes Britain's coins and many other countries'. The money left this lane in 1810, but the logic that put it here — put the nation's wealth behind the nation's strongest walls — explains the Tower better than any single execution story."
+        },
+        {
+          "title": "The Fusilier Museum and the Waterloo Barracks Block",
+          "text": "Before you leave the north side, step into the Royal Regiment of Fusiliers Museum, housed in the Officers' Mess building by the Waterloo Barracks. The regiment was raised at the Tower in 1685 by Lord Dartmouth, originally to guard the artillery train — its name comes from the fusil, a lighter flintlock musket issued to men who could not risk sparks from matchlocks near gunpowder. The museum follows the regiment through the American war, the Napoleonic wars, Gallipoli — where the Lancashire Fusiliers famously won 'six Victoria Crosses before breakfast' in 1915 — to modern service. Medals, uniforms and the regiment's colours fill a compact, old-fashioned regimental museum of a kind that is itself becoming historic.",
+          "directions": "Continue to the Lower Wakefield Tower, on the south inner wall, for Torture at the Tower."
+        }
+      ],
       "image": "images/tower-of-london/10.jpg",
-      "text": "Money needs guarding, so for over 500 years England made its money in the safest place in the kingdom: right here, along the street now called Mint Street, inside the Tower's outer wall. From about 1279 until 1810, nearly every English coin passed through this lane. The exhibition here walks you through how brutal and skilled the work was: silver and gold arrived under guard, was melted, rolled, cut into blanks, and struck — originally by a man with a hammer and a die, one coin at a time. Get the weight of that: a good moneyer struck thousands of coins a day, by hand, and woe betide him if the weight was off — clipping and debasing coinage were treason, punished accordingly. The Mint's most famous master? Isaac Newton. Yes, that Newton. After revolutionising physics, he ran the Mint from 1696, professionalised it, and personally hunted counterfeiters through London's underworld with terrifying zeal — several forgers went to the gallows on his evidence. Look for displays on the Great Recoinage, when Newton oversaw replacing England's entire battered currency. By 1810 the Mint had outgrown the Tower and moved to a purpose-built steam-powered factory nearby; the Royal Mint eventually ended up in Wales, where it still makes Britain's coins. The money left. The walls that protected it are the ones you're walking through.",
-      "title": "The Tower Mint — Where England's Money Was Made"
+      "caption": "A shilling struck at the Tower Mint — for 500 years England's coins were made inside these walls"
     },
     {
-      "caption": "The Lower Wakefield Tower — home of the 'Torture at the Tower' exhibition",
-      "directions": "Head back out to Tower Green, where the ravens are usually to be found near their enclosure on the south side of the Green.",
+      "title": "Torture at the Tower — The Lower Wakefield Tower",
+      "intro": "Down in the Lower Wakefield Tower is the Tower's most deliberately unsettling exhibition — and it corrects as much myth as it confirms. Torture here was real, but rare, licensed and filed: under the Tudors it required a Privy Council warrant, and the records show only a few dozen authorised cases over more than a century.",
+      "subchapters": [
+        {
+          "title": "The Rack — Guy Fawkes and the Signature That Changes",
+          "text": "The rack stretched the body on a frame of rollers and ropes until joints dislocated. Guy Fawkes was racked after the Gunpowder Plot of 1605, and his confessions preserve the process in handwriting: his signature before torture is firm; after, it dwindles to a shaky scrawl — 'Guido' barely legible. That pair of signatures, reproduced in the exhibition, is more chilling than any replica machine. Fawkes named his fellow conspirators under or in fear of the rack, and was executed at Westminster in January 1606 — hanged, drawn and quartered in the full traitor's death, though he jumped from the ladder and broke his neck, cheating the worst of it."
+        },
+        {
+          "title": "The Manacles and the Scavenger's Daughter",
+          "text": "Two other instruments complete the set. In the manacles, a prisoner was suspended by the wrists from a wall or beam, feet barely touching the ground, for hours — agony without a mark, which was precisely the point for interrogators who needed a presentable prisoner afterwards. The Scavenger's Daughter, invented under Henry VIII and attributed to Leonard Skevington, Lieutenant of the Tower, did the opposite of the rack: an iron hoop compressed the body, knees to chest, until blood was forced from the nose and ears. Between stretching, hanging and crushing, the three devices map the whole ingenuity of pain — and the exhibition's sober labels insist, rightly, on the paperwork: warrants signed, sessions recorded, torture as administration."
+        },
+        {
+          "title": "Anne Askew — Racked Illegally in 1546",
+          "text": "The most famous victim of the rack here may be Anne Askew, a Protestant writer and preacher arrested for heresy in Henry VIII's last, paranoid year. She was racked in 1546 in an attempt to make her name evangelical courtiers around Queen Catherine Parr — illegally, since torturing a gentlewoman required special authority, and the Lieutenant of the Tower refused to continue turning the rollers, whereupon the Lord Chancellor himself took a turn, according to her own smuggled account. She named no one. So badly injured she could not walk, she was carried in a chair to her execution by burning at Smithfield. Her written account of her examinations, published after her death, made her a Protestant heroine — and makes her, unusually, a Tower victim whose own voice survives."
+        },
+        {
+          "title": "Myth Versus Record — The Iron Maiden That Never Was",
+          "text": "Use this room to calibrate the Tower's horror stories. There was never an Iron Maiden here — that spiked coffin is a later German invention and a piece of Gothic fiction. The Tower's dungeons were mostly ordinary rooms; its executions numbered in the hundreds, not thousands; and torture, by the standards of contemporary France or Spain, was used sparingly and controversially — English common law did not admit it, which is why each use needed a royal warrant as an act of state, not of law. None of that softens Fawkes's signature or Askew's chair. The exhibition's real horror is bureaucratic: pain authorised in council, minuted, and filed — a reminder that the most dangerous instruments in this building were always made of paper as much as iron."
+        },
+        {
+          "title": "The Wakefield Towers Together — Jewel Vault, Chapel, Torture",
+          "text": "Step back and notice where you are: the Wakefield complex has held, at different times, Henry VI's murder site and oratory above you, the Crown Jewels for nearly a century, royal records, and now this exhibition in its lower chamber. No single building better demonstrates the Tower's habit of reusing the same stones for opposite purposes. As you leave, you pass toward Tower Green again, and the ravens — a deliberate change of register, from the Tower's darkest room to its most beloved residents, which is a fair summary of how this place asks to be visited: horror and charm, in alternating rooms, all of it true.",
+          "directions": "Head back out to Tower Green, where the ravens are usually near their enclosure on the south side."
+        }
+      ],
       "image": "images/tower-of-london/11.jpg",
-      "text": "Down in the Lower Wakefield Tower you'll find the Tower's most deliberately unsettling exhibition — and it's worth saying up front that it corrects as much myth as it confirms. Torture was real here, but it was rare, and it was bureaucratically controlled: under the Tudors and early Stuarts, torture in England required a specific warrant from the Privy Council, and the Tower's records show it was authorised only a few dozen times over more than a century. The exhibition displays the instruments associated with that grim system. There's the rack, which stretched the body until joints dislocated — Guy Fawkes was racked after the Gunpowder Plot of 1605, and you can see his signature on his confession, firm before torture and a shaky scrawl after. There are the manacles, in which prisoners were suspended by the wrists, and the Scavenger's Daughter, a hoop of iron that did the opposite of the rack, crushing the body into a ball. The most famous victim of the rack here may be Anne Askew, a Protestant writer racked in 1546 — illegally, since torturing a gentlewoman required special authority — and so badly injured she had to be carried to her execution at Smithfield. The tone of this little exhibition is, to its credit, sober rather than sensational. Read the panels: the real horror isn't the ironwork, it's the paperwork — torture by warrant, signed and filed.",
-      "title": "Torture at the Tower — The Lower Wakefield Tower"
+      "caption": "The Lower Wakefield Tower — home of the 'Torture at the Tower' exhibition"
     },
     {
-      "caption": "A Tower raven on Tower Green — legend says the kingdom falls if they leave",
-      "directions": "From Tower Green, make your way to the exit the way you came in, past the Middle Byward Gate — or detour down to the river wall for a last look at Traitors' Gate.",
+      "title": "The Ravens and the Yeoman Warders",
+      "intro": "Time to meet the Tower's living community: at least six ravens on the strength at all times, a Ravenmaster to care for them, and about three dozen Yeoman Warders — 'Beefeaters' — who guard the fortress, guide its visitors and live inside these walls with their families, as their predecessors have for centuries.",
+      "subchapters": [
+        {
+          "title": "The Ravens — Names, Personalities and Blood-Soaked Biscuits",
+          "text": "Look at the ravens closely: they are huge — wingspan over a metre — glossy, clever and fully aware they run the place. The Tower keeps at least six, by tradition, usually with a spare; recent residents have included Jubilee, Harris, Poppy, Georgie, Edgar and Branwen. They eat raw meat, eggs, chicks and biscuits soaked in blood, supplied by the Ravenmaster, and they steal sandwiches, crisps and occasionally a phone with total confidence. Each bird has a name, a leg ring and a personality the Ravenmaster's talks describe in detail — ravens recognise faces, hold grudges and play. Their enclosure on the south side of the Green is a night roost; by day they range the grounds. Do not feed or touch them: a raven's beak can take a fingertip's worth of curiosity seriously."
+        },
+        {
+          "title": "The Legend — Charles II, the Astronomer and a Convenient Prophecy",
+          "text": "The famous rule — if the ravens leave, the Crown and Britain fall — is usually credited to Charles II, whose astronomer John Flamsteed complained that ravens interfered with observations from the White Tower. Warned of the prophecy, the king supposedly compromised: the observatory moved to Greenwich, the ravens stayed, officially fed at public expense. Historians suspect the legend is largely a Victorian invention — ravens were common scavengers in old London, and the Tower's birds may simply have been pets and mascots before storytellers promoted them. The legend was retold with special force during the Second World War, when Tower ravens dwindled — bombing and food shortages reduced them, by some accounts, to a single bird — and restocking them became a small act of national defiance."
+        },
+        {
+          "title": "The Ravenmaster — A Full-Time Job in Feathers",
+          "text": "The Ravenmaster is a Yeoman Warder appointed to care for the birds full-time: feeding at dawn, checking wings — the flight feathers of one wing are lightly trimmed so the ravens can fly around the grounds but not gain height to leave — maintaining the roost, and managing introductions, since ravens are territorial and a new bird must be integrated carefully over weeks. A raven escaped and lived wild locally for a period in recent years, to tabloid delight, before being recovered. The Ravenmaster's social-media accounts, full of individual birds' mischief and moulting seasons, have made the flock global celebrities — probably the only military-adjacent unit in Britain whose daily routine is followed for pleasure in fifty countries."
+        },
+        {
+          "title": "The Yeoman Warders — Veterans in Tudor Uniform",
+          "text": "The Yeoman Warders, founded under Henry VII in 1485 as the monarch's bodyguard, still wear a Tudor-style uniform: the blue undress uniform daily, and the scarlet-and-gold state dress for ceremonies — the uniform Elizabeth I's livery colours shaped. 'Beefeater' probably derives from their historic ration of beef, or from buffetier, a servant at the royal buffet; nobody knows for certain, and Warders will give you both theories. To join, a candidate must have at least 22 years' service in the armed forces with an exemplary record and senior rank — every Warder you meet is a retired senior non-commissioned officer. About 35 Warders live in the Tower with their families, in houses built into the walls and casemates; over a hundred people sleep inside this fortress every night."
+        },
+        {
+          "title": "The Ceremony of the Keys — 700 Years, Never Missed",
+          "text": "Every night at exactly 9:53pm, the Chief Yeoman Warder, carrying the King's Keys and a candle lantern, locks the Tower in the Ceremony of the Keys. At the Byward Tower a sentry challenges: 'Halt! Who comes there?' — 'The Keys.' — 'Whose Keys?' — 'King Charles's Keys.' — 'Pass, King Charles's Keys. All's well.' The ceremony is said to have run unbroken for over 700 years; during the Blitz it was delayed once by a bomb blast that knocked the party down — the officer in charge wrote a formal apology for the late locking, which is preserved. The Warders also open the Tower each morning with a smaller ceremony, and fire salutes from Tower Wharf on royal occasions — 62 rounds for the monarch's birthday, a number visitors always ask about: 21 for the Crown, 20 for the City, 21 for the Tower's royal palace status, roughly speaking. This is not a theme park with staff; it is a garrison with visitors.",
+          "directions": "Make your way back toward the Middle Byward Gate for the exit, or detour to the river wall for a last look at Traitors' Gate."
+        }
+      ],
       "image": "images/tower-of-london/12.jpg",
-      "text": "Time for the Tower's most beloved residents. There are at least six ravens here at all times — that's the rule, and there's usually a spare or two — and according to legend, this is not optional: if the ravens ever leave the Tower, the Crown will fall, and Britain with it. The story is usually credited to Charles II, who supposedly wanted the ravens removed because they interfered with the royal astronomer's telescope, was warned of the prophecy, and compromised: the telescope moved to Greenwich, the ravens stayed, and they've been on the payroll — officially enlisted, fed at public expense — ever since. Historians suspect the legend is largely a Victorian invention, but try telling that to the Ravenmaster, the Yeoman Warder whose full-time job is caring for these birds. Look at them closely: ravens are huge — a wingspan over a metre — glossy, clever, and fully aware they run the place. They eat raw meat, biscuits soaked in blood, and the occasional pilfered sandwich; each has a name and a personality, and the Ravenmaster's talks (check the daily programme) are full of stories of individual birds' mischief. Their wings are lightly trimmed on one side so they stay close — they can fly around the grounds but not away. The kingdom, you'll be relieved to hear, is safe.",
-      "title": "The Ravens — Guardians of the Kingdom"
+      "caption": "A Tower raven on Tower Green — legend says the kingdom falls if they leave"
     },
     {
-      "caption": "The White Tower above Tower Green — the heart of the fortress",
-      "directions": "Exit via the Middle Byward Gate. For Tower Bridge, turn left (east) outside the walls and follow the Thames Path about 10 minutes.",
+      "title": "Wrap-Up — Leaving the Fortress",
+      "intro": "As you head for the gate, take one last look back at the White Tower and consider what this place has managed to be in a single lifetime of a building: seat of kings, death place of queens, treasury, mint, zoo, observatory, arsenal and home. Few addresses in Europe have held so many jobs without ever being demolished.",
+      "subchapters": [
+        {
+          "title": "Elizabeth's Story — In as a Prisoner, Back as a Queen",
+          "text": "One biography sums the Tower up. In March 1554 the 20-year-old Princess Elizabeth was brought here by river through Traitors' Gate, suspected in Wyatt's Rebellion, convinced she was going to die like her mother. She was held for two months, then released to house arrest, never charged with proof against her. In January 1559 she returned — as Queen Elizabeth I, spending the night before her coronation in the Tower, as tradition demanded of monarchs. The place you entered expecting execution could be the place you slept before your crowning. That double nature — prison and palace in the same stones — is the Tower's deepest theme, and every tower you have visited today has played both parts at least once."
+        },
+        {
+          "title": "The Tower Today — Palace, Garrison and Village",
+          "text": "Do not leave thinking this is a ruin preserved in amber. The Tower remains a royal palace and a military station: soldiers of the Tower guard mount here, the Crown Jewels leave under escort for state occasions, Warders' children grow up playing on Tower Green, and washing hangs in casemate windows. It is a UNESCO World Heritage Site, inscribed in 1988, run by Historic Royal Palaces, an independent charity that receives no regular government funding for running costs — your ticket is, quite literally, what keeps the roofs on. Around three million visitors a year pass the gates, yet by closing time the gates lock, the Keys ceremony runs, and the village inside resumes its private life behind the walls."
+        },
+        {
+          "title": "What to Notice on the Way Out — Tower Wharf and the River",
+          "text": "Exit over the causeway and pause on Tower Wharf, the riverside strip where guns for salutes are fired and where, for centuries, goods, prisoners and kings were loaded from barges. From here the fortress reads as its builders intended: water in front, walls rising sheer, the White Tower centred like a signature. Photographers should walk a little east for the classic composition — Tower, wharf and Tower Bridge in one frame, two structures 800 years apart designed, in their different centuries, to control the same river crossing. If you are continuing to Tower Bridge, the Thames Path east takes about ten minutes; you will see this fortress again from its walkways, pale above the river, exactly as arriving prisoners saw it."
+        },
+        {
+          "title": "A Last Look Back — Some Views Don't Change",
+          "text": "Some views do not change in 900 years, and the White Tower over the Thames is one of them. William's masons, Anne Boleyn's bargemen, Newton's moneyers, Wellington's soldiers and today's Warders have all looked at the same pale keep from this wharf. If you have time before you leave the area, Tower Hill's scaffold memorial and the Merchant Navy memorials nearby extend the story outward — the Tower's history leaks into every surrounding street. Thank you for walking it slowly. The Tower rewards the visitors who read its small rooms — a carving, a signature, a spoon — as carefully as its crowns. The crowns are the headline; the small rooms are the book."
+        }
+      ],
       "image": "images/tower-of-london/13.jpg",
-      "text": "As you head for the gate, take one last look back at the White Tower, and consider what this place has managed to be. It has been the seat of kings and the death place of queens. It has held the Crown Jewels, the national treasury, the Royal Mint, a zoo, an observatory, and some of the most famous prisoners in history — including, for a while, a future queen: Elizabeth I was imprisoned here by her sister Mary, entering through Traitors' Gate in 1554, convinced she was going to die. She walked out, became queen, and — tellingly — came back to the Tower the night before her coronation, as tradition demanded. That's the Tower in one story: the place you entered as a prisoner could be the place you left as a monarch. It stopped being a royal residence centuries ago, but it never stopped working — it's still a royal palace, still guarded by soldiers, still home to the Yeoman Warders and their families who live inside these walls, and the Ceremony of the Keys, the locking-up ritual performed every single night, is said to have run unbroken for over 700 years. If you're continuing to Tower Bridge — and you should, it's a ten-minute walk east along the river — you'll see this fortress from its walkways, pale above the Thames, exactly as arriving prisoners saw it. Some views don't change in 900 years.",
-      "title": "Wrap-Up — A Thousand Years in One Afternoon"
+      "caption": "The White Tower above Tower Green — the heart of the fortress"
     }
   ],
   "dayLabel": "Wednesday",
-  "estimatedMinutes": 150,
+  "estimatedMinutes": 210,
   "heroImage": "images/tower-of-london/hero.jpg",
   "id": "tower-of-london",
   "intro": "Welcome to the Tower of London — nearly a thousand years of English history packed inside one ring of walls on the north bank of the Thames. This has been a fortress, a royal palace, a prison, a mint, a menagerie, and the vault for the Crown Jewels, sometimes all at once. Our route is deliberate: we hit the Crown Jewels first, while the line is shortest, then work through the White Tower, the wall walk, the medieval palace, and the prison towers, finishing with the ravens on Tower Green. Give it a good two and a half hours, wear shoes you can climb spiral stairs in, and let's go make sense of the most storied castle in Britain.",
@@ -114,10 +479,13 @@
     "The on-site cafés are fine for a break, but the walls themselves are the picnic spot — benches along the wall walk have Thames views."
   ],
   "sources": [
+    "https://en.wikipedia.org/wiki/Crown_Jewels_of_the_United_Kingdom",
+    "https://en.wikipedia.org/wiki/Tower_of_London",
+    "https://royalarmouries.org/leeds/collection/highlights/line-of-kings",
+    "https://www.britannica.com/place/Tower-of-London",
     "https://www.hrp.org.uk/tower-of-london/",
     "https://www.hrp.org.uk/tower-of-london/history-and-stories/",
-    "https://www.britannica.com/place/Tower-of-London",
-    "https://royalarmouries.org/leeds/collection/highlights/line-of-kings"
+    "https://www.hrp.org.uk/tower-of-london/history-and-stories/the-crown-jewels/"
   ],
   "subtitle": "Fortress, palace, prison — and the Crown Jewels",
   "title": "Tower of London"
