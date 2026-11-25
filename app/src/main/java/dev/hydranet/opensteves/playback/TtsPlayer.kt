@@ -35,6 +35,10 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
     private var itemIndex = -1
     private var stopAfterItemIndex = -1
     private var pending: (() -> Unit)? = null
+    private var suppressFinish = false
+
+    /** Invoked when an item finishes playing naturally (not via pause/stop). */
+    var onItemFinished: ((chapterIndex: Int, subchapterIndex: Int) -> Unit)? = null
 
     private data class SpeakableItem(
         val chapterIndex: Int,
@@ -46,6 +50,10 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
         tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
             override fun onStart(utteranceId: String?) = Unit
             override fun onDone(utteranceId: String?) {
+                val finished = items.getOrNull(itemIndex)
+                if (!suppressFinish && finished != null) {
+                    onItemFinished?.invoke(finished.chapterIndex, finished.subchapterIndex)
+                }
                 if (itemIndex in items.indices && itemIndex < stopAfterItemIndex) {
                     speakItemAt(itemIndex + 1)
                 } else {
@@ -117,6 +125,7 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
     fun pause() {
         val current = _state.value
         if (current is TtsState.Speaking) {
+            suppressFinish = true
             tts.stop()
             _state.value = TtsState.Paused(current.chapterIndex, current.subchapterIndex)
         }
@@ -131,6 +140,7 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
 
     fun stop() {
         pending = null
+        suppressFinish = true
         tts.stop()
         if (!failed) _state.value = TtsState.Idle
     }
@@ -185,6 +195,7 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
 
     private fun speakItemAt(position: Int) {
         val item = items.getOrNull(position) ?: return
+        suppressFinish = false
         itemIndex = position
         val result = tts.speak(
             item.text, TextToSpeech.QUEUE_FLUSH, null,
