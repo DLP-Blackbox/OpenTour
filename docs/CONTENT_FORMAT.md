@@ -76,8 +76,20 @@ guide is not available yet and the rest of the playlist keeps working.
       "title": "Welcome",
       "image": "images/tower-of-london/01.jpg",
       "caption": "The White Tower from Tower Green",
-      "text": "The chapter text. This is what text-to-speech reads aloud.",
-      "directions": "Optional walking directions, shown in italic."
+      "intro": "Optional short lead-in paragraph, spoken first in the chapter.",
+      "subchapters": [
+        {
+          "title": "The Middle Tower",
+          "text": "Narration for this one element. This is what text-to-speech reads aloud.",
+          "directions": "Optional walking directions, shown in italic.",
+          "image": "images/tower-of-london/02.jpg",
+          "caption": "Optional caption for this subchapter's image."
+        },
+        {
+          "title": "Tower Green",
+          "text": "Narration for the next element, played right after the previous subchapter."
+        }
+      ]
     }
   ],
   "sources": ["https://example.org/source"]
@@ -89,13 +101,30 @@ Fields:
 - `id` (must match the file name and the stop's `guideId`) and `title` are
   required; everything else is optional and degrades gracefully.
 - `estimatedMinutes` — how long the visit takes, not the audio length.
-- `heroImage` and chapter `image` paths are relative to `assets/guides/`
-  (so `images/<guideId>/hero.jpg` means
+- `heroImage`, chapter `image` and subchapter `image` paths are relative to
+  `assets/guides/` (so `images/<guideId>/hero.jpg` means
   `assets/guides/images/<guideId>/hero.jpg`). Missing images are simply not
   shown.
-- Chapters play in array order — write them in real visit order. Each
-  chapter's `text` is spoken on its own by text-to-speech, so keep chapters
-  self-contained and write them to be heard, not read.
+- Chapters are made of subchapters. A chapter has a `title`, an optional
+  chapter-level `image`/`caption`, an optional `intro` (a short lead-in
+  paragraph) and a `subchapters` array. Each subchapter is one element of
+  the visit — a room, an object, a story — with a `title`, the narration
+  `text`, and optional `directions` (shown in italic), `image` and
+  `caption`. All subchapter fields except the narration itself may be
+  omitted and default to empty.
+- Chapters play in array order — write them in real visit order. Within a
+  chapter, playback is the `intro` first (when non-blank), then each
+  subchapter's `text` in order. Subchapter `text` is what text-to-speech
+  reads aloud, so keep subchapters self-contained and write them to be
+  heard, not read. On the guide screen each subchapter is nested under its
+  chapter and has its own play button; the chapter's play button plays the
+  whole chapter (intro, then subchapters), and "Listen to the whole guide"
+  plays every chapter in order.
+- Legacy chapters still parse: a chapter with a chapter-level `text` field
+  and no `subchapters` is read as a chapter with no intro and a single
+  untitled subchapter holding that `text` (and the chapter's `directions`).
+  Prefer the subchapter shape for new content.
 - The guide screen is built from blocks — header, practical notes, map note,
-  then one block per chapter — so content authors only need this JSON; new
-  block types are added in code, not in the format.
+  then one block per chapter with its subchapters nested inside — so
+  content authors only need this JSON; new block types are added in code,
+  not in the format.

@@ -11,14 +11,18 @@ import java.util.Locale
 
 sealed interface TtsState {
     data object Idle : TtsState
-    data class Speaking(val chapterIndex: Int) : TtsState
-    data class Paused(val chapterIndex: Int) : TtsState
+
+    // subchapterIndex is -1 when the item being spoken is the chapter intro.
+    data class Speaking(val chapterIndex: Int, val subchapterIndex: Int = -1) : TtsState
+    data class Paused(val chapterIndex: Int, val subchapterIndex: Int = -1) : TtsState
     data class Error(val message: String) : TtsState
 }
 
 // Reads a custom guide aloud with the built-in Android text-to-speech engine.
+// Playback is a flattened sequence of speakable items: for each chapter in
+// order, its intro (when non-blank) followed by each subchapter's text.
 // TextToSpeech has no true pause: pause() stops the engine and remembers the
-// chapter, and resume() speaks that chapter again from the beginning.
+// item, and resume() speaks that item again from the beginning.
 class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
     private val tts = TextToSpeech(context.applicationContext, this)
     private val _state = MutableStateFlow<TtsState>(TtsState.Idle)
@@ -27,19 +31,24 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
     private var ready = false
     private var failed = false
     private var guide: CustomGuide? = null
-    private var chapterIndex = -1
-    private var playAll = false
+    private var items: List<SpeakableItem> = emptyList()
+    private var itemIndex = -1
+    private var stopAfterItemIndex = -1
     private var pending: (() -> Unit)? = null
+
+    private data class SpeakableItem(
+        val chapterIndex: Int,
+        val subchapterIndex: Int,
+        val text: String,
+    )
 
     init {
         tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
             override fun onStart(utteranceId: String?) = Unit
             override fun onDone(utteranceId: String?) {
-                val current = guide ?: return
-                if (playAll && chapterIndex + 1 < current.chapters.size) {
-                    speakChapterAt(chapterIndex + 1)
+                if (itemIndex in items.indices && itemIndex < stopAfterItemIndex) {
+                    speakItemAt(itemIndex + 1)
                 } else {
-                    playAll = false
                     _state.value = TtsState.Idle
                 }
             }
@@ -76,48 +85,68 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
         action?.invoke()
     }
 
-    fun speakChapter(guide: CustomGuide, index: Int) {
-        if (index !in guide.chapters.indices) return
-        this.guide = guide
-        playAll = false
-        whenReady { speakChapterAt(index) }
+    /** Plays just the one item: a subchapter, or the chapter intro when [subchapterIndex] is -1. */
+    fun speakSubchapter(guide: CustomGuide, chapterIndex: Int, subchapterIndex: Int) {
+        val position = flatten(guide).indexOfFirst {
+            it.chapterIndex == chapterIndex && it.subchapterIndex == subchapterIndex
+        }
+        if (position < 0) return
+        setGuide(guide)
+        whenReady { startAt(position, stopAfter = position) }
     }
 
-    fun speakAll(guide: CustomGuide, fromIndex: Int = 0) {
+    /** Plays a chapter's items in order — intro, then subchapters — and stops at its end. */
+    fun speakChapter(guide: CustomGuide, index: Int) {
+        if (index !in guide.chapters.indices) return
+        setGuide(guide)
+        val first = items.indexOfFirst { it.chapterIndex == index }
+        if (first < 0) return
+        val last = items.indexOfLast { it.chapterIndex == index }
+        whenReady { startAt(first, stopAfter = last) }
+    }
+
+    /** Plays everything from [fromChapterIndex] to the end of the guide. */
+    fun speakAll(guide: CustomGuide, fromChapterIndex: Int = 0) {
         if (guide.chapters.isEmpty()) return
-        this.guide = guide
-        playAll = true
-        whenReady { speakChapterAt(fromIndex.coerceIn(guide.chapters.indices)) }
+        setGuide(guide)
+        val first = items.indexOfFirst { it.chapterIndex >= fromChapterIndex.coerceAtLeast(0) }
+        if (first < 0) return
+        whenReady { startAt(first, stopAfter = items.lastIndex) }
     }
 
     fun pause() {
         val current = _state.value
         if (current is TtsState.Speaking) {
             tts.stop()
-            _state.value = TtsState.Paused(current.chapterIndex)
+            _state.value = TtsState.Paused(current.chapterIndex, current.subchapterIndex)
         }
     }
 
     fun resume() {
         val current = _state.value
-        if (current is TtsState.Paused) whenReady { speakChapterAt(current.chapterIndex) }
+        if (current is TtsState.Paused && itemIndex in items.indices) {
+            whenReady { speakItemAt(itemIndex) }
+        }
     }
 
     fun stop() {
         pending = null
-        playAll = false
         tts.stop()
         if (!failed) _state.value = TtsState.Idle
     }
 
     fun next() {
-        val current = guide ?: return
-        if (chapterIndex + 1 < current.chapters.size) whenReady { speakChapterAt(chapterIndex + 1) }
+        if (itemIndex in items.indices && itemIndex + 1 < items.size) {
+            val target = itemIndex + 1
+            whenReady { startAt(target, stopAfter = target) }
+        }
     }
 
     fun previous() {
-        if (guide == null) return
-        if (chapterIndex > 0) whenReady { speakChapterAt(chapterIndex - 1) }
+        if (itemIndex > 0) {
+            val target = itemIndex - 1
+            whenReady { startAt(target, stopAfter = target) }
+        }
     }
 
     fun release() {
@@ -131,15 +160,40 @@ class TtsPlayer(context: Context) : TextToSpeech.OnInitListener {
         if (ready) action() else pending = action
     }
 
-    private fun speakChapterAt(index: Int) {
-        val current = guide ?: return
-        val chapter = current.chapters.getOrNull(index) ?: return
-        chapterIndex = index
-        val result = tts.speak(chapter.text, TextToSpeech.QUEUE_FLUSH, null, "guide-chapter-$index")
+    private fun setGuide(guide: CustomGuide) {
+        if (this.guide != guide) {
+            this.guide = guide
+            items = flatten(guide)
+            itemIndex = -1
+            stopAfterItemIndex = -1
+        }
+    }
+
+    private fun flatten(guide: CustomGuide): List<SpeakableItem> = buildList {
+        guide.chapters.forEachIndexed { chapterIndex, chapter ->
+            if (chapter.intro.isNotBlank()) add(SpeakableItem(chapterIndex, -1, chapter.intro))
+            chapter.subchapters.forEachIndexed { subchapterIndex, subchapter ->
+                if (subchapter.text.isNotBlank()) add(SpeakableItem(chapterIndex, subchapterIndex, subchapter.text))
+            }
+        }
+    }
+
+    private fun startAt(position: Int, stopAfter: Int) {
+        stopAfterItemIndex = stopAfter
+        speakItemAt(position)
+    }
+
+    private fun speakItemAt(position: Int) {
+        val item = items.getOrNull(position) ?: return
+        itemIndex = position
+        val result = tts.speak(
+            item.text, TextToSpeech.QUEUE_FLUSH, null,
+            "guide-${item.chapterIndex}-${item.subchapterIndex}",
+        )
         if (result == TextToSpeech.ERROR) {
             _state.value = TtsState.Error("Could not start text-to-speech.")
         } else {
-            _state.value = TtsState.Speaking(index)
+            _state.value = TtsState.Speaking(item.chapterIndex, item.subchapterIndex)
         }
     }
 }
